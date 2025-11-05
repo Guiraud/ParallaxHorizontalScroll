@@ -1,0 +1,402 @@
+{
+  "meta": {
+    "title": "Parallax Consentement",
+    "subtitle": "Comprendre et respecter le consentement dans toutes les situations",
+    "author": "Made with ❤ by Shivam Katare. Inspired by Paulina Hetman",
+    "petition": {
+      "title": "Pétition pour renforcer l'éducation au consentement",
+      "url": "https://example.com/petition-consentement",
+      "description": "Soutenez l'intégration de l'éducation au consentement dans les programmes scolaires"
+    }
+  },
+
+  "triggerWarning": {
+    "global": "⚠️ Avertissement : Ce site aborde des sujets sensibles liés au consentement, aux violences et aux agressions. Certains contenus peuvent être déclencheurs. Ces informations sont présentées dans un but éducatif. Vous pouvez masquer les sections sensibles à tout moment.",
+    "contacts": {
+      "france": [
+        {
+          "name": "Violences Femmes Info",
+          "number": "3919",
+          "description": "Écoute, information et orientation"
+        },
+        {
+          "name": "Viols Femmes Informations",
+          "number": "0800 05 95 95",
+          "description": "Écoute anonyme et gratuite"
+        }
+      ],
+      "associations": [
+        "Collectif Féministe Contre le Viol",
+        "En Avant Toute(s)",
+        "Planning Familial"
+      ]
+    }
+  },
+
+  "introduction": {
+    "title": "Qu'est-ce que le consentement ?",
+    "content": "Le consentement est un accord libre, éclairé et enthousiaste donné à une action ou une situation. Il peut être retiré à tout moment. Le non-respect du consentement constitue une violence qui peut prendre de nombreuses formes : sexuelle, physique, psychologique ou économique.",
+    "statistics": {
+      "france": "En France, 94 000 femmes sont victimes de viol ou tentative de viol chaque année",
+      "global": "Dans le monde, 1 femme sur 3 subit des violences physiques ou sexuelles au cours de sa vie"
+    }
+  },
+
+  "publicCibles": {
+    "title": "À qui s'adresse ce site ?",
+    "audiences": [
+      {
+        "name": "Jeunes et adolescents",
+        "icon": "🎓",
+        "message": "Apprenez à reconnaître, exprimer et respecter vos limites et celles des autres. Le consentement est la base de toute relation saine.",
+        "resources": [
+          "Définition claire du consentement",
+          "Exemples concrets de situations",
+          "Ressources d'aide et d'écoute"
+        ]
+      },
+      {
+        "name": "Éducateurs et enseignants",
+        "icon": "📚",
+        "message": "Des outils pour enseigner le consentement de manière adaptée à l'âge des élèves, avec des exemples concrets et des approches pédagogiques.",
+        "resources": [
+          "Approches pédagogiques par âge",
+          "Exemples de situations à discuter",
+          "Ressources pour aller plus loin"
+        ]
+      },
+      {
+        "name": "Parents",
+        "icon": "👨‍👩‍👧‍👦",
+        "message": "Comment parler de consentement avec vos enfants dès le plus jeune âge, en adaptant le message à leur niveau de compréhension.",
+        "resources": [
+          "Guide par tranche d'âge",
+          "Phrases et exemples à utiliser",
+          "Réponses aux questions difficiles"
+        ]
+      },
+      {
+        "name": "Professionnels de santé",
+        "icon": "⚕️",
+        "message": "Le respect du consentement dans les soins est fondamental. Découvrez les bonnes pratiques et les ressources pour vos patients.",
+        "resources": [
+          "Bonnes pratiques médicales",
+          "Communication avec les patients",
+          "Ressources d'orientation"
+        ]
+      }
+    ]
+  },
+
+  "parallaxImages": {
+    "enabled": true,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1529626455594-4ff0802cfb7e",
+        "alt": "Respect",
+        "speed": "slower",
+        "position": 1
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1573497019940-1c28c88b4f3e",
+        "alt": "Communication",
+        "speed": "faster",
+        "position": 2
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1517245386807-bb43f82c33c4",
+        "alt": "Écoute",
+        "speed": "normal",
+        "position": 3
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1582213782179-e0d53f98f2ca",
+        "alt": "Solidarité",
+        "speed": "slower",
+        "position": 4
+      }
+    ]
+  },
+
+  "arguments": {
+    "title": "10 Principes Fondamentaux du Consentement",
+    "subtitle": "Comprendre et appliquer",
+    "triggerWarning": false,
+    "items": [
+      {
+        "id": 1,
+        "title": "Le consentement doit être libre",
+        "statUS": "73% des agressions sexuelles impliquent des menaces ou de la coercition",
+        "statFrance": "Dans 91% des cas de viol, l'agresseur est connu de la victime",
+        "impact": "La pression, la manipulation ou la force invalident le consentement",
+        "visual": "shield"
+      },
+      {
+        "id": 2,
+        "title": "Le consentement doit être éclairé",
+        "statUS": "45% des jeunes ne savent pas définir le consentement clairement",
+        "statFrance": "Seulement 25% des lycéens ont reçu une éducation complète au consentement",
+        "impact": "On ne peut consentir sans comprendre pleinement la situation",
+        "visual": "eye"
+      },
+      {
+        "id": 3,
+        "title": "Le consentement doit être enthousiaste",
+        "statUS": "Le silence ou l'absence de 'non' ne signifie pas 'oui'",
+        "statFrance": "60% des victimes se figent lors d'une agression (sidération)",
+        "impact": "Cherchez un 'oui' actif, pas juste l'absence de refus",
+        "visual": "heart"
+      },
+      {
+        "id": 4,
+        "title": "Le consentement peut être retiré à tout moment",
+        "statUS": "1 femme sur 5 retire son consentement pendant un acte sexuel",
+        "statFrance": "Le retrait du consentement doit être respecté immédiatement",
+        "impact": "Le consentement n'est jamais définitif ou inconditionnel",
+        "visual": "x-circle"
+      },
+      {
+        "id": 5,
+        "title": "Le consentement est spécifique",
+        "statUS": "Consentir à A ne signifie pas consentir à B, C ou D",
+        "statFrance": "Chaque acte nécessite un nouveau consentement explicite",
+        "impact": "On ne peut pas généraliser le consentement",
+        "visual": "list"
+      },
+      {
+        "id": 6,
+        "title": "Le consentement ne peut être donné sous influence",
+        "statUS": "50% des agressions sexuelles impliquent de l'alcool ou des drogues",
+        "statFrance": "Une personne intoxiquée ne peut pas donner son consentement",
+        "impact": "Alcool, drogues ou médicaments altèrent le jugement",
+        "visual": "alert-triangle"
+      },
+      {
+        "id": 7,
+        "title": "Les mineurs ne peuvent pas consentir à un adulte",
+        "statUS": "Les lois définissent un âge de consentement (15-18 ans selon les pays)",
+        "statFrance": "En France, l'âge de consentement est fixé à 15 ans",
+        "impact": "Un enfant ou adolescent ne peut consentir à un adulte",
+        "visual": "users"
+      },
+      {
+        "id": 8,
+        "title": "Le consentement passé ne vaut pas pour le futur",
+        "statUS": "Être en couple ne garantit pas le consentement automatique",
+        "statFrance": "Le viol conjugal représente 1 viol sur 4 en France",
+        "impact": "Chaque nouvelle situation nécessite un nouveau consentement",
+        "visual": "calendar"
+      },
+      {
+        "id": 9,
+        "title": "Le consentement ne peut être présumé",
+        "statUS": "Les vêtements, l'alcool ou le comportement ne signalent pas le consentement",
+        "statFrance": "La culture du viol perpétue les mythes sur le consentement",
+        "impact": "Toujours demander explicitement, ne jamais supposer",
+        "visual": "message-circle"
+      },
+      {
+        "id": 10,
+        "title": "Le consentement s'applique partout",
+        "statUS": "Au-delà du sexe : touchers, photos, données personnelles, etc.",
+        "statFrance": "Le consentement est universel : travail, santé, vie privée",
+        "impact": "Le respect du consentement est la base de toute interaction",
+        "visual": "globe"
+      }
+    ]
+  },
+
+  "phrasesDiscriminantes": {
+    "title": "Mythes et Réalités sur le Consentement",
+    "subtitle": "Déconstruire les idées fausses",
+    "triggerWarning": true,
+    "warningMessage": "⚠️ Cette section contient des exemples de phrases problématiques liées au consentement. Cliquez sur chaque carte pour révéler la réalité. Vous pouvez passer cette section si vous vous sentez vulnérable.",
+    "items": [
+      {
+        "id": 1,
+        "phrase": "Si elle ne dit pas non, c'est qu'elle est d'accord.",
+        "dementi": "FAUX. Le silence n'est pas un consentement. La sidération (paralysie face au danger) touche 60% des victimes. Cherchez un OUI enthousiaste, pas juste l'absence de non.",
+        "categorie": "Mythe du consentement implicite"
+      },
+      {
+        "id": 2,
+        "phrase": "Elle a bu, elle savait ce qu'elle faisait.",
+        "dementi": "FAUX. Une personne intoxiquée ne peut pas donner son consentement. Profiter de l'état d'une personne est une agression.",
+        "categorie": "Victim blaming"
+      },
+      {
+        "id": 3,
+        "phrase": "Elle m'a embrassé, donc elle voulait coucher.",
+        "dementi": "FAUX. Consentir à un baiser ne signifie pas consentir à autre chose. Chaque acte nécessite un nouveau consentement explicite.",
+        "categorie": "Généralisation du consentement"
+      },
+      {
+        "id": 4,
+        "phrase": "C'est ma femme/copine, je n'ai pas besoin de demander.",
+        "dementi": "FAUX. Être en couple ne donne pas le droit d'imposer quoi que ce soit. Le viol conjugal existe et représente 1 viol sur 4 en France.",
+        "categorie": "Mythe du consentement automatique"
+      },
+      {
+        "id": 5,
+        "phrase": "Avec les vêtements qu'elle portait, elle le cherchait.",
+        "dementi": "FAUX. Les vêtements ne signalent jamais le consentement. Cette croyance fait partie de la culture du viol qui blâme les victimes.",
+        "categorie": "Culture du viol"
+      },
+      {
+        "id": 6,
+        "phrase": "Elle a dit oui au début, donc je continue.",
+        "dementi": "FAUX. Le consentement peut être retiré à tout moment. Si la personne dit stop, change d'avis ou semble inconfortable, ARRÊTEZ immédiatement.",
+        "categorie": "Ignorance du retrait"
+      },
+      {
+        "id": 7,
+        "phrase": "Elle n'a pas porté plainte, donc ce n'était pas si grave.",
+        "dementi": "FAUX. Seulement 10% des victimes de viol portent plainte. Le traumatisme, la honte et la peur du jugement freinent les dénonciations.",
+        "categorie": "Minimisation"
+      },
+      {
+        "id": 8,
+        "phrase": "Les garçons ne peuvent pas être violés.",
+        "dementi": "FAUX. Les hommes et garçons peuvent aussi être victimes. 10% des victimes de viol sont des hommes, mais beaucoup ne parlent pas par honte.",
+        "categorie": "Stéréotype de genre"
+      }
+    ]
+  },
+
+  "argumentsPositifs": {
+    "title": "Pourquoi Respecter le Consentement",
+    "subtitle": "Les bénéfices pour tous",
+    "triggerWarning": false,
+    "items": [
+      {
+        "id": 1,
+        "title": "Crée des relations saines et équilibrées",
+        "description": "Le respect mutuel du consentement est la base de toute relation - amicale, amoureuse ou professionnelle - épanouissante et durable.",
+        "icon": "heart",
+        "impact": "Relations authentiques"
+      },
+      {
+        "id": 2,
+        "title": "Protège contre les violences",
+        "description": "Éduquer au consentement réduit les agressions de 30-40% dans les communautés sensibilisées.",
+        "icon": "shield",
+        "impact": "Prévention des violences"
+      },
+      {
+        "id": 3,
+        "title": "Renforce la confiance en soi",
+        "description": "Savoir dire non et faire respecter ses limites augmente l'estime de soi et le bien-être psychologique.",
+        "icon": "star",
+        "impact": "Empowerment personnel"
+      },
+      {
+        "id": 4,
+        "title": "Améliore la communication",
+        "description": "Parler de consentement développe l'écoute active, l'empathie et la clarté dans les échanges.",
+        "icon": "message",
+        "impact": "Compétences sociales"
+      }
+    ]
+  },
+
+  "campagnesEfficaces": {
+    "title": "Campagnes Inspirantes sur le Consentement",
+    "subtitle": "S'inspirer pour agir",
+    "items": [
+      {
+        "id": 1,
+        "name": "Tea Consent (Consentement et Thé)",
+        "period": "2015-présent",
+        "zone": "Internationale",
+        "description": "Vidéo virale utilisant la métaphore du thé pour expliquer le consentement de manière simple et accessible.",
+        "impact": "Plus de 20 millions de vues, utilisée dans l'éducation mondiale",
+        "efficacite": "Métaphore universelle et facile à comprendre",
+        "lecon": "La simplicité et l'humour éduquent efficacement"
+      },
+      {
+        "id": 2,
+        "name": "#MeToo",
+        "period": "2017-présent",
+        "zone": "Mondiale",
+        "description": "Mouvement de libération de la parole des victimes de violences sexuelles.",
+        "impact": "Millions de témoignages, changements législatifs dans 20+ pays",
+        "efficacite": "A brisé le silence et changé les mentalités",
+        "lecon": "La parole collective a un pouvoir immense"
+      },
+      {
+        "id": 3,
+        "name": "Campagne du Planning Familial",
+        "period": "Annuelle",
+        "zone": "France",
+        "description": "Éducation au consentement dans les écoles et centres de santé.",
+        "impact": "Des milliers d'interventions annuelles auprès des jeunes",
+        "efficacite": "Approche pédagogique adaptée par âge",
+        "lecon": "L'éducation précoce est essentielle"
+      }
+    ]
+  },
+
+  "ressources": {
+    "title": "Pour Aller Plus Loin",
+    "associations": [
+      {
+        "name": "Planning Familial",
+        "type": "France",
+        "action": "Éducation et accompagnement"
+      },
+      {
+        "name": "En Avant Toute(s)",
+        "type": "France",
+        "action": "Accompagnement des victimes, chat en ligne",
+        "social": "@enavanttoutes"
+      },
+      {
+        "name": "Collectif Féministe Contre le Viol",
+        "type": "France",
+        "action": "Écoute et soutien 0800 05 95 95"
+      }
+    ],
+    "guides": [
+      {
+        "titre": "Guide du consentement par âge",
+        "source": "Planning Familial",
+        "description": "Comment parler de consentement selon l'âge"
+      },
+      {
+        "titre": "Tea Consent",
+        "source": "Blue Seat Studios",
+        "description": "Vidéo pédagogique sur le consentement"
+      }
+    ]
+  },
+
+  "callToAction": {
+    "title": "Agissons Ensemble",
+    "actions": [
+      {
+        "titre": "Éduquez-vous et votre entourage",
+        "description": "Partagez ces informations, regardez Tea Consent, discutez du consentement",
+        "type": "primary",
+        "icon": "book-open"
+      },
+      {
+        "titre": "Soutenez les victimes",
+        "description": "Écoutez sans juger, orientez vers les ressources d'aide",
+        "type": "secondary",
+        "icon": "heart"
+      },
+      {
+        "titre": "Respectez le consentement",
+        "description": "Dans toutes vos interactions : demandez, écoutez, respectez",
+        "type": "secondary",
+        "icon": "check-circle"
+      }
+    ]
+  },
+
+  "footer": {
+    "message": "Ce site est un outil pédagogique pour comprendre et respecter le consentement. Toutes les statistiques sont sourcées et vérifiables.",
+    "credit": "Made with ❤ by Shivam Katare. Inspired by Paulina Hetman",
+    "contact": "Numéros d'aide : Violences Femmes Info 3919 • Viols Femmes Informations 0800 05 95 95"
+  }
+}
