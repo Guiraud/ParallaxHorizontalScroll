@@ -1,0 +1,382 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Administration Grossophobie</title>
+  <link rel="stylesheet" href="admin-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <style>
+    .admin-container {
+      max-width: 1400px;
+      margin: 2rem auto;
+      padding: 2rem;
+    }
+    .header {
+      background: linear-gradient(135deg, #6366f1, #10b981);
+      padding: 2rem;
+      border-radius: 15px;
+      color: white;
+      margin-bottom: 2rem;
+    }
+    .json-editor {
+      background: #1e293b;
+      padding: 2rem;
+      border-radius: 15px;
+      margin-bottom: 2rem;
+    }
+    .json-textarea {
+      width: 100%;
+      min-height: 600px;
+      background: #0f172a;
+      color: #f1f5f9;
+      border: 2px solid #334155;
+      border-radius: 10px;
+      padding: 1rem;
+      font-family: 'Courier New', monospace;
+      font-size: 0.9rem;
+      line-height: 1.6;
+    }
+    .actions-bar {
+      display: flex;
+      gap: 1rem;
+      flex-wrap: wrap;
+      margin-bottom: 2rem;
+    }
+    .btn {
+      padding: 0.75rem 1.5rem;
+      border: none;
+      border-radius: 8px;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .btn-primary {
+      background: #6366f1;
+      color: white;
+    }
+    .btn-primary:hover {
+      background: #4f46e5;
+      transform: translateY(-2px);
+    }
+    .btn-success {
+      background: #10b981;
+      color: white;
+    }
+    .btn-success:hover {
+      background: #059669;
+      transform: translateY(-2px);
+    }
+    .btn-warning {
+      background: #f59e0b;
+      color: white;
+    }
+    .btn-warning:hover {
+      background: #d97706;
+      transform: translateY(-2px);
+    }
+    .btn-secondary {
+      background: #64748b;
+      color: white;
+    }
+    .btn-secondary:hover {
+      background: #475569;
+      transform: translateY(-2px);
+    }
+    .status-message {
+      padding: 1rem;
+      border-radius: 8px;
+      margin-bottom: 1rem;
+      display: none;
+    }
+    .status-message.success {
+      background: rgba(16, 185, 129, 0.2);
+      border: 1px solid #10b981;
+      color: #10b981;
+    }
+    .status-message.error {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid #ef4444;
+      color: #ef4444;
+    }
+    .status-message.show {
+      display: block;
+    }
+    .info-panel {
+      background: #1e293b;
+      padding: 1.5rem;
+      border-radius: 10px;
+      border-left: 4px solid #6366f1;
+      margin-bottom: 2rem;
+    }
+    .info-panel h3 {
+      color: #6366f1;
+      margin-bottom: 1rem;
+    }
+    .info-panel ul {
+      list-style: none;
+      padding-left: 0;
+    }
+    .info-panel li {
+      padding: 0.5rem 0;
+      color: #cbd5e1;
+    }
+    .info-panel li:before {
+      content: "✓ ";
+      color: #10b981;
+      font-weight: bold;
+      margin-right: 0.5rem;
+    }
+    body {
+      background: #0f172a;
+      color: #f1f5f9;
+      font-family: 'Inter', sans-serif;
+    }
+    .file-upload-label {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      background: #64748b;
+      color: white;
+      border-radius: 8px;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+    .file-upload-label:hover {
+      background: #475569;
+      transform: translateY(-2px);
+    }
+    input[type="file"] {
+      display: none;
+    }
+  </style>
+</head>
+<body>
+  <div class="admin-container">
+    <div class="header">
+      <h1><i class="fas fa-shield-alt"></i> Administration Grossophobie</h1>
+      <p>Éditeur JSON pour le site de sensibilisation</p>
+    </div>
+
+    <div class="status-message" id="status-message"></div>
+
+    <div class="info-panel">
+      <h3><i class="fas fa-info-circle"></i> Instructions</h3>
+      <ul>
+        <li>Chargez le fichier grossophobie.json pour l'éditer</li>
+        <li>Modifiez le contenu directement dans l'éditeur</li>
+        <li>Validez le JSON avant de sauvegarder (bouton "Valider JSON")</li>
+        <li>Sauvegardez vos modifications (télécharge un nouveau fichier JSON)</li>
+        <li>Remplacez le fichier grossophobie.json sur votre serveur avec le nouveau fichier</li>
+      </ul>
+    </div>
+
+    <div class="actions-bar">
+      <label for="file-upload" class="file-upload-label">
+        <i class="fas fa-folder-open"></i> Charger grossophobie.json
+      </label>
+      <input type="file" id="file-upload" accept=".json">
+
+      <button class="btn btn-primary" id="validate-btn">
+        <i class="fas fa-check-circle"></i> Valider JSON
+      </button>
+
+      <button class="btn btn-success" id="save-btn">
+        <i class="fas fa-save"></i> Sauvegarder
+      </button>
+
+      <button class="btn btn-warning" id="format-btn">
+        <i class="fas fa-align-left"></i> Formater
+      </button>
+
+      <button class="btn btn-secondary" id="preview-btn">
+        <i class="fas fa-eye"></i> Prévisualiser le site
+      </button>
+    </div>
+
+    <div class="json-editor">
+      <h3><i class="fas fa-code"></i> Éditeur JSON</h3>
+      <textarea id="json-textarea" class="json-textarea" placeholder="Chargez un fichier JSON ou commencez à taper..."></textarea>
+    </div>
+
+    <div class="actions-bar">
+      <button class="btn btn-primary" id="add-argument-btn">
+        <i class="fas fa-plus"></i> Ajouter un Argument
+      </button>
+
+      <button class="btn btn-primary" id="add-phrase-btn">
+        <i class="fas fa-plus"></i> Ajouter une Phrase
+      </button>
+
+      <button class="btn btn-primary" id="add-campagne-btn">
+        <i class="fas fa-plus"></i> Ajouter une Campagne
+      </button>
+    </div>
+  </div>
+
+  <script>
+    let currentData = null;
+
+    // Chargement de fichier
+    document.getElementById('file-upload').addEventListener('change', function(e) {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      const reader = new FileReader();
+      reader.onload = function(e) {
+        try {
+          const content = e.target.result;
+          currentData = JSON.parse(content);
+          document.getElementById('json-textarea').value = JSON.stringify(currentData, null, 2);
+          showMessage('Fichier chargé avec succès !', 'success');
+        } catch (error) {
+          showMessage('Erreur : Le fichier JSON est invalide - ' + error.message, 'error');
+        }
+      };
+      reader.readAsText(file);
+    });
+
+    // Validation JSON
+    document.getElementById('validate-btn').addEventListener('click', function() {
+      try {
+        const content = document.getElementById('json-textarea').value;
+        currentData = JSON.parse(content);
+        showMessage('JSON valide ✓', 'success');
+      } catch (error) {
+        showMessage('JSON invalide : ' + error.message, 'error');
+      }
+    });
+
+    // Formatage JSON
+    document.getElementById('format-btn').addEventListener('click', function() {
+      try {
+        const content = document.getElementById('json-textarea').value;
+        const data = JSON.parse(content);
+        document.getElementById('json-textarea').value = JSON.stringify(data, null, 2);
+        showMessage('JSON formaté !', 'success');
+      } catch (error) {
+        showMessage('Impossible de formater : JSON invalide', 'error');
+      }
+    });
+
+    // Sauvegarde
+    document.getElementById('save-btn').addEventListener('click', function() {
+      try {
+        const content = document.getElementById('json-textarea').value;
+        const data = JSON.parse(content);
+
+        const blob = new Blob([JSON.stringify(data, null, 2)], { type: 'application/json' });
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'grossophobie.json';
+        a.click();
+
+        showMessage('Fichier téléchargé ! Remplacez le fichier sur votre serveur.', 'success');
+      } catch (error) {
+        showMessage('Erreur lors de la sauvegarde : ' + error.message, 'error');
+      }
+    });
+
+    // Prévisualisation
+    document.getElementById('preview-btn').addEventListener('click', function() {
+      window.open('grossophobie.html', '_blank');
+    });
+
+    // Ajouter un argument
+    document.getElementById('add-argument-btn').addEventListener('click', function() {
+      if (!currentData) {
+        showMessage('Veuillez d\'abord charger un fichier JSON', 'error');
+        return;
+      }
+
+      const newArgument = {
+        "id": currentData.arguments.items.length + 1,
+        "title": "Nouveau titre",
+        "statUS": "Statistique américaine",
+        "statFrance": "Statistique française",
+        "impact": "Description de l'impact",
+        "visual": "icon-name"
+      };
+
+      currentData.arguments.items.push(newArgument);
+      document.getElementById('json-textarea').value = JSON.stringify(currentData, null, 2);
+      showMessage('Nouvel argument ajouté !', 'success');
+    });
+
+    // Ajouter une phrase
+    document.getElementById('add-phrase-btn').addEventListener('click', function() {
+      if (!currentData) {
+        showMessage('Veuillez d\'abord charger un fichier JSON', 'error');
+        return;
+      }
+
+      const newPhrase = {
+        "id": currentData.phrasesDiscriminantes.items.length + 1,
+        "phrase": "Nouvelle phrase discriminante",
+        "dementi": "Démenti empowering",
+        "categorie": "Catégorie"
+      };
+
+      currentData.phrasesDiscriminantes.items.push(newPhrase);
+      document.getElementById('json-textarea').value = JSON.stringify(currentData, null, 2);
+      showMessage('Nouvelle phrase ajoutée !', 'success');
+    });
+
+    // Ajouter une campagne
+    document.getElementById('add-campagne-btn').addEventListener('click', function() {
+      if (!currentData) {
+        showMessage('Veuillez d\'abord charger un fichier JSON', 'error');
+        return;
+      }
+
+      const newCampagne = {
+        "id": currentData.campagnesEfficaces.items.length + 1,
+        "name": "Nouvelle Campagne",
+        "period": "2025-présent",
+        "zone": "Internationale",
+        "description": "Description de la campagne",
+        "impact": "Impact mesuré",
+        "efficacite": "Pourquoi elle est efficace",
+        "lecon": "Leçon à retenir"
+      };
+
+      currentData.campagnesEfficaces.items.push(newCampagne);
+      document.getElementById('json-textarea').value = JSON.stringify(currentData, null, 2);
+      showMessage('Nouvelle campagne ajoutée !', 'success');
+    });
+
+    // Affichage des messages
+    function showMessage(message, type) {
+      const msgEl = document.getElementById('status-message');
+      msgEl.textContent = message;
+      msgEl.className = 'status-message ' + type + ' show';
+
+      setTimeout(function() {
+        msgEl.classList.remove('show');
+      }, 5000);
+    }
+
+    // Chargement automatique au démarrage si possible
+    window.addEventListener('load', async function() {
+      try {
+        const response = await fetch('grossophobie.json');
+        if (response.ok) {
+          const data = await response.json();
+          currentData = data;
+          document.getElementById('json-textarea').value = JSON.stringify(data, null, 2);
+          showMessage('Fichier grossophobie.json chargé automatiquement', 'success');
+        }
+      } catch (error) {
+        console.log('Pas de fichier grossophobie.json trouvé, utilisez le bouton de chargement');
+      }
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,599 @@
+{
+  "meta": {
+    "title": "Parallax Grossophobie",
+    "subtitle": "Comprendre, dénoncer et agir contre la stigmatisation liée au poids",
+    "author": "Made with ❤ by Shivam Katare. Inspired by Paulina Hetman",
+    "petition": {
+      "title": "Pétition pour lutter contre la grossophobie",
+      "url": "https://petitions.assemblee-nationale.fr/initiatives/i-3867?locale=fr",
+      "description": "Soutenez la lutte contre la discrimination liée au poids en signant la pétition à l'Assemblée Nationale"
+    }
+  },
+
+  "triggerWarning": {
+    "global": "⚠️ Avertissement : Ce site contient des exemples réels de phrases grossophobes qui peuvent être déclencheurs. Ces contenus sont présentés dans un but éducatif pour mieux comprendre et combattre la discrimination. Vous pouvez masquer ces sections sensibles à tout moment.",
+    "contacts": {
+      "france": [
+        {
+          "name": "Santé mentale",
+          "number": "3114",
+          "description": "Numéro national de prévention du suicide"
+        },
+        {
+          "name": "Obésité et santé mentale",
+          "number": "0800 235 236",
+          "description": "Ligne d'écoute et de soutien"
+        }
+      ],
+      "associations": [
+        "Essentiel Santé",
+        "Stop aux Violences Sexistes",
+        "UNAFE (Union Nationale des Associations Familiales)"
+      ]
+    }
+  },
+
+  "introduction": {
+    "title": "Qu'est-ce que la grossophobie ?",
+    "content": "La grossophobie est une discrimination systémique basée sur le poids et l'apparence corporelle. En France, elle touche environ 8 millions de personnes (IMC > 25) et se manifeste dans tous les domaines de la vie : emploi, santé, éducation, vie sociale et familiale.",
+    "statistics": {
+      "france": "47% des jeunes femmes en obésité victimes de discriminations quotidiennes",
+      "global": "La discrimination liée au poids a augmenté de 66% ces dix dernières années"
+    }
+  },
+
+  "publicCibles": {
+    "title": "À qui s'adresse ce site ?",
+    "audiences": [
+      {
+        "name": "Jeunes femmes complexées",
+        "icon": "💪",
+        "message": "Vous n'êtes pas seules. Votre corps est valide tel qu'il est. Ce site vous donne les outils pour déconstruire les normes toxiques et retrouver confiance.",
+        "resources": [
+          "Arguments pour répondre aux commentaires blessants",
+          "Statistiques pour comprendre que c'est un problème systémique",
+          "Campagnes inspirantes de body positivity"
+        ]
+      },
+      {
+        "name": "Juristes",
+        "icon": "⚖️",
+        "message": "La grossophobie est une discrimination qui nécessite un cadre légal. Découvrez les avancées juridiques et les arguments pour renforcer la protection des victimes.",
+        "resources": [
+          "Exemples de lois anti-discrimination (NYC, Minneapolis)",
+          "Arguments pour la reconnaissance légale",
+          "Impact économique et social mesurable"
+        ]
+      },
+      {
+        "name": "Élu·e·s",
+        "icon": "🏛️",
+        "message": "La grossophobie coûte cher à la société : absentéisme, dépressions, inégalités d'emploi. Investir dans l'inclusion réduit ces coûts de 20-30%.",
+        "resources": [
+          "Données économiques (273 000 emplois potentiels pour les femmes)",
+          "Arguments de santé publique",
+          "Exemples de politiques efficaces"
+        ]
+      },
+      {
+        "name": "Journalistes",
+        "icon": "📰",
+        "message": "Couvrir la grossophobie avec responsabilité est essentiel. Voici les faits, les chiffres et les voix à amplifier pour un journalisme éthique.",
+        "resources": [
+          "Statistiques sourcées et vérifiables",
+          "Exemples de bonnes pratiques médiatiques",
+          "Témoignages et campagnes à mettre en avant"
+        ]
+      }
+    ]
+  },
+
+  "parallaxImages": {
+    "enabled": true,
+    "images": [
+      {
+        "url": "https://images.unsplash.com/photo-1552083375-1447ce886485",
+        "alt": "Diversité des corps",
+        "speed": "slower",
+        "position": 1
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1513689559427-a303dfc617d2",
+        "alt": "Acceptation",
+        "speed": "faster",
+        "position": 2
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1541961017774-22349e4a1262",
+        "alt": "Inclusivité",
+        "speed": "normal",
+        "position": 3
+      },
+      {
+        "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+        "alt": "Body Positivity",
+        "speed": "slower",
+        "position": 4
+      }
+    ]
+  },
+
+  "arguments": {
+    "title": "20 Arguments Solides Contre la Grossophobie",
+    "subtitle": "Statistiques et preuves scientifiques",
+    "triggerWarning": false,
+    "items": [
+      {
+        "id": 1,
+        "title": "La discrimination liée au poids est en forte augmentation",
+        "statUS": "Augmentation de 66% au cours de la dernière décennie",
+        "statFrance": "18% des Français subissent ou ont subi des discriminations, particulièrement marqué pour les personnes en obésité",
+        "impact": "Devient l'une des rares formes de discrimination encore activement tolérées par la société",
+        "visual": "chart-up"
+      },
+      {
+        "id": 2,
+        "title": "Elle touche une large part de la population",
+        "statUS": "Plus de 40% des adultes américains rapportent avoir subi une stigmatisation liée au poids",
+        "statFrance": "Concerne potentiellement la moitié de la population adulte en surpoids ou obésité (17% des adultes obèses), avec 47% des jeunes femmes en obésité victimes quotidiennement",
+        "impact": "Un problème de masse, pas individuel",
+        "visual": "users"
+      },
+      {
+        "id": 3,
+        "title": "Les enfants et adolescents sont particulièrement vulnérables",
+        "statUS": "20 à 30% des enfants rapportent une stigmatisation liée au poids",
+        "statFrance": "Un enfant sur dix (10%) déclare avoir subi des discriminations liées à son poids, et les jeunes en obésité en sont quatre fois plus victimes (40%)",
+        "impact": "Favorise des troubles précoces et durables",
+        "visual": "child"
+      },
+      {
+        "id": 4,
+        "title": "Les personnes en surpoids sont massivement affectées",
+        "statUS": "63% des adultes obèses rapportent des niveaux élevés de biais pondéral",
+        "statFrance": "70% des personnes en obésité subissent ces discriminations de manière répétée (publique, scolaire, professionnelle, médicale et familiale)",
+        "impact": "Une violence quotidienne et multiforme",
+        "visual": "alert-circle"
+      },
+      {
+        "id": 5,
+        "title": "Elle augmente le risque de mortalité",
+        "statUS": "Risque de décès accru de 60% sur une période de 20 ans pour les personnes stigmatisées",
+        "statFrance": "La grossophobie intériorisée accroît les risques de dépression et d'isolement, avec une personne sur cinq préférant souffrir de dépression plutôt que d'être obèse",
+        "impact": "La stigmatisation tue plus que le poids lui-même",
+        "visual": "heart-break"
+      },
+      {
+        "id": 6,
+        "title": "Les soignants perpétuent la grossophobie",
+        "statUS": "Jusqu'à 70% des prestataires de santé ont des attitudes négatives envers les patients en surpoids",
+        "statFrance": "Évitement médical fréquent, aggravant les inégalités de santé pour les 8 millions de personnes concernées",
+        "impact": "Mène à des soins inadéquats et des diagnostics tardifs",
+        "visual": "stethoscope"
+      },
+      {
+        "id": 7,
+        "title": "Discrimination à l'embauche flagrante",
+        "statUS": "Les personnes obèses sont 37% moins susceptibles d'être embauchées",
+        "statFrance": "Être obèse réduit les chances d'embauche de 30%, et les femmes obèses ont huit fois moins de probabilités d'être recrutées",
+        "impact": "Exclusion économique systémique",
+        "visual": "briefcase"
+      },
+      {
+        "id": 8,
+        "title": "Inégalités salariales systémiques",
+        "statUS": "6% de salaire en moins en moyenne pour un travail équivalent",
+        "statFrance": "Le taux d'emploi des femmes obèses est inférieur de 7 points à la moyenne, privant 273 000 d'entre elles d'un poste",
+        "impact": "Appauvrissement et précarité des victimes",
+        "visual": "dollar-sign"
+      },
+      {
+        "id": 9,
+        "title": "Lien direct avec les troubles psychiatriques",
+        "statUS": "Plus de 50% des personnes stigmatisées présentent au moins un trouble psychiatrique",
+        "statFrance": "Facteur majeur de dépression, touchant particulièrement les adolescents avec risques accrus d'anxiété et d'isolement social",
+        "impact": "Détresse psychologique massive",
+        "visual": "brain"
+      },
+      {
+        "id": 10,
+        "title": "Impact sur l'estime de soi",
+        "statUS": "Stigmatisation internalisée = facteur de risque pour faible estime de soi",
+        "statFrance": "'Grossophobie intériorisée' qui sape la confiance, trajectoires scolaires et professionnelles inférieures indépendamment des origines sociales",
+        "impact": "Sabotage de la confiance en soi dès l'enfance",
+        "visual": "mirror"
+      },
+      {
+        "id": 11,
+        "title": "Pression sociétale massive sur les régimes",
+        "statUS": "68% des Américains ont déjà suivi un régime",
+        "statFrance": "À 15 ans, la moitié des jeunes filles estiment avoir besoin de faire un régime, alors que seule une sur dix est en surpoids",
+        "impact": "Cycle de culpabilisation et d'échec",
+        "visual": "scale"
+      },
+      {
+        "id": 12,
+        "title": "Troubles alimentaires chez les femmes",
+        "statUS": "65% des femmes américaines de 25-45 ans présentent des troubles alimentaires",
+        "statFrance": "37% des filles de 11 ans ont déjà fait ou font un régime, sous l'effet d'une pression culturelle accrue",
+        "impact": "Normalisation des comportements pathologiques",
+        "visual": "utensils"
+      },
+      {
+        "id": 13,
+        "title": "Risque disproportionné chez les enfants",
+        "statUS": "Les enfants américains sont 242 fois plus susceptibles de développer un trouble alimentaire que le diabète de type 2",
+        "statFrance": "Discriminations scolaires précoces favorisent des troubles alimentaires chez 54% des jeunes filles en obésité âgées de 14-17 ans",
+        "impact": "Génération sacrifiée aux normes esthétiques",
+        "visual": "candy"
+      },
+      {
+        "id": 14,
+        "title": "Préoccupation précoce chez les filles",
+        "statUS": "À 9 ans, 50% des filles ont déjà envisagé de restreindre leur alimentation",
+        "statFrance": "Cette préoccupation culmine à l'adolescence, avec impacts psychologiques durables amplifiés par les réseaux sociaux",
+        "impact": "Vol de l'insouciance de l'enfance",
+        "visual": "baby"
+      },
+      {
+        "id": 15,
+        "title": "Inégalités raciales amplifiées",
+        "statUS": "Personnes de couleur présentent des taux plus élevés de troubles liés à la grossophobie intersectionnelle",
+        "statFrance": "Discriminations intersectionnelles (poids + origine) touchent plus durement les populations issues de l'immigration",
+        "impact": "Double peine pour les minorités",
+        "visual": "globe"
+      },
+      {
+        "id": 16,
+        "title": "Vulnérabilité accrue chez les minorités sexuelles",
+        "statUS": "Individus LGBTQ+ ont des taux de troubles alimentaires plus élevés",
+        "statFrance": "Jeunes LGBTQ+ en surpoids subissent une double stigmatisation, aggravant les risques de santé mentale",
+        "impact": "Marginalisation multiple",
+        "visual": "rainbow"
+      },
+      {
+        "id": 17,
+        "title": "Conséquences physiques graves",
+        "statUS": "Augmentation du risque de diabète, maladies cardiaques et hypertension via le stress chronique",
+        "statFrance": "L'obésité touche 17% des adultes, et la grossophobie médicale contribue à un retard diagnostique",
+        "impact": "La stigmatisation rend malade",
+        "visual": "activity"
+      },
+      {
+        "id": 18,
+        "title": "Évitement des soins médicaux",
+        "statUS": "Jusqu'à 30% de diagnostics tardifs dus à l'évitement des consultations",
+        "statFrance": "25% des salariés rapportent des discriminations liées à l'apparence physique au travail, incluant le secteur médical",
+        "impact": "Mise en danger de la santé publique",
+        "visual": "shield-off"
+      },
+      {
+        "id": 19,
+        "title": "Harcèlement scolaire courant",
+        "statUS": "Le harcèlement basé sur le poids touche jusqu'à 30% des élèves",
+        "statFrance": "Les professeurs sont moins exigeants envers les enfants en surpoids, perpétuant un cercle vicieux de sous-performance scolaire",
+        "impact": "Échec scolaire programmé",
+        "visual": "book"
+      },
+      {
+        "id": 20,
+        "title": "Échec des régimes imposés",
+        "statUS": "Taux d'échec de 90% pour les régimes intentionnels",
+        "statFrance": "Seuls 7% des personnes grosses occupent des postes de cadre, reflétant un biais culturel associant minceur à réussite",
+        "impact": "Culpabilisation des victimes d'un système qui ne fonctionne pas",
+        "visual": "x-circle"
+      }
+    ]
+  },
+
+  "phrasesDiscriminantes": {
+    "title": "Les Formulations Courantes de la Grossophobie",
+    "subtitle": "Exemples et Démentis Empowerants",
+    "triggerWarning": true,
+    "warningMessage": "⚠️ Cette section contient des exemples réels de phrases grossophobes qui peuvent être déclencheurs. Cliquez sur chaque carte pour révéler le démenti empowering. Vous pouvez passer cette section si vous vous sentez vulnérable.",
+    "items": [
+      {
+        "id": 1,
+        "phrase": "Tu as un si joli visage, si seulement tu perdais du poids...",
+        "dementi": "Mon corps entier est beau tel qu'il est. La beauté ne se mesure pas en kilos, et ton 'seulement' révèle plus sur tes préjugés que sur moi.",
+        "categorie": "Faux compliment"
+      },
+      {
+        "id": 2,
+        "phrase": "Es-tu sûre de vouloir manger ça ? Ça va te faire grossir.",
+        "dementi": "Oui, je suis sûre, et mon alimentation est mon affaire. Associer la nourriture au 'péché' culpabilise et ignore que le poids est multifactoriel (génétique, hormones, stress).",
+        "categorie": "Contrôle alimentaire"
+      },
+      {
+        "id": 3,
+        "phrase": "Tu n'es pas grosse, tu es belle !",
+        "dementi": "Si je suis grosse, c'est un fait neutre, pas une insulte. Me forcer à nier mon corps nie aussi mon authenticité – la vraie beauté inclut la diversité des formes.",
+        "categorie": "Négation"
+      },
+      {
+        "id": 4,
+        "phrase": "Allez, aujourd'hui on fait un cheat day ! Bon, moi je peux, mais pas toi...",
+        "dementi": "Les 'jours de triche' perpétuent l'idée que manger est une faiblesse. Je mange avec joie, sans culpabilité – et toi, pourquoi juges-tu les plaisirs des autres ?",
+        "categorie": "Exclusion"
+      },
+      {
+        "id": 5,
+        "phrase": "Retourne à l'eau, la baleine !",
+        "dementi": "Ton 'humour' est une violence qui blesse. Les animaux ne méritent pas d'être comparés à des humains pour rabaisser – et moi, je mérite le respect, point.",
+        "categorie": "Insulte 'humoristique'"
+      },
+      {
+        "id": 6,
+        "phrase": "Si tu faisais un peu de sport, tu serais plus en forme.",
+        "dementi": "Le sport est pour le bien-être, pas pour 'réparer' un corps. Des millions de personnes actives sont grosses – le vrai problème, c'est ton stéréotype sur la santé.",
+        "categorie": "Conseil non sollicité"
+      },
+      {
+        "id": 7,
+        "phrase": "C'est pour ton bien que je te le dis, tu devrais surveiller ton assiette.",
+        "dementi": "Mon bien, c'est moi qui le définis, pas tes 'conseils' non sollicités. La grossophobie 'bienveillante' masque du contrôle et aggrave le stress, pas la santé.",
+        "categorie": "Fausse bienveillance"
+      },
+      {
+        "id": 8,
+        "phrase": "Les gros n'ont pas de volonté, c'est tout.",
+        "dementi": "La volonté ne dicte pas le poids – 95% des régimes échouent à long terme à cause de facteurs biologiques. Blâmer les individus ignore les inégalités systémiques.",
+        "categorie": "Jugement moral"
+      },
+      {
+        "id": 9,
+        "phrase": "Avec ton poids, tu ne rentreras jamais dans cette robe.",
+        "dementi": "Les normes vestimentaires excluent la moitié des corps – c'est la mode qui doit s'adapter, pas moi. Et si on célébrait tous les styles, au lieu de limiter ?",
+        "categorie": "Exclusion vestimentaire"
+      },
+      {
+        "id": 10,
+        "phrase": "Les obèses coûtent cher à la société en soins.",
+        "dementi": "La grossophobie coûte plus : absentéisme, dépressions, évitement médical. Investir dans l'inclusion réduit les coûts de santé publique de 20-30%.",
+        "categorie": "Argument économique"
+      },
+      {
+        "id": 11,
+        "phrase": "Être gros, c'est malsain, point final.",
+        "dementi": "La santé n'est pas que le poids – des minces fument, des grosses courent des marathons. Juger sur l'apparence discrimine, pas protège.",
+        "categorie": "Santé"
+      },
+      {
+        "id": 12,
+        "phrase": "Tu es courageuse de sortir comme ça.",
+        "dementi": "Je ne suis pas courageuse, je suis normale. Ton commentaire sous-entend que mon corps est un fardeau – changeons les normes pour que tous se sentent légitimes.",
+        "categorie": "Pitié déguisée"
+      }
+    ]
+  },
+
+  "argumentsPositifs": {
+    "title": "Pourquoi Être Contre la Grossophobie",
+    "subtitle": "C'est Être du Bon Côté de l'Histoire",
+    "triggerWarning": false,
+    "items": [
+      {
+        "id": 1,
+        "title": "Favorise l'inclusion et la diversité",
+        "description": "Une société sans grossophobie valorise tous les corps, boostant la créativité et l'innovation – comme dans les entreprises inclusives où les équipes diversifiées sont 35% plus performantes.",
+        "icon": "diversity",
+        "impact": "Innovation et créativité"
+      },
+      {
+        "id": 2,
+        "title": "Améliore la santé mentale collective",
+        "description": "En déconstruisant les stéréotypes, on réduit les troubles alimentaires et dépressions (touchant 50% des victimes), créant une génération plus résiliente et confiante.",
+        "icon": "mental-health",
+        "impact": "Bien-être pour tous"
+      },
+      {
+        "id": 3,
+        "title": "Économise des ressources sociétales",
+        "description": "Lutter contre les biais au travail diminue l'absentéisme de 20% et augmente l'emploi, générant des milliards en PIB (ex. : 273 000 emplois potentiels pour les femmes en France).",
+        "icon": "economy",
+        "impact": "Croissance économique"
+      },
+      {
+        "id": 4,
+        "title": "Renforce l'empathie et la tolérance",
+        "description": "Être anti-grossophobie éduque contre toutes les discriminations (sexisme, racisme), bâtissant une culture du respect – les campagnes scolaires baissent le harcèlement de 30%.",
+        "icon": "empathy",
+        "impact": "Société plus juste"
+      },
+      {
+        "id": 5,
+        "title": "Stimule l'industrie inclusive",
+        "description": "Des marques comme Kiabi voient leurs ventes exploser (+25% en France), prouvant que l'acceptation corporelle est rentable et innovante.",
+        "icon": "business",
+        "impact": "Marché porteur"
+      },
+      {
+        "id": 6,
+        "title": "Protège les vulnérables dès l'enfance",
+        "description": "Encourager une image corporelle positive réduit les troubles alimentaires chez les ados de 40%, favorisant une société plus égalitaire et bienveillante.",
+        "icon": "protection",
+        "impact": "Avenir sain"
+      },
+      {
+        "id": 7,
+        "title": "Avance les droits humains",
+        "description": "Aligné sur les conventions internationales (ONU) contre les discriminations, positionnant la France comme leader en justice sociale.",
+        "icon": "rights",
+        "impact": "Progrès social"
+      },
+      {
+        "id": 8,
+        "title": "Crée du bonheur partagé",
+        "description": "Les environnements sans jugement augmentent le bien-être global de 15-20%, libérant de l'énergie pour des causes communes comme l'écologie ou l'égalité.",
+        "icon": "happiness",
+        "impact": "Joie collective"
+      }
+    ]
+  },
+
+  "campagnesEfficaces": {
+    "title": "Les Campagnes les Plus Efficaces",
+    "subtitle": "S'inspirer pour agir",
+    "items": [
+      {
+        "id": 1,
+        "name": "Dove Campaign for Real Beauty",
+        "period": "2004-présent",
+        "zone": "Internationale",
+        "description": "Campagne révolutionnaire mettant en scène des femmes 'réelles' pour défier les standards de beauté irréalistes.",
+        "impact": "Ventes doublées (2 à 4 milliards $), 80% des Américaines sensibilisées à l'insatisfaction corporelle",
+        "efficacite": "Pionnière du mainstream, normalisation de la diversité corporelle",
+        "lecon": "L'authenticité et la visibilité massive fonctionnent"
+      },
+      {
+        "id": 2,
+        "name": "Sport England 'This Girl Can'",
+        "period": "2015-présent",
+        "zone": "Royaume-Uni",
+        "description": "Campagne anti-body shaming pour encourager les femmes à faire du sport sans honte.",
+        "impact": "1,6 million de femmes ont commencé/repris une activité, +20% d'inscriptions en clubs",
+        "efficacite": "Cible directement la grossophobie dans les loisirs",
+        "lecon": "L'empowerment par l'action fonctionne"
+      },
+      {
+        "id": 3,
+        "name": "NAAFA Campaign for Size Freedom",
+        "period": "2023-présent",
+        "zone": "États-Unis",
+        "description": "Campagne pour criminaliser la discrimination par taille via des lois.",
+        "impact": "Lois adoptées à NYC (2023) et Minneapolis (2025), 80% des Américains favorables",
+        "efficacite": "Combine action légale et culturelle, protège 34 millions de personnes",
+        "lecon": "Le changement légal est possible"
+      },
+      {
+        "id": 4,
+        "name": "ÉquiLibre 'La grossophobie, ça suffit!'",
+        "period": "2022-présent",
+        "zone": "Québec/France",
+        "description": "Campagne annuelle sensibilisant aux microagressions quotidiennes.",
+        "impact": "Sensibilisation accrue, focus sur santé mentale (grossophobie cause plus de torts que le surpoids)",
+        "efficacite": "Hyper locale et éducative, déconstruit les biais subtils",
+        "lecon": "L'éducation quotidienne transforme"
+      },
+      {
+        "id": 5,
+        "name": "Exposition 'Grossophobie, Stop !'",
+        "period": "2019",
+        "zone": "Mairie de Paris",
+        "description": "29 panneaux pendant la Fashion Week avec mannequins grandes tailles.",
+        "impact": "Couverture médiatique massive, débats sur l'inclusivité mode",
+        "efficacite": "Timing stratégique et visuel impactant",
+        "lecon": "L'art et la culture changent les mentalités"
+      },
+      {
+        "id": 6,
+        "name": "Journées Mondiales de l'Obésité",
+        "period": "Annuelles depuis 2010",
+        "zone": "France via CNAO et Arcom",
+        "description": "Campagne pour informer sans stigmatiser, focus anti-grossophobie.",
+        "impact": "Partenariats publics, communication hospitalière contre les biais médicaux (17% des adultes français)",
+        "efficacite": "Institutionnelle, cible les soignants et le public",
+        "lecon": "Le changement institutionnel est durable"
+      },
+      {
+        "id": 7,
+        "name": "Savage x Fenty",
+        "period": "2018-présent",
+        "zone": "Internationale",
+        "description": "Défilés et lingerie inclusive (XS à 4XL) célébrant la diversité.",
+        "impact": "Ventes en hausse de 25%, influence culturelle (Victoria's Secret inspiré)",
+        "efficacite": "Économique et visuelle, normalise les corps via la pop culture",
+        "lecon": "La mode peut être révolutionnaire"
+      }
+    ]
+  },
+
+  "ressources": {
+    "title": "Pour Aller Plus Loin",
+    "associations": [
+      {
+        "name": "Ligue contre l'obésité",
+        "type": "France",
+        "action": "Sensibilisation et enquêtes"
+      },
+      {
+        "name": "CNAO - Collectif National des Associations d'Obèses",
+        "type": "France",
+        "action": "Représentation et défense des droits"
+      },
+      {
+        "name": "NAAFA - National Association to Advance Fat Acceptance",
+        "type": "International",
+        "action": "Advocacy et changement légal",
+        "social": "@naafaonline"
+      },
+      {
+        "name": "ÉquiLibre",
+        "type": "Québec",
+        "action": "Éducation et ressources gratuites",
+        "social": "@equilibre.ca"
+      },
+      {
+        "name": "Gras Politique",
+        "type": "France",
+        "action": "Collectif militant body positive"
+      }
+    ],
+    "guides": [
+      {
+        "titre": "Guide de l'allié·e contre la grossophobie",
+        "source": "ÉquiLibre",
+        "description": "Outils pratiques pour devenir un·e allié·e efficace"
+      },
+      {
+        "titre": "Ressources pour l'estime de soi",
+        "source": "Dove",
+        "description": "Fonds éducatif pour les filles"
+      }
+    ],
+    "livres": [
+      {
+        "titre": "Livres et balados sur la grossophobie",
+        "source": "ÉquiLibre et partenaires",
+        "description": "Ressources gratuites et accessibles"
+      }
+    ]
+  },
+
+  "callToAction": {
+    "title": "Agissons Ensemble",
+    "actions": [
+      {
+        "titre": "Signez la pétition",
+        "description": "Soutenez la reconnaissance légale de la grossophobie comme discrimination à l'Assemblée Nationale",
+        "url": "https://petitions.assemblee-nationale.fr/initiatives/i-3867?locale=fr",
+        "type": "primary",
+        "icon": "pen"
+      },
+      {
+        "titre": "Partagez ce site",
+        "description": "Sensibilisez votre entourage en partageant ces informations",
+        "type": "secondary",
+        "icon": "share"
+      },
+      {
+        "titre": "Éduquez-vous",
+        "description": "Consultez les ressources et devenez un·e allié·e efficace",
+        "type": "secondary",
+        "icon": "book-open"
+      },
+      {
+        "titre": "Témoignez",
+        "description": "Partagez votre histoire pour briser le silence (anonyme possible)",
+        "type": "secondary",
+        "icon": "message"
+      }
+    ]
+  },
+
+  "footer": {
+    "message": "Ce site est un outil pédagogique pour comprendre et combattre la grossophobie. Toutes les statistiques sont sourcées et vérifiables.",
+    "credit": "Made with ❤ by Shivam Katare. Inspired by Paulina Hetman",
+    "contact": "Pour toute question ou suggestion, contactez les associations mentionnées dans la section Ressources."
+  }
+}

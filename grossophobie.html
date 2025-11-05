@@ -1,0 +1,168 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Comprendre, dénoncer et agir contre la stigmatisation liée au poids">
+  <link rel="stylesheet" href="grossophobie-style.css">
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:300italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:400,700,800' rel='stylesheet' type='text/css'>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <title>Parallax Grossophobie - Comprendre et Agir</title>
+</head>
+
+<body>
+  <!-- Trigger Warning Modal -->
+  <div id="trigger-warning-modal" class="modal active">
+    <div class="modal-content">
+      <h2>⚠️ Avertissement Important</h2>
+      <div id="trigger-warning-text"></div>
+      <div class="modal-actions">
+        <button id="accept-warning" class="btn-primary">J'ai compris, continuer</button>
+        <button id="safe-mode" class="btn-secondary">Mode sensible (masquer contenus difficiles)</button>
+      </div>
+      <div class="helpline-info">
+        <p><strong>Besoin d'aide ?</strong></p>
+        <p>🇫🇷 Santé mentale : <strong>3114</strong></p>
+        <p>🇫🇷 Obésité et soutien : <strong>0800 235 236</strong></p>
+      </div>
+    </div>
+  </div>
+
+  <!-- Navigation -->
+  <nav id="main-nav">
+    <div class="nav-container">
+      <h1 class="nav-logo">Parallax Grossophobie</h1>
+      <ul class="nav-links">
+        <li><a href="#introduction">Introduction</a></li>
+        <li><a href="#publics">Publics</a></li>
+        <li><a href="#arguments">Arguments</a></li>
+        <li><a href="#phrases" class="trigger-section">Phrases</a></li>
+        <li><a href="#positif">Positif</a></li>
+        <li><a href="#campagnes">Campagnes</a></li>
+        <li><a href="#agir">Agir</a></li>
+      </ul>
+      <div class="safe-mode-toggle">
+        <label>
+          <input type="checkbox" id="safe-mode-toggle">
+          <span>Mode sensible</span>
+        </label>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Main Content -->
+  <div class="external">
+    <div class="horizontal-scroll-wrapper">
+
+      <!-- Hero Section -->
+      <section class="section hero-section" id="hero">
+        <div class="content-card hero-card">
+          <h1 class="hero-title" id="main-title">Parallax Grossophobie</h1>
+          <p class="hero-subtitle" id="main-subtitle"></p>
+          <div class="hero-petition">
+            <a href="https://petitions.assemblee-nationale.fr/initiatives/i-3867?locale=fr"
+               target="_blank"
+               rel="noopener"
+               class="btn-petition">
+              ✍️ Signer la Pétition
+            </a>
+          </div>
+          <p class="scroll-hint">← Scroll horizontalement pour découvrir →</p>
+        </div>
+      </section>
+
+      <!-- Introduction Section -->
+      <section class="section intro-section slower" id="introduction">
+        <div class="content-card">
+          <h2 class="section-title">Qu'est-ce que la Grossophobie ?</h2>
+          <div id="intro-content" class="section-content"></div>
+          <div class="stat-highlight" id="intro-stats"></div>
+        </div>
+      </section>
+
+      <!-- Publics Cibles Section -->
+      <section class="section publics-section faster" id="publics">
+        <div class="content-card wide-card">
+          <h2 class="section-title">À Qui S'adresse Ce Site ?</h2>
+          <div id="publics-grid" class="publics-grid"></div>
+        </div>
+      </section>
+
+      <!-- Arguments Section -->
+      <section class="section arguments-section slower" id="arguments">
+        <div class="content-card wide-card">
+          <h2 class="section-title">20 Arguments Solides</h2>
+          <p class="section-subtitle">Statistiques et preuves scientifiques</p>
+          <div id="arguments-container" class="arguments-container"></div>
+          <div class="navigation-dots" id="arguments-dots"></div>
+        </div>
+      </section>
+
+      <!-- Phrases Discriminantes Section (avec trigger warning) -->
+      <section class="section phrases-section faster slower-down" id="phrases">
+        <div class="content-card wide-card trigger-content">
+          <div class="trigger-warning-banner">
+            <span class="warning-icon">⚠️</span>
+            <p>Cette section contient des exemples de phrases discriminantes</p>
+          </div>
+          <h2 class="section-title">Les Formulations Courantes</h2>
+          <p class="section-subtitle">Exemples et Démentis Empowerants</p>
+          <div id="phrases-grid" class="phrases-grid"></div>
+        </div>
+      </section>
+
+      <!-- Arguments Positifs Section -->
+      <section class="section positif-section slower vertical" id="positif">
+        <div class="content-card wide-card">
+          <h2 class="section-title">Pourquoi Être Contre la Grossophobie</h2>
+          <p class="section-subtitle">C'est Être du Bon Côté de l'Histoire</p>
+          <div id="positif-grid" class="positif-grid"></div>
+        </div>
+      </section>
+
+      <!-- Campagnes Section -->
+      <section class="section campagnes-section faster1" id="campagnes">
+        <div class="content-card wide-card">
+          <h2 class="section-title">Campagnes Efficaces</h2>
+          <p class="section-subtitle">S'inspirer pour agir</p>
+          <div id="campagnes-container" class="campagnes-container"></div>
+        </div>
+      </section>
+
+      <!-- Ressources Section -->
+      <section class="section ressources-section slower slower2" id="ressources">
+        <div class="content-card">
+          <h2 class="section-title">Pour Aller Plus Loin</h2>
+          <div id="ressources-content" class="ressources-content"></div>
+        </div>
+      </section>
+
+      <!-- Call to Action Section -->
+      <section class="section cta-section" id="agir">
+        <div class="content-card wide-card">
+          <h2 class="section-title">Agissons Ensemble</h2>
+          <div id="cta-grid" class="cta-grid"></div>
+        </div>
+      </section>
+
+      <!-- Footer Section -->
+      <section class="section footer-section last" id="footer">
+        <div class="content-card">
+          <div id="footer-content" class="footer-content"></div>
+        </div>
+      </section>
+
+    </div>
+
+    <div class="scroll-info-container">
+      <p class="scroll-info">Scroll Down ↓</p>
+    </div>
+  </div>
+
+  <script src="grossophobie-script.js"></script>
+</body>
+
+</html>

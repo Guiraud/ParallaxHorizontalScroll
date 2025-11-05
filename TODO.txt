@@ -1,0 +1,419 @@
+TODO - Améliorations Futures Parallax Builder & Grossophobie
+================================================================
+
+Date: 2025-01-05
+Priorité: 🔴 Haute | 🟡 Moyenne | 🟢 Basse
+
+================================================================
+1. INTÉGRATION GOOGLE SPREADSHEETS
+================================================================
+
+🔴 HAUTE PRIORITÉ - Récupérer les contenus depuis Google Spreadsheet
+
+Objectif:
+---------
+Permettre de gérer le contenu du site (arguments, phrases, campagnes, etc.)
+directement depuis une feuille Google Spreadsheet collaborative.
+
+Avantages:
+----------
+✓ Édition collaborative en temps réel
+✓ Pas besoin de compétences techniques pour modifier le contenu
+✓ Historique des modifications intégré
+✓ Validation et modération facilitée
+✓ Export/Import facile
+✓ Accès mobile simplifié
+
+Implémentation suggérée:
+------------------------
+
+A. Configuration Google Sheets API
+   - Créer un projet Google Cloud Platform
+   - Activer Google Sheets API
+   - Créer des credentials (API Key ou OAuth 2.0)
+   - Documenter le processus de configuration
+
+B. Structure du Spreadsheet
+
+   Onglet "Arguments":
+   -------------------
+   | ID | Titre | StatUS | StatFrance | Impact | Visual |
+   |  1 | ...   | ...    | ...        | ...    | ...    |
+
+   Onglet "Phrases":
+   -----------------
+   | ID | Phrase | Dementi | Categorie |
+   |  1 | ...    | ...     | ...       |
+
+   Onglet "Campagnes":
+   -------------------
+   | ID | Name | Period | Zone | Description | Impact | Efficacite | Lecon |
+   |  1 | ...  | ...    | ...  | ...         | ...    | ...        | ...   |
+
+   Onglet "Publics":
+   -----------------
+   | Name | Icon | Message | Resources |
+   | ...  | ...  | ...     | ...       |
+
+   Onglet "Ressources":
+   --------------------
+   | Type | Name | Action | URL |
+   | ...  | ...  | ...    | ... |
+
+   Onglet "Meta":
+   --------------
+   | Key           | Value |
+   | title         | ...   |
+   | subtitle      | ...   |
+   | petition_url  | ...   |
+
+C. Script de Récupération
+   - Créer un fichier `google-sheets-sync.js`
+   - Fonction fetchFromGoogleSheets(spreadsheetId, apiKey)
+   - Transformation des données en format JSON
+   - Cache local avec timestamp pour éviter trop d'appels API
+   - Gestion des erreurs et fallback sur JSON local
+
+D. Interface Admin
+   - Ajouter dans admin-grossophobie.html:
+     * Champ pour entrer l'ID du Spreadsheet
+     * Champ pour l'API Key
+     * Bouton "Synchroniser depuis Google Sheets"
+     * Bouton "Pousser vers Google Sheets" (bidirectionnel)
+   - Afficher le statut de la dernière synchronisation
+   - Prévisualisation des données avant import
+
+E. Documentation
+   - Guide pas-à-pas pour créer un Google Spreadsheet
+   - Template de Spreadsheet à dupliquer
+   - Instructions de configuration API
+   - Exemples de formules utiles dans Sheets
+
+Fichiers à créer:
+-----------------
+- /js/google-sheets-sync.js
+- /docs/GOOGLE_SHEETS_SETUP.md
+- /templates/grossophobie-template.xlsx (template à importer dans Sheets)
+
+Estimation: 8-12 heures de développement
+
+
+================================================================
+2. CHRONOLOGIE AVEC LIEN GOOGLE SPREADSHEET
+================================================================
+
+🟡 MOYENNE PRIORITÉ - Chronologie dynamique depuis Google Sheets
+
+Objectif:
+---------
+Créer un type de bloc "Chronologie" qui peut charger ses données
+directement depuis un Google Spreadsheet partagé.
+
+Cas d'usage:
+------------
+- Frise chronologique de l'évolution des lois anti-discrimination
+- Timeline des campagnes de sensibilisation
+- Historique de la lutte contre la grossophobie
+- Événements marquants par année
+
+Fonctionnalités:
+----------------
+✓ Lien direct vers un Spreadsheet Google public ou privé
+✓ Auto-refresh configurable (ex: toutes les heures)
+✓ Filtrage par date/période
+✓ Affichage responsive
+✓ Export des données en image/PDF
+
+Structure du Spreadsheet "Chronologie":
+---------------------------------------
+| Année | Mois | Jour | Titre | Description | Image_URL | Lien | Tags |
+| 2020  | 03   | 15   | ...   | ...         | ...       | ...  | ...  |
+
+Implémentation dans admin-script.js:
+------------------------------------
+- Nouveau type de bloc: "timeline-google"
+- Configuration:
+  * URL du Spreadsheet
+  * ID de l'onglet/feuille
+  * API Key (optionnel si public)
+  * Intervalle de rafraîchissement
+  * Filtres (date début/fin, tags)
+
+Exemple de configuration JSON:
+------------------------------
+{
+  "type": "timeline-google",
+  "title": "Chronologie de la Lutte",
+  "googleSheets": {
+    "spreadsheetId": "1ABC...XYZ",
+    "sheetName": "Timeline",
+    "apiKey": "AIza...key",
+    "refreshInterval": 3600,
+    "filters": {
+      "startYear": 2015,
+      "endYear": 2025,
+      "tags": ["France", "Lois"]
+    }
+  },
+  "displayOptions": {
+    "layout": "horizontal",
+    "showImages": true,
+    "groupByYear": true
+  }
+}
+
+Rendu visuel:
+-------------
+- Timeline horizontale avec scroll
+- Cartes pour chaque événement
+- Images en preview (lightbox au clic)
+- Liens externes vers sources
+- Animation d'entrée progressive
+
+Fichiers à modifier:
+--------------------
+- admin-script.js (nouveau type de bloc)
+- grossophobie-script.js (rendu du bloc timeline-google)
+- grossophobie-style.css (styles timeline)
+
+Fichiers à créer:
+-----------------
+- /js/timeline-google-sync.js
+- /docs/TIMELINE_GOOGLE_SHEETS.md
+
+Estimation: 6-8 heures de développement
+
+
+================================================================
+3. AUTRES AMÉLIORATIONS SUGGÉRÉES
+================================================================
+
+🟢 BASSE PRIORITÉ - Améliorations complémentaires
+
+3.1 Multilingue
+---------------
+- Support i18n (français, anglais, espagnol)
+- Fichiers de traduction JSON
+- Sélecteur de langue dans l'UI
+Estimation: 4-6 heures
+
+3.2 Système de Commentaires
+----------------------------
+- Intégration Disqus ou système custom
+- Modération des commentaires
+- Affichage par section
+Estimation: 3-4 heures
+
+3.3 Analytics et Tracking
+--------------------------
+- Google Analytics 4
+- Tracking des interactions (clics, temps passé)
+- Heatmaps (Hotjar, Clarity)
+- Statistiques de téléchargement
+Estimation: 2-3 heures
+
+3.4 Recherche et Filtres
+-------------------------
+- Barre de recherche globale
+- Filtres par catégorie, date, tag
+- Surlignage des résultats
+Estimation: 5-6 heures
+
+3.5 Mode Impression Optimisé
+-----------------------------
+- CSS print optimisé
+- Génération PDF des contenus
+- Export des arguments en format citable
+Estimation: 2-3 heures
+
+3.6 Accessibilité Avancée
+--------------------------
+- Support ARIA complet
+- Navigation au clavier améliorée
+- Mode haut contraste
+- Support des lecteurs d'écran
+- Tests WCAG 2.1 AAA
+Estimation: 4-5 heures
+
+3.7 PWA (Progressive Web App)
+------------------------------
+- Service Worker pour offline
+- Manifest.json
+- Installation sur mobile
+- Notifications push
+Estimation: 6-8 heures
+
+3.8 Formulaire de Témoignages
+------------------------------
+- Formulaire anonyme sécurisé
+- Modération avant publication
+- Intégration avec Google Forms ou Typeform
+- Affichage des témoignages approuvés
+Estimation: 4-5 heures
+
+3.9 Gamification
+----------------
+- Quiz sur les préjugés
+- Score de sensibilisation
+- Badges et achievements
+- Partage des résultats
+Estimation: 8-10 heures
+
+3.10 Integration Réseaux Sociaux
+---------------------------------
+- Boutons de partage optimisés
+- Open Graph tags
+- Twitter Cards
+- Embeds automatiques
+Estimation: 2-3 heures
+
+
+================================================================
+4. OPTIMISATIONS TECHNIQUES
+================================================================
+
+🟡 MOYENNE PRIORITÉ - Performance et SEO
+
+4.1 Performance
+---------------
+- Lazy loading des images
+- Minification JS/CSS
+- Compression Gzip/Brotli
+- CDN pour les assets statiques
+- Cache headers optimisés
+Estimation: 3-4 heures
+
+4.2 SEO
+-------
+- Meta tags optimisés
+- Sitemap.xml
+- Robots.txt
+- Schema.org markup
+- Canonical URLs
+Estimation: 2-3 heures
+
+4.3 Sécurité
+------------
+- Content Security Policy
+- HTTPS forcé
+- Protection XSS
+- Validation des inputs
+- Rate limiting API
+Estimation: 4-5 heures
+
+
+================================================================
+5. ROADMAP PROPOSÉE
+================================================================
+
+Phase 1 (Sprint 1 - 2 semaines):
+---------------------------------
+✓ Interface admin pour charger JSON [FAIT]
+✓ Support des images dans parallax [FAIT]
+→ Intégration Google Sheets API (lecture)
+→ Documentation Google Sheets Setup
+
+Phase 2 (Sprint 2 - 2 semaines):
+---------------------------------
+→ Chronologie avec Google Sheets
+→ Synchronisation bidirectionnelle (lecture/écriture)
+→ Template Spreadsheet officiel
+
+Phase 3 (Sprint 3 - 1 semaine):
+--------------------------------
+→ Optimisations performance
+→ Tests et corrections bugs
+→ Documentation utilisateur finale
+
+Phase 4 (Sprint 4 - 1 semaine):
+--------------------------------
+→ Analytics et tracking
+→ PWA si temps disponible
+→ Tests accessibilité
+
+
+================================================================
+6. RESSOURCES NÉCESSAIRES
+================================================================
+
+API et Services:
+----------------
+- Google Cloud Platform (compte gratuit suffisant)
+- Google Sheets API
+- Google Drive API (optionnel)
+
+Bibliothèques JS suggérées:
+----------------------------
+- gapi (Google API Client)
+  URL: https://github.com/google/google-api-javascript-client
+
+- Papa Parse (parsing CSV si export Sheets)
+  URL: https://www.papaparse.com/
+
+- axios (requêtes HTTP simplifiées)
+  URL: https://axios-http.com/
+
+Documentation:
+--------------
+- Google Sheets API v4:
+  https://developers.google.com/sheets/api/guides/concepts
+
+- OAuth 2.0 pour JavaScript:
+  https://developers.google.com/identity/protocols/oauth2/javascript-implicit-flow
+
+
+================================================================
+7. NOTES DE DÉVELOPPEMENT
+================================================================
+
+Conventions de nommage:
+-----------------------
+- Variables: camelCase
+- Constantes: UPPER_SNAKE_CASE
+- Fonctions: camelCase (verbes)
+- Fichiers: kebab-case
+
+Structure des commits Git:
+--------------------------
+[TYPE] Description courte
+
+Types: feat, fix, docs, style, refactor, test, chore
+
+Exemple:
+[feat] Add Google Sheets integration for content management
+
+Tests recommandés:
+------------------
+- Tests unitaires (Jest)
+- Tests d'intégration
+- Tests end-to-end (Cypress)
+- Tests accessibilité (axe-core)
+
+
+================================================================
+8. CONTACT ET CONTRIBUTION
+================================================================
+
+Pour contribuer à ces améliorations:
+------------------------------------
+1. Fork le repository
+2. Créer une branche (feat/google-sheets-integration)
+3. Développer la fonctionnalité
+4. Tester localement
+5. Créer une Pull Request avec description détaillée
+
+Questions et support:
+---------------------
+Créer une issue GitHub avec le label approprié:
+- enhancement: nouvelle fonctionnalité
+- bug: correction de bug
+- documentation: amélioration docs
+- question: demande d'information
+
+
+================================================================
+FIN DU TODO
+================================================================
+
+Dernière mise à jour: 2025-01-05
+Version: 1.0
