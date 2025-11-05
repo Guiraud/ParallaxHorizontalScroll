@@ -1,0 +1,304 @@
+<!DOCTYPE html>
+<html lang="fr">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Interface d'Administration - Parallax Builder</title>
+  <link rel="stylesheet" href="admin-style.css">
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/FileSaver.js/2.0.5/FileSaver.min.js"></script>
+</head>
+<body>
+
+  <!-- Login Page -->
+  <div id="login-page" class="page active">
+    <div class="login-container">
+      <div class="login-box">
+        <div class="login-header">
+          <i class="fas fa-layer-group"></i>
+          <h1>Parallax Builder</h1>
+          <p>Interface d'Administration</p>
+        </div>
+        <form id="login-form">
+          <div class="form-group">
+            <label for="password">Mot de passe</label>
+            <input type="password" id="password" placeholder="Entrez votre mot de passe" required>
+          </div>
+          <button type="submit" class="btn btn-primary btn-full">
+            <i class="fas fa-sign-in-alt"></i> Se connecter
+          </button>
+          <div id="login-error" class="error-message"></div>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  <!-- Admin Dashboard -->
+  <div id="admin-page" class="page">
+    <div class="admin-layout">
+
+      <!-- Sidebar -->
+      <aside class="sidebar">
+        <div class="sidebar-header">
+          <i class="fas fa-layer-group"></i>
+          <h2>Parallax Builder</h2>
+        </div>
+
+        <nav class="sidebar-nav">
+          <a href="#" class="nav-item active" data-section="editor">
+            <i class="fas fa-edit"></i> Éditeur
+          </a>
+          <a href="#" class="nav-item" data-section="preview">
+            <i class="fas fa-eye"></i> Prévisualisation
+          </a>
+          <a href="#" class="nav-item" data-section="export">
+            <i class="fas fa-download"></i> Export
+          </a>
+          <a href="#" class="nav-item" data-section="settings">
+            <i class="fas fa-cog"></i> Paramètres
+          </a>
+        </nav>
+
+        <div class="sidebar-footer">
+          <button id="logout-btn" class="btn btn-secondary btn-full">
+            <i class="fas fa-sign-out-alt"></i> Déconnexion
+          </button>
+        </div>
+      </aside>
+
+      <!-- Main Content -->
+      <main class="main-content">
+
+        <!-- Editor Section -->
+        <section id="editor-section" class="content-section active">
+          <div class="section-header">
+            <h2><i class="fas fa-edit"></i> Éditeur de Site</h2>
+            <div class="header-actions">
+              <button id="load-template-btn" class="btn btn-secondary">
+                <i class="fas fa-magic"></i> Templates
+              </button>
+              <button id="save-project-btn" class="btn btn-success">
+                <i class="fas fa-save"></i> Enregistrer
+              </button>
+              <button id="load-project-btn" class="btn btn-secondary">
+                <i class="fas fa-folder-open"></i> Charger
+              </button>
+            </div>
+          </div>
+
+          <div class="editor-layout">
+            <!-- Left Panel - Site Configuration -->
+            <div class="editor-panel">
+              <div class="panel-section">
+                <h3>En-tête du Site</h3>
+                <div class="form-group">
+                  <label>Titre principal</label>
+                  <input type="text" id="site-title" class="form-control" placeholder="Mon Site Parallax">
+                </div>
+                <div class="form-group">
+                  <label>Chapô (sous-titre)</label>
+                  <textarea id="site-chapo" class="form-control" rows="3" placeholder="Description du site..."></textarea>
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <h3>Blocs du Site</h3>
+                <div class="blocks-toolbar">
+                  <button class="btn btn-primary btn-sm add-block-btn" data-type="parallax-vertical">
+                    <i class="fas fa-arrows-alt-v"></i> Parallax Vertical
+                  </button>
+                  <button class="btn btn-primary btn-sm add-block-btn" data-type="parallax-horizontal">
+                    <i class="fas fa-arrows-alt-h"></i> Parallax Horizontal
+                  </button>
+                  <button class="btn btn-primary btn-sm add-block-btn" data-type="timeline">
+                    <i class="fas fa-stream"></i> Frise Chronologique
+                  </button>
+                  <button class="btn btn-primary btn-sm add-block-btn" data-type="box">
+                    <i class="fas fa-square"></i> Bloc Encadré
+                  </button>
+                  <button class="btn btn-primary btn-sm add-block-btn" data-type="popup">
+                    <i class="fas fa-comment"></i> Popup Messages
+                  </button>
+                  <button class="btn btn-primary btn-sm add-block-btn" data-type="text">
+                    <i class="fas fa-align-left"></i> Bloc Texte
+                  </button>
+                </div>
+
+                <div id="blocks-list" class="blocks-list">
+                  <!-- Blocks will be added here dynamically -->
+                </div>
+              </div>
+
+              <div class="panel-section">
+                <h3>Bas de Page</h3>
+                <div class="form-group">
+                  <label>Contenu du footer</label>
+                  <textarea id="footer-content" class="form-control" rows="3" placeholder="© 2025 Mon Site"></textarea>
+                </div>
+                <div class="form-group">
+                  <label>Couleur de fond</label>
+                  <input type="color" id="footer-bg-color" class="form-control" value="#000000">
+                </div>
+              </div>
+            </div>
+
+            <!-- Right Panel - Block Editor -->
+            <div class="editor-panel">
+              <div id="block-editor" class="block-editor-container">
+                <div class="empty-state">
+                  <i class="fas fa-cube"></i>
+                  <p>Sélectionnez un bloc pour le modifier</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        <!-- Preview Section -->
+        <section id="preview-section" class="content-section">
+          <div class="section-header">
+            <h2><i class="fas fa-eye"></i> Prévisualisation</h2>
+            <div class="header-actions">
+              <button id="refresh-preview-btn" class="btn btn-primary">
+                <i class="fas fa-sync"></i> Actualiser
+              </button>
+            </div>
+          </div>
+          <div class="preview-container">
+            <iframe id="preview-frame" frameborder="0"></iframe>
+          </div>
+        </section>
+
+        <!-- Export Section -->
+        <section id="export-section" class="content-section">
+          <div class="section-header">
+            <h2><i class="fas fa-download"></i> Export du Site</h2>
+          </div>
+
+          <div class="export-grid">
+            <div class="export-card">
+              <div class="export-icon">
+                <i class="fas fa-file-archive"></i>
+              </div>
+              <h3>Export ZIP</h3>
+              <p>Téléchargez votre site en tant qu'archive ZIP complète</p>
+              <button id="export-zip-btn" class="btn btn-primary btn-full">
+                <i class="fas fa-download"></i> Télécharger ZIP
+              </button>
+            </div>
+
+            <div class="export-card">
+              <div class="export-icon">
+                <i class="fab fa-gitlab"></i>
+              </div>
+              <h3>Export GitLab</h3>
+              <p>Publiez votre site directement sur un dépôt GitLab</p>
+              <div class="form-group">
+                <input type="text" id="gitlab-url" class="form-control" placeholder="URL du dépôt GitLab">
+              </div>
+              <div class="form-group">
+                <input type="password" id="gitlab-token" class="form-control" placeholder="Token d'accès">
+              </div>
+              <button id="export-gitlab-btn" class="btn btn-primary btn-full">
+                <i class="fab fa-gitlab"></i> Publier sur GitLab
+              </button>
+            </div>
+
+            <div class="export-card">
+              <div class="export-icon">
+                <i class="fas fa-cloud"></i>
+              </div>
+              <h3>Export Cloudflare</h3>
+              <p>Déployez votre site avec Cloudflare Workers</p>
+              <div class="form-group">
+                <input type="text" id="cloudflare-account" class="form-control" placeholder="Account ID">
+              </div>
+              <div class="form-group">
+                <input type="password" id="cloudflare-token" class="form-control" placeholder="API Token">
+              </div>
+              <div class="form-group">
+                <input type="text" id="cloudflare-project" class="form-control" placeholder="Nom du projet">
+              </div>
+              <button id="export-cloudflare-btn" class="btn btn-primary btn-full">
+                <i class="fas fa-cloud-upload-alt"></i> Déployer sur Cloudflare
+              </button>
+            </div>
+          </div>
+        </section>
+
+        <!-- Settings Section -->
+        <section id="settings-section" class="content-section">
+          <div class="section-header">
+            <h2><i class="fas fa-cog"></i> Paramètres</h2>
+          </div>
+
+          <div class="settings-panel">
+            <div class="panel-section">
+              <h3>Paramètres Généraux</h3>
+              <div class="form-group">
+                <label>Couleur de fond par défaut</label>
+                <input type="color" id="default-bg-color" class="form-control" value="#000000">
+              </div>
+              <div class="form-group">
+                <label>Police par défaut</label>
+                <select id="default-font" class="form-control">
+                  <option value="Inter">Inter</option>
+                  <option value="Raleway">Raleway</option>
+                  <option value="Merriweather">Merriweather</option>
+                  <option value="Roboto">Roboto</option>
+                </select>
+              </div>
+            </div>
+
+            <div class="panel-section">
+              <h3>Données du Projet</h3>
+              <div class="form-group">
+                <label>Importer un projet</label>
+                <input type="file" id="import-project" class="form-control" accept=".json">
+              </div>
+              <button id="export-json-btn" class="btn btn-secondary">
+                <i class="fas fa-file-export"></i> Exporter la configuration (JSON)
+              </button>
+            </div>
+          </div>
+        </section>
+
+      </main>
+    </div>
+  </div>
+
+  <!-- Modal for Block Configuration -->
+  <div id="block-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3 id="modal-title">Configuration du Bloc</h3>
+        <button class="modal-close">&times;</button>
+      </div>
+      <div class="modal-body" id="modal-body">
+        <!-- Dynamic content -->
+      </div>
+      <div class="modal-footer">
+        <button id="modal-cancel" class="btn btn-secondary">Annuler</button>
+        <button id="modal-save" class="btn btn-primary">Enregistrer</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Modal for Templates -->
+  <div id="templates-modal" class="modal">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h3>Choisir un Template</h3>
+        <button class="modal-close-templates">&times;</button>
+      </div>
+      <div class="modal-body" id="templates-list">
+        <!-- Templates will be loaded here -->
+      </div>
+    </div>
+  </div>
+
+  <script src="admin-script.js"></script>
+</body>
+</html>
