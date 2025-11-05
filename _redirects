@@ -1,0 +1,18 @@
+# Cloudflare Pages redirects
+# Format: source destination [status]
+
+# Redirect root to grossophobie by default
+/  /grossophobie  200
+
+# Specific theme routes (handled by functions)
+/:theme  200!
+
+# Static files should be served directly
+/*.css  200
+/*.js   200
+/*.json 200
+/*.html 200
+/*.ico  200
+/*.png  200
+/*.jpg  200
+/*.svg  200

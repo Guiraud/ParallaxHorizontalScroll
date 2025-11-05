@@ -1,0 +1,81 @@
+# GitLab CI/CD Configuration for Cloudflare Pages Deployment
+# Deploy to p.newsforge.app with dynamic routing
+
+stages:
+  - deploy
+
+variables:
+  CLOUDFLARE_PROJECT_NAME: "parallax-newsforge"
+
+# Deploy to Cloudflare Pages
+deploy_to_cloudflare:
+  stage: deploy
+  image: node:18-alpine
+
+  before_script:
+    - npm install -g wrangler
+
+  script:
+    - echo "Déploiement vers Cloudflare Pages (p.newsforge.app)..."
+
+    # Deploy using Wrangler
+    - wrangler pages deploy .
+        --project-name=$CLOUDFLARE_PROJECT_NAME
+        --branch=$CI_COMMIT_BRANCH
+
+    - echo "✅ Déploiement terminé !"
+    - echo "🌐 Site disponible sur : https://p.newsforge.app"
+    - echo "📄 Thèmes disponibles :"
+    - echo "   - https://p.newsforge.app/grossophobie"
+    - echo "   - https://p.newsforge.app/consentement (à venir)"
+
+  only:
+    - cloudflare-pages-deployment
+    - main
+
+  environment:
+    name: production
+    url: https://p.newsforge.app
+
+  # Variables nécessaires (à configurer dans GitLab CI/CD Settings)
+  # CLOUDFLARE_API_TOKEN: Token API Cloudflare
+  # CLOUDFLARE_ACCOUNT_ID: ID du compte Cloudflare
+
+# Deploy preview for branches (optionnel)
+deploy_preview:
+  stage: deploy
+  image: node:18-alpine
+
+  before_script:
+    - npm install -g wrangler
+
+  script:
+    - echo "Déploiement preview pour branche $CI_COMMIT_BRANCH..."
+    - wrangler pages deploy .
+        --project-name=$CLOUDFLARE_PROJECT_NAME
+        --branch=$CI_COMMIT_BRANCH
+
+  except:
+    - cloudflare-pages-deployment
+    - main
+
+  environment:
+    name: preview/$CI_COMMIT_BRANCH
+    url: https://$CI_COMMIT_BRANCH.parallax-newsforge.pages.dev
+    on_stop: cleanup_preview
+
+# Cleanup preview environments
+cleanup_preview:
+  stage: deploy
+  image: node:18-alpine
+
+  before_script:
+    - npm install -g wrangler
+
+  script:
+    - echo "Nettoyage de l'environnement preview..."
+
+  when: manual
+  environment:
+    name: preview/$CI_COMMIT_BRANCH
+    action: stop

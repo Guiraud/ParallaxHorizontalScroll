@@ -1,5 +1,6 @@
-// Grossophobie Interactive Script
+// Parallax Interactive Script
 // Gestion des données, interactions et mode sensible
+// Support pour chargement dynamique depuis window.THEME_DATA ou fichier JSON
 
 let data = null;
 let safeMode = false;
@@ -10,12 +11,22 @@ $(document).ready(function() {
   setupEventListeners();
 });
 
-// Chargement du fichier JSON
+// Chargement du fichier JSON (dynamique depuis Cloudflare ou fichier local)
 async function loadData() {
   try {
-    const response = await fetch('grossophobie.json');
+    // Si les données sont déjà injectées par Cloudflare Pages Function
+    if (window.THEME_DATA) {
+      data = window.THEME_DATA;
+      console.log('Données chargées depuis window.THEME_DATA:', data);
+      displayTriggerWarning();
+      return;
+    }
+
+    // Sinon, charger depuis le fichier JSON (mode local/legacy)
+    const themeName = window.THEME_NAME || 'grossophobie';
+    const response = await fetch(`${themeName}.json`);
     data = await response.json();
-    console.log('Données chargées:', data);
+    console.log('Données chargées depuis fichier JSON:', data);
     displayTriggerWarning();
   } catch (error) {
     console.error('Erreur de chargement des données:', error);
