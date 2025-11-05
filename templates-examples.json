@@ -1,0 +1,290 @@
+{
+  "templates": [
+    {
+      "name": "Portfolio Photographe",
+      "description": "Un portfolio avec galerie horizontale et présentation",
+      "data": {
+        "title": "Portfolio Photo",
+        "chapo": "Découvrez mon univers photographique à travers une expérience immersive",
+        "blocks": [
+          {
+            "id": 1,
+            "type": "parallax-horizontal",
+            "title": "Galerie Principale",
+            "images": [
+              {
+                "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
+                "speed": "slower",
+                "alt": "Paysage 1"
+              },
+              {
+                "url": "https://images.unsplash.com/photo-1469474968028-56623f02e42e",
+                "speed": "faster",
+                "alt": "Nature"
+              },
+              {
+                "url": "https://images.unsplash.com/photo-1447752875215-b2761acb3c5d",
+                "speed": "normal",
+                "alt": "Fleurs"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "type": "text",
+            "title": "À Propos",
+            "content": "<h2>Photographe Professionnel</h2><p>Passionné par la capture de moments uniques et l'art de raconter des histoires visuelles.</p>",
+            "alignment": "center"
+          },
+          {
+            "id": 3,
+            "type": "box",
+            "title": "Contact",
+            "content": "<h3>Travaillons ensemble</h3><p>Email: contact@photo.com</p><p>Tél: +33 6 12 34 56 78</p>",
+            "bgColor": "#1e293b",
+            "borderColor": "#6366f1"
+          }
+        ],
+        "footer": {
+          "content": "© 2025 Portfolio Photo - Tous droits réservés",
+          "bgColor": "#000000"
+        }
+      }
+    },
+    {
+      "name": "Timeline Entreprise",
+      "description": "Frise chronologique pour présenter l'histoire d'une entreprise",
+      "data": {
+        "title": "Notre Histoire",
+        "chapo": "25 ans d'innovation et de croissance",
+        "blocks": [
+          {
+            "id": 1,
+            "type": "timeline",
+            "title": "Notre Parcours",
+            "items": [
+              {
+                "year": "2000",
+                "title": "Création",
+                "description": "Fondation de l'entreprise avec une vision claire : révolutionner le secteur",
+                "image": ""
+              },
+              {
+                "year": "2005",
+                "title": "Expansion",
+                "description": "Ouverture de notre première filiale internationale",
+                "image": ""
+              },
+              {
+                "year": "2010",
+                "title": "Innovation",
+                "description": "Lancement de notre produit phare qui a changé le marché",
+                "image": ""
+              },
+              {
+                "year": "2020",
+                "title": "Transformation",
+                "description": "Transition vers une entreprise 100% digitale",
+                "image": ""
+              },
+              {
+                "year": "2025",
+                "title": "Leadership",
+                "description": "Leader du marché avec plus de 1000 clients",
+                "image": ""
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "type": "text",
+            "title": "Notre Mission",
+            "content": "<h2>Innover pour demain</h2><p>Notre mission est de créer des solutions qui transforment la façon dont les entreprises travaillent.</p>",
+            "alignment": "center"
+          }
+        ],
+        "footer": {
+          "content": "© 2025 Notre Entreprise - Construisons l'avenir ensemble",
+          "bgColor": "#1e293b"
+        }
+      }
+    },
+    {
+      "name": "Site Événementiel",
+      "description": "Site pour présenter un événement avec popups et infos",
+      "data": {
+        "title": "Festival d'Été 2025",
+        "chapo": "3 jours de musique, art et festivités",
+        "blocks": [
+          {
+            "id": 1,
+            "type": "parallax-vertical",
+            "title": "Ambiance Festival",
+            "images": [
+              {
+                "url": "https://images.unsplash.com/photo-1533174072545-7a4b6ad7a6c3",
+                "speed": "slower",
+                "alt": "Festival"
+              },
+              {
+                "url": "https://images.unsplash.com/photo-1514525253161-7a46d19cd819",
+                "speed": "faster",
+                "alt": "Concert"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "type": "popup",
+            "title": "Notifications",
+            "messages": [
+              {
+                "trigger": "scroll",
+                "position": "50%",
+                "message": "🎫 Billetterie ouverte - Réservez maintenant !",
+                "duration": 4000
+              },
+              {
+                "trigger": "time",
+                "position": "0",
+                "message": "📅 Du 15 au 17 Juillet 2025",
+                "duration": 3000
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "type": "box",
+            "title": "Programme",
+            "content": "<h3>Programme des 3 jours</h3><ul><li><strong>Jour 1:</strong> Concerts Rock & Indie</li><li><strong>Jour 2:</strong> Electro & DJ Sets</li><li><strong>Jour 3:</strong> Pop & Hip-Hop</li></ul>",
+            "bgColor": "#6366f1",
+            "borderColor": "#4f46e5"
+          },
+          {
+            "id": 4,
+            "type": "text",
+            "title": "Billetterie",
+            "content": "<h2>Réservez vos places</h2><p>Pass 3 jours : 99€</p><p>Pass 1 jour : 45€</p><button style='padding: 1rem 2rem; background: #10b981; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer;'>Acheter maintenant</button>",
+            "alignment": "center"
+          }
+        ],
+        "footer": {
+          "content": "© 2025 Festival d'Été - Infos: contact@festival.com",
+          "bgColor": "#1e293b"
+        }
+      }
+    },
+    {
+      "name": "Landing Page Produit",
+      "description": "Page de présentation d'un produit avec CTA",
+      "data": {
+        "title": "ProductX",
+        "chapo": "La solution qui simplifie votre quotidien",
+        "blocks": [
+          {
+            "id": 1,
+            "type": "parallax-horizontal",
+            "title": "Découvrez ProductX",
+            "images": [
+              {
+                "url": "https://images.unsplash.com/photo-1551650975-87deedd944c3",
+                "speed": "normal",
+                "alt": "Produit 1"
+              },
+              {
+                "url": "https://images.unsplash.com/photo-1519389950473-47ba0277781c",
+                "speed": "slower",
+                "alt": "Produit 2"
+              }
+            ]
+          },
+          {
+            "id": 2,
+            "type": "box",
+            "title": "Fonctionnalités",
+            "content": "<h2>Pourquoi ProductX ?</h2><ul><li>✓ Facile à utiliser</li><li>✓ Gain de temps de 50%</li><li>✓ Compatible tous appareils</li><li>✓ Support 24/7</li></ul>",
+            "bgColor": "#1e293b",
+            "borderColor": "#10b981"
+          },
+          {
+            "id": 3,
+            "type": "text",
+            "title": "Tarifs",
+            "content": "<h2>Offre de lancement</h2><p style='font-size: 2rem; color: #10b981;'><strong>29€/mois</strong></p><p>Essai gratuit de 14 jours, sans engagement</p><button style='padding: 1rem 2rem; background: #10b981; color: white; border: none; border-radius: 8px; font-size: 1.1rem; cursor: pointer; margin-top: 1rem;'>Commencer gratuitement</button>",
+            "alignment": "center"
+          },
+          {
+            "id": 4,
+            "type": "popup",
+            "title": "Offre spéciale",
+            "messages": [
+              {
+                "trigger": "scroll",
+                "position": "30%",
+                "message": "🎁 -20% avec le code LAUNCH20",
+                "duration": 5000
+              }
+            ]
+          }
+        ],
+        "footer": {
+          "content": "© 2025 ProductX - Conditions d'utilisation | Politique de confidentialité",
+          "bgColor": "#000000"
+        }
+      }
+    },
+    {
+      "name": "Blog Artistique",
+      "description": "Blog avec présentation artistique et textes",
+      "data": {
+        "title": "Art & Créativité",
+        "chapo": "Explorez l'art contemporain sous toutes ses formes",
+        "blocks": [
+          {
+            "id": 1,
+            "type": "text",
+            "title": "Bienvenue",
+            "content": "<h2>Un espace dédié à l'art</h2><p>Découvrez des articles, interviews et analyses sur l'art contemporain, la photographie, la peinture et bien plus encore.</p>",
+            "alignment": "center"
+          },
+          {
+            "id": 2,
+            "type": "parallax-vertical",
+            "title": "Galerie",
+            "images": [
+              {
+                "url": "https://images.unsplash.com/photo-1541961017774-22349e4a1262",
+                "speed": "slower",
+                "alt": "Art 1"
+              },
+              {
+                "url": "https://images.unsplash.com/photo-1549887534-1541e9326642",
+                "speed": "normal",
+                "alt": "Art 2"
+              }
+            ]
+          },
+          {
+            "id": 3,
+            "type": "box",
+            "title": "Article à la Une",
+            "content": "<h3>L'art numérique en 2025</h3><p>Les nouvelles technologies transforment la création artistique. Découvrez comment les artistes utilisent l'IA et la réalité virtuelle...</p><a href='#' style='color: #6366f1;'>Lire la suite →</a>",
+            "bgColor": "#1e293b",
+            "borderColor": "#6366f1"
+          },
+          {
+            "id": 4,
+            "type": "text",
+            "title": "Newsletter",
+            "content": "<h2>Restez informé</h2><p>Inscrivez-vous à notre newsletter pour recevoir nos derniers articles</p><input type='email' placeholder='Votre email' style='padding: 0.75rem; border-radius: 8px; border: 1px solid #475569; background: #1e293b; color: white; margin-right: 0.5rem;'><button style='padding: 0.75rem 1.5rem; background: #6366f1; color: white; border: none; border-radius: 8px;'>S'inscrire</button>",
+            "alignment": "center"
+          }
+        ],
+        "footer": {
+          "content": "© 2025 Art & Créativité - Suivez-nous sur Instagram @art.creativite",
+          "bgColor": "#1e293b"
+        }
+      }
+    }
+  ]
+}
