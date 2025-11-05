@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="fr">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+  <link rel="stylesheet" href="css/content-blocks.css">
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:700' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Merriweather:300italic' rel='stylesheet' type='text/css'>
+  <link href='https://fonts.googleapis.com/css?family=Raleway:800' rel='stylesheet' type='text/css'>
+
+  <!-- Include jQuery -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+
+  <!-- Include Lightbox2 -->
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/js/lightbox.min.js"></script>
+  <link href="https://cdnjs.cloudflare.com/ajax/libs/lightbox2/2.11.3/css/lightbox.min.css" rel="stylesheet">
+
+  <!-- Include js-yaml for YAML parsing -->
+  <script src="https://cdn.jsdelivr.net/npm/js-yaml@4.1.0/dist/js-yaml.min.js"></script>
+
+  <!-- Include our custom scripts -->
+  <script src="js/content-importer.js"></script>
+  <script src="js/content-renderer.js"></script>
+
+  <title>Import Demo - Parallax Horizontal Scrolling</title>
+
+  <style>
+    .demo-controls {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      z-index: 1000;
+      background: rgba(30, 30, 30, 0.95);
+      padding: 1.5rem;
+      border-radius: 15px;
+      border: 2px solid #8e2de2;
+      backdrop-filter: blur(10px);
+      min-width: 300px;
+    }
+
+    .demo-controls h3 {
+      margin: 0 0 1rem 0;
+      color: #8e2de2;
+      font-size: 1.3rem;
+      text-align: center;
+    }
+
+    .format-buttons {
+      display: flex;
+      flex-direction: column;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .format-button {
+      padding: 0.75rem 1rem;
+      background: rgba(142, 45, 226, 0.2);
+      color: #fff;
+      border: 1px solid #8e2de2;
+      border-radius: 8px;
+      font-size: 0.9rem;
+      font-weight: 600;
+      cursor: pointer;
+      transition: all 0.3s ease;
+      text-align: left;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .format-button:hover {
+      background: rgba(142, 45, 226, 0.4);
+      transform: translateX(5px);
+    }
+
+    .format-score {
+      font-size: 0.8rem;
+      color: #8e2de2;
+      font-weight: 700;
+    }
+
+    .format-button.recommended::after {
+      content: '⭐';
+      margin-left: 0.5rem;
+    }
+
+    .file-input-wrapper {
+      margin-top: 1rem;
+      padding-top: 1rem;
+      border-top: 1px solid rgba(142, 45, 226, 0.3);
+    }
+
+    .file-input-label {
+      display: block;
+      padding: 0.75rem 1rem;
+      background: linear-gradient(135deg, #8e2de2, #4a00e0);
+      color: #fff;
+      border-radius: 8px;
+      text-align: center;
+      cursor: pointer;
+      font-weight: 600;
+      transition: all 0.3s ease;
+    }
+
+    .file-input-label:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 10px 25px rgba(142, 45, 226, 0.5);
+    }
+
+    .file-input {
+      display: none;
+    }
+
+    .status-message {
+      margin-top: 1rem;
+      padding: 0.75rem;
+      border-radius: 8px;
+      font-size: 0.85rem;
+      text-align: center;
+      display: none;
+    }
+
+    .status-message.success {
+      background: rgba(34, 197, 94, 0.2);
+      border: 1px solid #22c55e;
+      color: #22c55e;
+      display: block;
+    }
+
+    .status-message.error {
+      background: rgba(239, 68, 68, 0.2);
+      border: 1px solid #ef4444;
+      color: #ef4444;
+      display: block;
+    }
+
+    .clear-button {
+      margin-top: 0.5rem;
+      padding: 0.5rem 1rem;
+      background: rgba(239, 68, 68, 0.2);
+      color: #ef4444;
+      border: 1px solid #ef4444;
+      border-radius: 8px;
+      width: 100%;
+      cursor: pointer;
+      font-size: 0.85rem;
+      transition: all 0.3s ease;
+    }
+
+    .clear-button:hover {
+      background: rgba(239, 68, 68, 0.3);
+    }
+  </style>
+</head>
+
+<body>
+  <div class="external">
+    <div class="horizontal-scroll-wrapper" id="content-container">
+      <!-- Content will be loaded here -->
+    </div>
+
+    <p class="scroll-info" style="display: grid;">Scroll Down</p>
+
+    <header style="display: grid; justify-items: center;">
+      <p>Import Demo - Multi-Format Content Loading</p>
+    </header>
+  </div>
+
+  <!-- Demo Controls -->
+  <div class="demo-controls">
+    <h3>Import Content</h3>
+
+    <div class="format-buttons">
+      <button class="format-button recommended" data-format="json">
+        <span>JSON</span>
+        <span class="format-score">85%</span>
+      </button>
+      <button class="format-button" data-format="yaml">
+        <span>YAML</span>
+        <span class="format-score">75%</span>
+      </button>
+      <button class="format-button" data-format="xml">
+        <span>XML</span>
+        <span class="format-score">70%</span>
+      </button>
+      <button class="format-button" data-format="md">
+        <span>Markdown</span>
+        <span class="format-score">60%</span>
+      </button>
+    </div>
+
+    <div class="file-input-wrapper">
+      <label for="fileInput" class="file-input-label">
+        📁 Upload Custom File
+      </label>
+      <input type="file" id="fileInput" class="file-input" accept=".json,.yaml,.yml,.md,.xml">
+    </div>
+
+    <button class="clear-button" id="clearButton">
+      🗑️ Clear Content
+    </button>
+
+    <div class="status-message" id="statusMessage"></div>
+  </div>
+
+  <script>
+    // Initialize
+    const importer = new ContentImporter();
+    const renderer = new ContentRenderer(document.getElementById('content-container'));
+    const statusMessage = document.getElementById('statusMessage');
+
+    // Format button handlers
+    document.querySelectorAll('.format-button').forEach(button => {
+      button.addEventListener('click', async () => {
+        const format = button.dataset.format;
+        const url = `examples/import/content.${format}`;
+
+        showStatus('Loading...', 'info');
+
+        try {
+          const data = await importer.import(url);
+          renderer.render(data);
+          showStatus(`✓ Successfully loaded ${format.toUpperCase()} (Clarity: ${button.querySelector('.format-score').textContent})`, 'success');
+        } catch (error) {
+          showStatus(`✗ Error: ${error.message}`, 'error');
+          console.error(error);
+        }
+      });
+    });
+
+    // File upload handler
+    document.getElementById('fileInput').addEventListener('change', async (e) => {
+      const file = e.target.files[0];
+      if (!file) return;
+
+      showStatus('Processing file...', 'info');
+
+      try {
+        const data = await importer.import(file);
+        renderer.render(data);
+        const format = file.name.split('.').pop().toUpperCase();
+        showStatus(`✓ Successfully imported ${file.name}`, 'success');
+      } catch (error) {
+        showStatus(`✗ Error: ${error.message}`, 'error');
+        console.error(error);
+      }
+
+      // Reset file input
+      e.target.value = '';
+    });
+
+    // Clear button handler
+    document.getElementById('clearButton').addEventListener('click', () => {
+      const container = document.getElementById('content-container');
+      container.innerHTML = '';
+      showStatus('✓ Content cleared', 'success');
+    });
+
+    // Status message helper
+    function showStatus(message, type) {
+      statusMessage.textContent = message;
+      statusMessage.className = 'status-message ' + type;
+
+      if (type === 'success' || type === 'error') {
+        setTimeout(() => {
+          statusMessage.style.display = 'none';
+        }, 5000);
+      }
+    }
+
+    // Display format scores on load
+    console.log('Format Clarity Scores for AI:', ContentImporter.getFormatScores());
+  </script>
+
+  <script>
+    lightbox.option({
+      'resizeDuration': 200,
+      'wrapAround': true
+    });
+  </script>
+</body>
+
+</html>
