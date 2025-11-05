@@ -1,0 +1,294 @@
+{
+  "metadata": {
+    "title": "Pétition contre la grossophobie",
+    "description": "Campagne pour une loi anti-discrimination",
+    "version": "1.0",
+    "created": "2024-11-05"
+  },
+  "blocks": [
+    {
+      "id": "hero",
+      "type": "text_block",
+      "subtype": "hero",
+      "position": 1,
+      "content": {
+        "title": "La grossophobie tue. Elle détruit. Elle exclut.",
+        "text": "Elle augmente le risque de décès de 60 %. Elle coûte 37 % d'emplois aux personnes grosses. Elle pousse 50 % de ses victimes vers la dépression.\n\nLa France doit agir. Votre signature change les lois. Rejoignez 50 000+ citoyens. Signez la pétition.",
+        "style": "hero"
+      },
+      "sources": [
+        {
+          "type": "study",
+          "title": "Impact of weight stigma on mortality",
+          "url": "https://www.example.com/study-mortality-weight-stigma"
+        },
+        {
+          "type": "report",
+          "title": "Employment discrimination based on weight",
+          "url": "https://www.example.com/employment-discrimination"
+        }
+      ]
+    },
+    {
+      "id": "stats-1",
+      "type": "card_block",
+      "subtype": "stats",
+      "position": 2,
+      "content": {
+        "title": "Chiffres clés",
+        "stats": [
+          {
+            "value": "66%",
+            "label": "d'augmentation des discriminations liées au poids en 10 ans"
+          },
+          {
+            "value": "70%",
+            "label": "des soignants ont des biais envers les patients gros"
+          },
+          {
+            "value": "63%",
+            "label": "des adultes obèses rapportent une stigmatisation élevée"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "type": "statistical_report",
+          "title": "Évolution des discriminations en France 2014-2024",
+          "url": "https://www.example.com/stats-discrimination-evolution"
+        },
+        {
+          "type": "medical_study",
+          "title": "Healthcare provider bias study",
+          "url": "https://www.example.com/healthcare-bias-study"
+        }
+      ],
+      "animation": {
+        "type": "parallax",
+        "speed": "slower"
+      }
+    },
+    {
+      "id": "why-petition",
+      "type": "text_block",
+      "subtype": "paragraph",
+      "position": 3,
+      "content": {
+        "title": "Pourquoi cette pétition ?",
+        "text": "Vous êtes discriminé au travail à cause de votre poids. Votre médecin ne vous écoute pas. Vos enfants se font harceler à l'école. Ces situations sont légales en France.\n\nCette pétition demande au gouvernement une loi anti-discrimination spécifique, comme existe aux États-Unis (New York 2023). Elle protège votre emploi, votre accès aux soins, votre dignité."
+      },
+      "sources": [
+        {
+          "type": "legislation",
+          "title": "NYC Local Law 19 of 2023",
+          "url": "https://www.nyc.gov/site/cchr/law/height-and-weight-protections.page"
+        }
+      ]
+    },
+    {
+      "id": "timeline",
+      "type": "parallax_vertical",
+      "subtype": "timeline",
+      "position": 4,
+      "content": {
+        "title": "Frise Impact",
+        "items": [
+          {
+            "year": "2024",
+            "title": "Première pétition en ligne",
+            "description": "Vous signez. L'Assemblée nous écoute."
+          },
+          {
+            "year": "2025",
+            "title": "Débat parlementaire",
+            "description": "Les députés votent une loi anti-grossophobie."
+          },
+          {
+            "year": "2026",
+            "title": "Protection légale",
+            "description": "Votre poids devient protégé par la loi. Les discriminations coûtent."
+          }
+        ]
+      },
+      "animation": {
+        "type": "parallax_vertical",
+        "scrollDirection": "vertical"
+      }
+    },
+    {
+      "id": "cta-main",
+      "type": "card_block",
+      "subtype": "call_to_action",
+      "position": 5,
+      "content": {
+        "title": "Vous avez 2 minutes.",
+        "text": "Allez sur : petitions.assemblee-nationale.fr/initiatives/i-3867\n\nCliquez. Signez. Partagez à 3 personnes.\n\n50 000 signatures = débat à l'Assemblée. 100 000 = loi votée.\n\nVous êtes au choix : spectateur ou acteur.",
+        "buttons": [
+          {
+            "text": "Signer maintenant",
+            "url": "https://petitions.assemblee-nationale.fr/initiatives/i-3867",
+            "style": "primary"
+          }
+        ]
+      },
+      "sources": [
+        {
+          "type": "official",
+          "title": "Pétition officielle - Assemblée Nationale",
+          "url": "https://petitions.assemblee-nationale.fr/initiatives/i-3867"
+        }
+      ],
+      "animation": {
+        "type": "parallax",
+        "speed": "faster"
+      }
+    },
+    {
+      "id": "popups",
+      "type": "popup_group",
+      "position": 6,
+      "content": {
+        "popups": [
+          {
+            "id": "popup-1",
+            "trigger": "scroll_50",
+            "message": "Vous hésitez ? 63 % des adultes gros se sentent jugés. Changez ça pour eux.",
+            "button": {
+              "text": "Signer maintenant",
+              "action": "scroll_to_cta"
+            }
+          },
+          {
+            "id": "popup-2",
+            "trigger": "after_signature",
+            "message": "Vous avez signé ? Merci. Partagez avec 1 ami.",
+            "button": {
+              "text": "Copier le lien",
+              "action": "copy_link"
+            }
+          },
+          {
+            "id": "popup-3",
+            "trigger": "time_30s",
+            "message": "Besoin d'aide ? On explique tout dans la FAQ.",
+            "button": {
+              "text": "Voir FAQ",
+              "action": "open_faq"
+            }
+          }
+        ]
+      }
+    },
+    {
+      "id": "what-changes",
+      "type": "text_block",
+      "subtype": "paragraph",
+      "position": 7,
+      "content": {
+        "title": "Ce que change votre signature",
+        "text": "Votre signature force le gouvernement à débattre. Elle crée un dossier officiel. Elle inspire d'autres régions. Elle montre que 100 000 Français refusent la grossophobie.\n\nLes lois changent quand les gens agissent. Vous agissez maintenant."
+      }
+    },
+    {
+      "id": "objections",
+      "type": "card_block",
+      "subtype": "faq",
+      "position": 8,
+      "content": {
+        "title": "Objections courantes",
+        "items": [
+          {
+            "question": "Mon poids, c'est mon problème",
+            "answer": "Faux. La discrimination à l'emploi, c'est du vol. L'exclusion des soins, c'est du danger public."
+          },
+          {
+            "question": "Ça ne changera rien",
+            "answer": "New York a changé en 2023. Minneapolis en 2025. La France suivra si vous signez."
+          },
+          {
+            "question": "Je n'ai pas le temps",
+            "answer": "2 minutes. C'est moins qu'un café. Vous décidez : 2 minutes ou laisser 47 % des Français jugés sur leur poids."
+          }
+        ]
+      },
+      "animation": {
+        "type": "parallax",
+        "speed": "slower"
+      }
+    },
+    {
+      "id": "testimonials",
+      "type": "parallax_horizontal",
+      "subtype": "testimonials",
+      "position": 9,
+      "content": {
+        "title": "Témoignages",
+        "items": [
+          {
+            "quote": "On m'a refusé un emploi à cause de mon poids. Rien ne m'a protégée.",
+            "author": "Sophie, 34 ans",
+            "image": null
+          },
+          {
+            "quote": "Mon médecin refuse de m'écouter. Il dit juste : \"Maigris\".",
+            "author": "Marc, 41 ans",
+            "image": null
+          },
+          {
+            "quote": "À 9 ans, ma fille restreint son alimentation par peur du jugement.",
+            "author": "Julie, mère",
+            "image": null
+          }
+        ]
+      },
+      "animation": {
+        "type": "parallax_horizontal",
+        "speeds": ["slower", "faster", "slower"]
+      }
+    },
+    {
+      "id": "resources",
+      "type": "text_block",
+      "subtype": "paragraph",
+      "position": 10,
+      "content": {
+        "title": "Ressources & Aide",
+        "text": "Besoin de preuves ? Consultez les études de l'APA, de la Ligue contre l'obésité, d'ÉquiLibre.\n\nVous avez une question légale ? Contact : [email support]\n\nVous voulez partager votre histoire ? Écrivez nous. Les témoignages renforcent la pétition."
+      },
+      "sources": [
+        {
+          "type": "organization",
+          "title": "American Psychological Association - Weight Stigma",
+          "url": "https://www.apa.org/topics/obesity/weight-stigma"
+        },
+        {
+          "type": "organization",
+          "title": "Ligue contre l'obésité",
+          "url": "https://www.liguecontrelobesite.org"
+        },
+        {
+          "type": "organization",
+          "title": "ÉquiLibre - Groupe d'action sur le poids",
+          "url": "https://equilibre.ca"
+        }
+      ]
+    },
+    {
+      "id": "footer",
+      "type": "text_block",
+      "subtype": "footer",
+      "position": 11,
+      "content": {
+        "title": "La grossophobie est la dernière discrimination tolérée.",
+        "text": "Signez. Partagez. Agissez.\n\nVotre pétition devient loi que si vous la faites connaitre.\n\nLien direct : petitions.assemblee-nationale.fr/initiatives/i-3867\n\nMerci d'être du côté de la justice."
+      },
+      "sources": [
+        {
+          "type": "official",
+          "title": "Pétition officielle",
+          "url": "https://petitions.assemblee-nationale.fr/initiatives/i-3867"
+        }
+      ]
+    }
+  ]
+}

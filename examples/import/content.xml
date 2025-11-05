@@ -1,0 +1,261 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<content>
+  <metadata>
+    <title>Pétition contre la grossophobie</title>
+    <description>Campagne pour une loi anti-discrimination</description>
+    <version>1.0</version>
+    <created>2024-11-05</created>
+  </metadata>
+
+  <blocks>
+    <!-- HERO BLOCK -->
+    <block id="hero" type="text_block" subtype="hero" position="1">
+      <content>
+        <title>La grossophobie tue. Elle détruit. Elle exclut.</title>
+        <text>Elle augmente le risque de décès de 60 %. Elle coûte 37 % d'emplois aux personnes grosses. Elle pousse 50 % de ses victimes vers la dépression.
+
+La France doit agir. Votre signature change les lois. Rejoignez 50 000+ citoyens. Signez la pétition.</text>
+        <style>hero</style>
+      </content>
+      <sources>
+        <source type="study">
+          <title>Impact of weight stigma on mortality</title>
+          <url>https://www.example.com/study-mortality-weight-stigma</url>
+        </source>
+        <source type="report">
+          <title>Employment discrimination based on weight</title>
+          <url>https://www.example.com/employment-discrimination</url>
+        </source>
+      </sources>
+    </block>
+
+    <!-- STATS CARD -->
+    <block id="stats-1" type="card_block" subtype="stats" position="2">
+      <content>
+        <title>Chiffres clés</title>
+        <stats>
+          <stat>
+            <value>66%</value>
+            <label>d'augmentation des discriminations liées au poids en 10 ans</label>
+          </stat>
+          <stat>
+            <value>70%</value>
+            <label>des soignants ont des biais envers les patients gros</label>
+          </stat>
+          <stat>
+            <value>63%</value>
+            <label>des adultes obèses rapportent une stigmatisation élevée</label>
+          </stat>
+        </stats>
+      </content>
+      <sources>
+        <source type="statistical_report">
+          <title>Évolution des discriminations en France 2014-2024</title>
+          <url>https://www.example.com/stats-discrimination-evolution</url>
+        </source>
+        <source type="medical_study">
+          <title>Healthcare provider bias study</title>
+          <url>https://www.example.com/healthcare-bias-study</url>
+        </source>
+      </sources>
+      <animation type="parallax" speed="slower"/>
+    </block>
+
+    <!-- TEXT PARAGRAPH -->
+    <block id="why-petition" type="text_block" subtype="paragraph" position="3">
+      <content>
+        <title>Pourquoi cette pétition ?</title>
+        <text>Vous êtes discriminé au travail à cause de votre poids. Votre médecin ne vous écoute pas. Vos enfants se font harceler à l'école. Ces situations sont légales en France.
+
+Cette pétition demande au gouvernement une loi anti-discrimination spécifique, comme existe aux États-Unis (New York 2023). Elle protège votre emploi, votre accès aux soins, votre dignité.</text>
+      </content>
+      <sources>
+        <source type="legislation">
+          <title>NYC Local Law 19 of 2023</title>
+          <url>https://www.nyc.gov/site/cchr/law/height-and-weight-protections.page</url>
+        </source>
+      </sources>
+    </block>
+
+    <!-- VERTICAL PARALLAX TIMELINE -->
+    <block id="timeline" type="parallax_vertical" subtype="timeline" position="4">
+      <content>
+        <title>Frise Impact</title>
+        <items>
+          <item>
+            <year>2024</year>
+            <title>Première pétition en ligne</title>
+            <description>Vous signez. L'Assemblée nous écoute.</description>
+          </item>
+          <item>
+            <year>2025</year>
+            <title>Débat parlementaire</title>
+            <description>Les députés votent une loi anti-grossophobie.</description>
+          </item>
+          <item>
+            <year>2026</year>
+            <title>Protection légale</title>
+            <description>Votre poids devient protégé par la loi. Les discriminations coûtent.</description>
+          </item>
+        </items>
+      </content>
+      <animation type="parallax_vertical" scrollDirection="vertical"/>
+    </block>
+
+    <!-- CALL TO ACTION CARD -->
+    <block id="cta-main" type="card_block" subtype="call_to_action" position="5">
+      <content>
+        <title>Vous avez 2 minutes.</title>
+        <text>Allez sur : petitions.assemblee-nationale.fr/initiatives/i-3867
+
+Cliquez. Signez. Partagez à 3 personnes.
+
+50 000 signatures = débat à l'Assemblée. 100 000 = loi votée.
+
+Vous êtes au choix : spectateur ou acteur.</text>
+        <buttons>
+          <button style="primary">
+            <text>Signer maintenant</text>
+            <url>https://petitions.assemblee-nationale.fr/initiatives/i-3867</url>
+          </button>
+        </buttons>
+      </content>
+      <sources>
+        <source type="official">
+          <title>Pétition officielle - Assemblée Nationale</title>
+          <url>https://petitions.assemblee-nationale.fr/initiatives/i-3867</url>
+        </source>
+      </sources>
+      <animation type="parallax" speed="faster"/>
+    </block>
+
+    <!-- POPUP GROUP -->
+    <block id="popups" type="popup_group" position="6">
+      <content>
+        <popups>
+          <popup id="popup-1" trigger="scroll_50">
+            <message>Vous hésitez ? 63 % des adultes gros se sentent jugés. Changez ça pour eux.</message>
+            <button action="scroll_to_cta">
+              <text>Signer maintenant</text>
+            </button>
+          </popup>
+          <popup id="popup-2" trigger="after_signature">
+            <message>Vous avez signé ? Merci. Partagez avec 1 ami.</message>
+            <button action="copy_link">
+              <text>Copier le lien</text>
+            </button>
+          </popup>
+          <popup id="popup-3" trigger="time_30s">
+            <message>Besoin d'aide ? On explique tout dans la FAQ.</message>
+            <button action="open_faq">
+              <text>Voir FAQ</text>
+            </button>
+          </popup>
+        </popups>
+      </content>
+    </block>
+
+    <!-- TEXT PARAGRAPH -->
+    <block id="what-changes" type="text_block" subtype="paragraph" position="7">
+      <content>
+        <title>Ce que change votre signature</title>
+        <text>Votre signature force le gouvernement à débattre. Elle crée un dossier officiel. Elle inspire d'autres régions. Elle montre que 100 000 Français refusent la grossophobie.
+
+Les lois changent quand les gens agissent. Vous agissez maintenant.</text>
+      </content>
+    </block>
+
+    <!-- FAQ CARD -->
+    <block id="objections" type="card_block" subtype="faq" position="8">
+      <content>
+        <title>Objections courantes</title>
+        <items>
+          <item>
+            <question>Mon poids, c'est mon problème</question>
+            <answer>Faux. La discrimination à l'emploi, c'est du vol. L'exclusion des soins, c'est du danger public.</answer>
+          </item>
+          <item>
+            <question>Ça ne changera rien</question>
+            <answer>New York a changé en 2023. Minneapolis en 2025. La France suivra si vous signez.</answer>
+          </item>
+          <item>
+            <question>Je n'ai pas le temps</question>
+            <answer>2 minutes. C'est moins qu'un café. Vous décidez : 2 minutes ou laisser 47 % des Français jugés sur leur poids.</answer>
+          </item>
+        </items>
+      </content>
+      <animation type="parallax" speed="slower"/>
+    </block>
+
+    <!-- HORIZONTAL PARALLAX TESTIMONIALS -->
+    <block id="testimonials" type="parallax_horizontal" subtype="testimonials" position="9">
+      <content>
+        <title>Témoignages</title>
+        <items>
+          <item speed="slower">
+            <quote>On m'a refusé un emploi à cause de mon poids. Rien ne m'a protégée.</quote>
+            <author>Sophie, 34 ans</author>
+            <image>null</image>
+          </item>
+          <item speed="faster">
+            <quote>Mon médecin refuse de m'écouter. Il dit juste : "Maigris".</quote>
+            <author>Marc, 41 ans</author>
+            <image>null</image>
+          </item>
+          <item speed="slower">
+            <quote>À 9 ans, ma fille restreint son alimentation par peur du jugement.</quote>
+            <author>Julie, mère</author>
+            <image>null</image>
+          </item>
+        </items>
+      </content>
+      <animation type="parallax_horizontal"/>
+    </block>
+
+    <!-- RESOURCES TEXT -->
+    <block id="resources" type="text_block" subtype="paragraph" position="10">
+      <content>
+        <title>Ressources &amp; Aide</title>
+        <text>Besoin de preuves ? Consultez les études de l'APA, de la Ligue contre l'obésité, d'ÉquiLibre.
+
+Vous avez une question légale ? Contact : [email support]
+
+Vous voulez partager votre histoire ? Écrivez nous. Les témoignages renforcent la pétition.</text>
+      </content>
+      <sources>
+        <source type="organization">
+          <title>American Psychological Association - Weight Stigma</title>
+          <url>https://www.apa.org/topics/obesity/weight-stigma</url>
+        </source>
+        <source type="organization">
+          <title>Ligue contre l'obésité</title>
+          <url>https://www.liguecontrelobesite.org</url>
+        </source>
+        <source type="organization">
+          <title>ÉquiLibre - Groupe d'action sur le poids</title>
+          <url>https://equilibre.ca</url>
+        </source>
+      </sources>
+    </block>
+
+    <!-- FOOTER -->
+    <block id="footer" type="text_block" subtype="footer" position="11">
+      <content>
+        <title>La grossophobie est la dernière discrimination tolérée.</title>
+        <text>Signez. Partagez. Agissez.
+
+Votre pétition devient loi que si vous la faites connaitre.
+
+Lien direct : petitions.assemblee-nationale.fr/initiatives/i-3867
+
+Merci d'être du côté de la justice.</text>
+      </content>
+      <sources>
+        <source type="official">
+          <title>Pétition officielle</title>
+          <url>https://petitions.assemblee-nationale.fr/initiatives/i-3867</url>
+        </source>
+      </sources>
+    </block>
+  </blocks>
+</content>
