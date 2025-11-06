@@ -233,6 +233,122 @@ body {
   transform: translateY(-1px);
 }
 
+/* ============================================
+   BREADCRUMBS & TABLE OF CONTENTS
+   ============================================ */
+
+/* Breadcrumbs */
+.breadcrumb {
+  background: var(--bg-white);
+  padding: 0.8rem 2rem;
+  border-bottom: 2px solid var(--card-border);
+  position: sticky;
+  top: 60px;
+  z-index: 900;
+  box-shadow: 0 2px 8px var(--card-shadow);
+}
+
+.breadcrumb ol {
+  display: flex;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+  align-items: center;
+  font-size: 0.9rem;
+  max-width: 1400px;
+  margin: 0 auto;
+}
+
+.breadcrumb li {
+  display: flex;
+  align-items: center;
+}
+
+.breadcrumb li:not(:last-child)::after {
+  content: "›";
+  margin-left: 0.5rem;
+  color: var(--text-muted);
+}
+
+.breadcrumb a {
+  color: var(--text-medium);
+  text-decoration: none;
+  transition: color 0.3s ease;
+}
+
+.breadcrumb a:hover {
+  color: var(--primary-color);
+}
+
+.breadcrumb li[aria-current="page"] {
+  color: var(--text-dark);
+  font-weight: 600;
+}
+
+/* Table of Contents */
+.table-of-contents {
+  position: fixed;
+  right: 2rem;
+  top: 50%;
+  transform: translateY(-50%);
+  background: var(--card-bg);
+  padding: 1.5rem;
+  border-radius: 16px;
+  border: 2px solid var(--card-border);
+  max-width: 280px;
+  z-index: 800;
+  box-shadow: 0 8px 25px var(--card-shadow-hover);
+  max-height: 70vh;
+  overflow-y: auto;
+}
+
+.table-of-contents h2 {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin-bottom: 1rem;
+  padding-bottom: 0.8rem;
+  border-bottom: 2px solid var(--primary-color);
+}
+
+.table-of-contents nav ul {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.table-of-contents nav li {
+  margin: 0.5rem 0;
+}
+
+.table-of-contents nav a {
+  color: var(--text-medium);
+  text-decoration: none;
+  font-size: 0.9rem;
+  line-height: 1.6;
+  display: block;
+  padding: 0.4rem 0;
+  transition: all 0.3s ease;
+  border-left: 3px solid transparent;
+  padding-left: 0.8rem;
+}
+
+.table-of-contents nav a:hover {
+  color: var(--primary-color);
+  border-left-color: var(--primary-color);
+  transform: translateX(5px);
+}
+
+.table-of-contents::-webkit-scrollbar {
+  width: 4px;
+}
+
+.table-of-contents::-webkit-scrollbar-thumb {
+  background: var(--primary-color);
+  border-radius: 2px;
+}
+
 /* Navigation */
 #main-nav {
   position: fixed;
@@ -1358,6 +1474,15 @@ body {
   .btn-petition-modal {
     padding: 0.9rem 1.5rem;
     font-size: 0.95rem;
+  }
+
+  /* Masquer TOC et Breadcrumbs sur mobile */
+  .table-of-contents {
+    display: none;
+  }
+
+  .breadcrumb {
+    display: none;
   }
 
   /* Autres ajustements mobile */
