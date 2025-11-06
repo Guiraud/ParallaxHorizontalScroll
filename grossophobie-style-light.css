@@ -1503,43 +1503,59 @@ body {
 
   /* Modal optimisée pour mobile */
   .modal-content {
-    padding: 1.5rem;
+    padding: 1rem;
     max-width: 95%;
-    max-height: 90vh;
+    max-height: 85vh;
     overflow-y: auto;
   }
 
   .modal-content h2 {
-    font-size: 1.3rem;
+    font-size: 1.1rem;
+    margin-bottom: 0.8rem;
   }
 
   .modal-content p {
-    font-size: 0.9rem;
+    font-size: 0.8rem;
+    margin-bottom: 0.5rem;
+  }
+
+  #trigger-warning-text {
+    font-size: 0.8rem;
+    line-height: 1.4;
+    margin-bottom: 0.8rem;
   }
 
   .modal-actions {
     flex-direction: column;
-    gap: 0.8rem;
+    gap: 0.6rem;
+    margin-top: 1rem;
   }
 
   .btn-primary, .btn-secondary {
     min-width: 100%;
-    padding: 0.9rem 1.5rem;
-    font-size: 0.95rem;
-  }
-
-  .helpline-info {
+    padding: 0.7rem 1rem;
     font-size: 0.85rem;
   }
 
-  .modal-petition {
+  .helpline-info {
+    font-size: 0.75rem;
     margin-top: 1rem;
-    padding-top: 1rem;
+    padding: 0.8rem;
+  }
+
+  .helpline-info p {
+    font-size: 0.75rem;
+    margin-bottom: 0.3rem;
+  }
+
+  .modal-petition {
+    margin-top: 0.8rem;
+    padding-top: 0.8rem;
   }
 
   .btn-petition-modal {
-    padding: 0.9rem 1.5rem;
-    font-size: 0.95rem;
+    padding: 0.7rem 1rem;
+    font-size: 0.85rem;
   }
 
   /* Masquer TOC et Breadcrumbs sur mobile */
