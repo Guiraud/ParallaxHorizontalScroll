@@ -47,8 +47,11 @@
         </div>
 
         <nav class="sidebar-nav">
-          <a href="#" class="nav-item active" data-section="editor">
-            <i class="fas fa-edit"></i> Éditeur
+          <a href="#" class="nav-item" data-section="themes">
+            <i class="fas fa-palette"></i> Éditer Thèmes
+          </a>
+          <a href="#" class="nav-item" data-section="editor">
+            <i class="fas fa-edit"></i> Builder
           </a>
           <a href="#" class="nav-item" data-section="preview">
             <i class="fas fa-eye"></i> Prévisualisation
@@ -71,8 +74,53 @@
       <!-- Main Content -->
       <main class="main-content">
 
+        <!-- Themes Editor Section -->
+        <section id="themes-section" class="content-section active">
+          <div class="section-header">
+            <h2><i class="fas fa-palette"></i> Éditer les Thèmes</h2>
+            <div class="header-actions">
+              <button id="open-in-builder-btn" class="btn btn-primary">
+                <i class="fas fa-edit"></i> Ouvrir dans Builder
+              </button>
+              <button id="preview-theme-btn" class="btn btn-secondary">
+                <i class="fas fa-eye"></i> Prévisualiser
+              </button>
+              <button id="download-theme-btn" class="btn btn-success">
+                <i class="fas fa-download"></i> Télécharger JSON
+              </button>
+            </div>
+          </div>
+
+          <div class="themes-layout">
+            <div class="themes-selector">
+              <h3>Sélectionner un thème</h3>
+              <div class="theme-buttons">
+                <button class="btn btn-primary btn-full theme-load-btn" data-theme="grossophobie">
+                  <i class="fas fa-heart"></i> Grossophobie
+                </button>
+                <button class="btn btn-primary btn-full theme-load-btn" data-theme="consentement">
+                  <i class="fas fa-hand-paper"></i> Consentement
+                </button>
+              </div>
+              <div style="margin-top: 1rem;">
+                <label style="display: block; margin-bottom: 0.5rem; font-weight: 600;">Ou charger un fichier JSON :</label>
+                <input type="file" id="upload-theme-json" class="form-control" accept=".json">
+              </div>
+            </div>
+
+            <div class="themes-editor">
+              <div id="theme-editor-container">
+                <div class="empty-state">
+                  <i class="fas fa-palette"></i>
+                  <p>Sélectionnez un thème pour commencer l'édition</p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         <!-- Editor Section -->
-        <section id="editor-section" class="content-section active">
+        <section id="editor-section" class="content-section">
           <div class="section-header">
             <h2><i class="fas fa-edit"></i> Éditeur de Site</h2>
             <div class="header-actions">
@@ -146,10 +194,26 @@
 
             <!-- Right Panel - Block Editor -->
             <div class="editor-panel">
-              <div id="block-editor" class="block-editor-container">
+              <div class="editor-tabs">
+                <button class="tab-btn active" data-tab="edit">
+                  <i class="fas fa-edit"></i> Éditer
+                </button>
+                <button class="tab-btn" data-tab="preview">
+                  <i class="fas fa-eye"></i> Aperçu
+                </button>
+              </div>
+
+              <div id="block-editor" class="block-editor-container tab-content active" data-content="edit">
                 <div class="empty-state">
                   <i class="fas fa-cube"></i>
                   <p>Sélectionnez un bloc pour le modifier</p>
+                </div>
+              </div>
+
+              <div id="block-preview" class="block-preview-container tab-content" data-content="preview">
+                <div class="empty-state">
+                  <i class="fas fa-eye"></i>
+                  <p>La prévisualisation apparaîtra ici</p>
                 </div>
               </div>
             </div>

@@ -10,18 +10,23 @@ export async function onRequest(context) {
   const pathParts = url.pathname.split('/').filter(p => p);
   const themeName = pathParts[0] || 'grossophobie'; // Par défaut: grossophobie
 
-  // Si c'est une requête pour un fichier statique, laisser passer
-  if (themeName.includes('.')) {
-    return context.next();
+  // Si c'est une requête pour un fichier statique (json, css, js, html, etc), laisser passer
+  if (themeName.includes('.') || url.pathname.endsWith('.json') || url.pathname.endsWith('.css') || url.pathname.endsWith('.js') || url.pathname.endsWith('.html')) {
+    return env.ASSETS.fetch(request);
+  }
+
+  // Routes spéciales qui doivent servir leurs propres fichiers HTML
+  if (themeName === 'admin' || themeName === 'admin-grossophobie') {
+    return env.ASSETS.fetch(new URL(`/${themeName}.html`, url.origin));
   }
 
   // Charger le fichier JSON correspondant
   const jsonFileName = `${themeName}.json`;
 
   try {
-    // Récupérer le fichier JSON depuis le même domaine
+    // Récupérer le fichier JSON directement depuis les assets
     const jsonUrl = new URL(`/${jsonFileName}`, url.origin);
-    const jsonResponse = await fetch(jsonUrl.toString());
+    const jsonResponse = await env.ASSETS.fetch(jsonUrl);
 
     if (!jsonResponse.ok) {
       return new Response(`Theme "${themeName}" not found. Available themes: grossophobie, consentement`, {
@@ -32,9 +37,9 @@ export async function onRequest(context) {
 
     const jsonData = await jsonResponse.json();
 
-    // Charger le template HTML
+    // Charger le template HTML directement depuis les assets
     const htmlUrl = new URL('/template.html', url.origin);
-    const htmlResponse = await fetch(htmlUrl.toString());
+    const htmlResponse = await env.ASSETS.fetch(htmlUrl);
     let html = await htmlResponse.text();
 
     // Injecter les données JSON dans le HTML

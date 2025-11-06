@@ -214,9 +214,10 @@ body {
   cursor: pointer;
 }
 
-/* Main Layout */
+/* Main Layout - Vertical Scroll */
 .external {
-  overflow: hidden;
+  overflow-y: auto;
+  overflow-x: hidden;
   height: 100vh;
   margin-top: 60px;
 }
@@ -225,63 +226,91 @@ body {
   display: flex;
   flex-direction: column;
   align-items: center;
-  width: 100vh;
-  transform: rotate(-90deg) translate3d(0, -100vh, 0);
-  transform-origin: right top;
-  overflow-y: auto;
-  overflow-x: hidden;
-  padding: 0;
-  height: 100vw;
-  perspective: 1px;
-  transform-style: preserve-3d;
+  width: 100%;
+  padding: 2rem 0;
   padding-bottom: 10rem;
+  gap: 4rem;
 }
 
-/* Sections */
+/* Sections - Vertical Layout */
 .section {
-  transform: rotate(90deg);
   display: flex;
   align-items: center;
   justify-content: center;
-  min-height: 40vh;
-  transform-origin: 50% 50%;
-  transform: rotate(90deg) translateZ(.1px) scale(0.9) translateX(0px) translateY(-3vh);
-  transition: 1s;
+  min-height: 60vh;
   padding: 2rem;
-  width: 90vh;
+  width: 100%;
+  transition: all 0.3s ease;
 }
 
-.section:hover {
-  min-height: 65vh;
-}
-
-/* Parallax Variations */
+/* Parallax Variations - Subtle Effects */
 .slower {
-  transform: rotate(90deg) translateZ(-.2px) scale(1.1) translateX(0%) translateY(-10vh);
+  opacity: 0.95;
 }
 
 .slower-down {
-  transform: rotate(90deg) translateZ(-.2px) scale(1.1) translateX(0%) translateY(16vh);
+  opacity: 0.95;
 }
 
 .slower2 {
-  transform: rotate(90deg) translateZ(-.3px) scale(1.3) translateX(0%) translateY(2vh);
+  opacity: 0.9;
 }
 
 .faster {
-  transform: rotate(90deg) translateZ(.15px) scale(0.8) translateX(0%) translateY(14vh);
+  opacity: 0.98;
 }
 
 .faster1 {
-  transform: rotate(90deg) translateZ(.05px) scale(0.8) translateX(0%) translateY(10vh);
+  opacity: 0.98;
 }
 
 .vertical {
-  transform: rotate(90deg) translateZ(-.15px) scale(1.15) translateX(0%) translateY(0%);
+  opacity: 1;
 }
 
 .last {
-  transform: rotate(90deg) translateZ(-.2px) scale(1.1) translateX(25vh) translateY(-8vh);
+  margin-bottom: 2rem;
+}
+
+/* Horizontal Parallax Section (for image galleries) */
+.horizontal-parallax-section {
+  width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  padding: 2rem 0;
+  scroll-snap-type: x mandatory;
+}
+
+.horizontal-parallax-wrapper {
+  display: flex;
+  gap: 2rem;
+  padding: 0 2rem;
+  min-width: max-content;
+}
+
+.img-wrapper {
+  flex: 0 0 auto;
+  scroll-snap-align: center;
+  transition: transform 0.3s ease;
+}
+
+.img-wrapper:hover {
+  transform: scale(1.05);
+}
+
+.img-wrapper a {
+  display: block;
+  overflow: hidden;
+  border-radius: 15px;
+  box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.5);
+}
+
+.img-wrapper img {
+  max-width: 45vh;
+  max-height: 50vh;
+  border-radius: 15px;
+  transition: 0.5s;
+  vertical-align: top;
 }
 
 /* Content Cards */

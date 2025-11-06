@@ -231,6 +231,7 @@ function editBlock(index) {
   appState.selectedBlockIndex = index;
   const block = appState.siteData.blocks[index];
   renderBlockEditor(block);
+  renderBlockPreview(block);
   renderBlocksList();
 }
 
@@ -426,7 +427,120 @@ function clearBlockEditor() {
       <p>Sélectionnez un bloc pour le modifier</p>
     </div>
   `;
+
+  const preview = document.getElementById('block-preview');
+  preview.innerHTML = `
+    <div class="empty-state">
+      <i class="fas fa-eye"></i>
+      <p>La prévisualisation apparaîtra ici</p>
+    </div>
+  `;
 }
+
+// Render block preview
+function renderBlockPreview(block) {
+  const preview = document.getElementById('block-preview');
+  let previewHTML = '';
+
+  switch(block.type) {
+    case 'text':
+      previewHTML = `
+        <div class="block-preview-content">
+          <h3 style="color: #6366f1; margin-bottom: 1rem;">${block.title}</h3>
+          ${block.content || '<p>Aucun contenu</p>'}
+        </div>
+      `;
+      break;
+
+    case 'parallax-horizontal':
+      previewHTML = `
+        <div class="block-preview-content">
+          <h3 style="color: #6366f1; margin-bottom: 1rem;">${block.title}</h3>
+          <div style="display: flex; gap: 1rem; overflow-x: auto; padding: 1rem 0;">
+            ${block.images.map(img => `
+              <div style="flex: 0 0 auto;">
+                <img src="${img.url}" alt="${img.alt}" style="width: 200px; height: 150px; object-fit: cover; border-radius: 8px;">
+                <p style="font-size: 0.8rem; margin-top: 0.5rem;">${img.alt}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      break;
+
+    case 'box':
+      previewHTML = `
+        <div class="block-preview-content" style="background: ${block.bgColor || '#f0f0f0'}; border: 2px solid ${block.borderColor || '#333'};">
+          <h3 style="color: #6366f1; margin-bottom: 1rem;">${block.title}</h3>
+          ${block.content || '<p>Aucun contenu</p>'}
+        </div>
+      `;
+      break;
+
+    case 'timeline':
+      previewHTML = `
+        <div class="block-preview-content">
+          <h3 style="color: #6366f1; margin-bottom: 1rem;">${block.title}</h3>
+          <div style="display: flex; flex-direction: column; gap: 1.5rem;">
+            ${block.items.map(item => `
+              <div style="display: flex; gap: 1rem; border-left: 3px solid #6366f1; padding-left: 1rem;">
+                <div style="flex: 0 0 100px; font-weight: bold; color: #6366f1;">${item.year}</div>
+                <div style="flex: 1;">
+                  <h4 style="margin: 0 0 0.5rem 0;">${item.title}</h4>
+                  <p style="margin: 0; color: #666;">${item.description}</p>
+                </div>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      break;
+
+    case 'popup':
+      previewHTML = `
+        <div class="block-preview-content">
+          <h3 style="color: #6366f1; margin-bottom: 1rem;">${block.title}</h3>
+          <div style="display: grid; gap: 1rem;">
+            ${block.messages.map(msg => `
+              <div style="padding: 1rem; background: #f0f0f0; border-radius: 8px; border-left: 4px solid #6366f1;">
+                <strong>${msg.title}</strong>
+                <p style="margin: 0.5rem 0 0 0;">${msg.content}</p>
+              </div>
+            `).join('')}
+          </div>
+        </div>
+      `;
+      break;
+
+    default:
+      previewHTML = `
+        <div class="block-preview-content">
+          <h3 style="color: #6366f1; margin-bottom: 1rem;">${block.title}</h3>
+          <p>Type de bloc: ${block.type}</p>
+        </div>
+      `;
+  }
+
+  preview.innerHTML = previewHTML;
+}
+
+// Tab navigation
+document.addEventListener('click', (e) => {
+  if (e.target.closest('.tab-btn')) {
+    const btn = e.target.closest('.tab-btn');
+    const tab = btn.dataset.tab;
+
+    // Update active tab button
+    document.querySelectorAll('.tab-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+
+    // Update active content
+    document.querySelectorAll('.tab-content').forEach(content => {
+      content.classList.remove('active');
+    });
+    document.querySelector(`[data-content="${tab}"]`).classList.add('active');
+  }
+});
 
 function attachBlockEditorEvents() {
   const blockTitle = document.querySelector('.block-title');
@@ -439,6 +553,7 @@ function attachBlockEditorEvents() {
     blockTitle.addEventListener('input', (e) => {
       appState.siteData.blocks[appState.selectedBlockIndex].title = e.target.value;
       renderBlocksList();
+      renderBlockPreview(appState.siteData.blocks[appState.selectedBlockIndex]);
       saveToLocalStorage();
     });
   }
@@ -446,6 +561,7 @@ function attachBlockEditorEvents() {
   if (blockContent) {
     blockContent.addEventListener('input', (e) => {
       appState.siteData.blocks[appState.selectedBlockIndex].content = e.target.value;
+      renderBlockPreview(appState.siteData.blocks[appState.selectedBlockIndex]);
       saveToLocalStorage();
     });
   }
@@ -453,6 +569,7 @@ function attachBlockEditorEvents() {
   if (blockBgColor) {
     blockBgColor.addEventListener('change', (e) => {
       appState.siteData.blocks[appState.selectedBlockIndex].bgColor = e.target.value;
+      renderBlockPreview(appState.siteData.blocks[appState.selectedBlockIndex]);
       saveToLocalStorage();
     });
   }
@@ -460,6 +577,7 @@ function attachBlockEditorEvents() {
   if (blockBorderColor) {
     blockBorderColor.addEventListener('change', (e) => {
       appState.siteData.blocks[appState.selectedBlockIndex].borderColor = e.target.value;
+      renderBlockPreview(appState.siteData.blocks[appState.selectedBlockIndex]);
       saveToLocalStorage();
     });
   }
@@ -467,6 +585,7 @@ function attachBlockEditorEvents() {
   if (blockAlignment) {
     blockAlignment.addEventListener('change', (e) => {
       appState.siteData.blocks[appState.selectedBlockIndex].alignment = e.target.value;
+      renderBlockPreview(appState.siteData.blocks[appState.selectedBlockIndex]);
       saveToLocalStorage();
     });
   }
@@ -1214,6 +1333,342 @@ function loadTemplate(template) {
     alert(`Template "${template.name}" chargé avec succès !`);
   }
 }
+
+// ============================================
+// THEMES EDITOR
+// ============================================
+
+let currentTheme = null;
+let currentThemeName = '';
+let themeSourceFormat = null; // Store original theme structure
+
+// Load theme buttons
+document.querySelectorAll('.theme-load-btn').forEach(btn => {
+  btn.addEventListener('click', async () => {
+    const themeName = btn.dataset.theme;
+    await loadTheme(themeName);
+  });
+});
+
+// Convert theme JSON to builder blocks
+function convertThemeToBlocks(themeData) {
+  const blocks = [];
+  let blockId = 1;
+
+  // Helper to create block
+  const createBlock = (type, title, data) => {
+    return { id: blockId++, type, title, ...data };
+  };
+
+  // Analyze theme structure and convert
+  if (themeData.introduction) {
+    blocks.push(createBlock('text', 'Introduction', {
+      content: `<h2>${themeData.introduction.title || 'Introduction'}</h2><p>${themeData.introduction.content || ''}</p>`,
+      alignment: 'left'
+    }));
+
+    // Add statistics if available
+    if (themeData.introduction.statistics) {
+      let statsHTML = '<div style="display: grid; grid-template-columns: 1fr 1fr; gap: 1rem;">';
+      Object.entries(themeData.introduction.statistics).forEach(([key, value]) => {
+        statsHTML += `<div style="padding: 1rem; background: rgba(99, 102, 241, 0.1); border-radius: 8px;"><strong>${key}:</strong> ${value}</div>`;
+      });
+      statsHTML += '</div>';
+      blocks.push(createBlock('text', 'Statistiques', {
+        content: statsHTML,
+        alignment: 'center'
+      }));
+    }
+  }
+
+  // Convert publicCibles/audiences
+  if (themeData.publicCibles && themeData.publicCibles.audiences) {
+    let audiencesHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1.5rem;">';
+    themeData.publicCibles.audiences.forEach(audience => {
+      audiencesHTML += `
+        <div style="padding: 1.5rem; background: rgba(30, 41, 59, 0.5); border-radius: 12px; border: 1px solid rgba(99, 102, 241, 0.3);">
+          <div style="font-size: 2rem; margin-bottom: 0.5rem;">${audience.icon || '👥'}</div>
+          <h3 style="margin-bottom: 0.5rem;">${audience.name}</h3>
+          <p style="color: #cbd5e1;">${audience.message || ''}</p>
+        </div>
+      `;
+    });
+    audiencesHTML += '</div>';
+    blocks.push(createBlock('text', 'Publics Cibles', {
+      content: audiencesHTML,
+      alignment: 'center'
+    }));
+  }
+
+  // Convert arguments
+  if (themeData.arguments && themeData.arguments.items) {
+    let argsHTML = '<div style="display: grid; gap: 1rem;">';
+    themeData.arguments.items.forEach(arg => {
+      argsHTML += `
+        <div style="padding: 1.5rem; background: rgba(30, 41, 59, 0.5); border-radius: 12px; border-left: 4px solid #6366f1;">
+          <h4 style="margin-bottom: 0.5rem;">${arg.id}. ${arg.title}</h4>
+          <p style="color: #cbd5e1; margin-bottom: 0.5rem;">${arg.impact || ''}</p>
+          ${arg.statUS ? `<p style="font-size: 0.9rem;">🇺🇸 ${arg.statUS}</p>` : ''}
+          ${arg.statFrance ? `<p style="font-size: 0.9rem;">🇫🇷 ${arg.statFrance}</p>` : ''}
+        </div>
+      `;
+    });
+    argsHTML += '</div>';
+    blocks.push(createBlock('text', 'Arguments', {
+      content: argsHTML,
+      alignment: 'left'
+    }));
+  }
+
+  // Convert phrases discriminantes
+  if (themeData.phrasesDiscriminantes && themeData.phrasesDiscriminantes.items) {
+    let phrasesHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1rem;">';
+    themeData.phrasesDiscriminantes.items.forEach(phrase => {
+      phrasesHTML += `
+        <div style="padding: 1.5rem; background: rgba(239, 68, 68, 0.1); border-radius: 12px; border: 1px solid rgba(239, 68, 68, 0.3);">
+          <p style="font-style: italic; margin-bottom: 1rem;">"${phrase.phrase}"</p>
+          <p style="color: #10b981; font-weight: 600;">✓ ${phrase.dementi}</p>
+        </div>
+      `;
+    });
+    phrasesHTML += '</div>';
+    blocks.push(createBlock('text', 'Phrases Discriminantes', {
+      content: phrasesHTML,
+      alignment: 'left'
+    }));
+  }
+
+  // Convert arguments positifs
+  if (themeData.argumentsPositifs && themeData.argumentsPositifs.items) {
+    let posHTML = '<div style="display: grid; gap: 1rem;">';
+    themeData.argumentsPositifs.items.forEach(item => {
+      posHTML += `
+        <div style="padding: 1.5rem; background: rgba(16, 185, 129, 0.1); border-radius: 12px;">
+          <h4 style="margin-bottom: 0.5rem;">${item.title}</h4>
+          <p style="color: #cbd5e1;">${item.description || ''}</p>
+          ${item.impact ? `<p style="color: #10b981; margin-top: 0.5rem;">✨ ${item.impact}</p>` : ''}
+        </div>
+      `;
+    });
+    posHTML += '</div>';
+    blocks.push(createBlock('text', 'Arguments Positifs', {
+      content: posHTML,
+      alignment: 'left'
+    }));
+  }
+
+  // Convert campagnes
+  if (themeData.campagnesEfficaces && themeData.campagnesEfficaces.items) {
+    const timelineItems = themeData.campagnesEfficaces.items.map(camp => ({
+      year: camp.period || '',
+      title: camp.name || '',
+      description: `${camp.description || ''}\n\n${camp.impact ? '📊 Impact: ' + camp.impact : ''}`,
+      image: ''
+    }));
+    blocks.push(createBlock('timeline', 'Campagnes Efficaces', {
+      items: timelineItems
+    }));
+  }
+
+  // Convert ressources
+  if (themeData.ressources) {
+    let ressHTML = '';
+
+    if (themeData.ressources.associations) {
+      ressHTML += '<h3>Associations</h3><ul>';
+      themeData.ressources.associations.forEach(asso => {
+        ressHTML += `<li><strong>${asso.name}</strong> - ${asso.action || ''}</li>`;
+      });
+      ressHTML += '</ul>';
+    }
+
+    if (themeData.ressources.guides) {
+      ressHTML += '<h3>Guides</h3><ul>';
+      themeData.ressources.guides.forEach(guide => {
+        ressHTML += `<li><strong>${guide.titre}</strong> - ${guide.description || ''}</li>`;
+      });
+      ressHTML += '</ul>';
+    }
+
+    if (ressHTML) {
+      blocks.push(createBlock('text', 'Ressources', {
+        content: ressHTML,
+        alignment: 'left'
+      }));
+    }
+  }
+
+  // Convert call to action
+  if (themeData.callToAction && themeData.callToAction.actions) {
+    let ctaHTML = '<div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 1rem;">';
+    themeData.callToAction.actions.forEach(action => {
+      ctaHTML += `
+        <div style="padding: 2rem; text-align: center; background: rgba(99, 102, 241, 0.1); border-radius: 12px; border: 2px solid #6366f1;">
+          <h3 style="margin-bottom: 0.5rem;">${action.titre}</h3>
+          <p style="color: #cbd5e1;">${action.description || ''}</p>
+          ${action.url ? `<a href="${action.url}" style="color: #6366f1;">En savoir plus →</a>` : ''}
+        </div>
+      `;
+    });
+    ctaHTML += '</div>';
+    blocks.push(createBlock('text', 'Appel à l\'action', {
+      content: ctaHTML,
+      alignment: 'center'
+    }));
+  }
+
+  return {
+    title: themeData.meta?.title || 'Mon Site',
+    chapo: themeData.meta?.subtitle || '',
+    blocks: blocks,
+    footer: {
+      content: themeData.footer?.message || '© 2025',
+      bgColor: '#000000'
+    }
+  };
+}
+
+// Load theme from JSON file
+async function loadTheme(themeName) {
+  try {
+    const response = await fetch(`/${themeName}.json`);
+    if (!response.ok) {
+      throw new Error(`Thème "${themeName}" non trouvé`);
+    }
+    currentTheme = await response.json();
+    themeSourceFormat = JSON.parse(JSON.stringify(currentTheme)); // Deep copy
+    currentThemeName = themeName;
+    displayThemeEditor();
+  } catch (error) {
+    alert(`Erreur: ${error.message}`);
+  }
+}
+
+// Display theme editor
+function displayThemeEditor() {
+  const container = document.getElementById('theme-editor-container');
+  container.innerHTML = `
+    <div class="theme-field-group">
+      <h4><i class="fas fa-info-circle"></i> Mode d'édition</h4>
+      <p style="color: var(--text-secondary); margin-bottom: 1rem;">
+        Modifiez directement le JSON ci-dessous. Le format est validé automatiquement.
+      </p>
+    </div>
+    <textarea id="theme-json-editor" spellcheck="false">${JSON.stringify(currentTheme, null, 2)}</textarea>
+  `;
+}
+
+// Upload theme JSON
+document.getElementById('upload-theme-json').addEventListener('change', (e) => {
+  const file = e.target.files[0];
+  if (file) {
+    const reader = new FileReader();
+    reader.onload = (e) => {
+      try {
+        currentTheme = JSON.parse(e.target.result);
+        currentThemeName = file.name.replace('.json', '');
+        displayThemeEditor();
+      } catch (error) {
+        alert('Erreur lors de la lecture du fichier JSON');
+      }
+    };
+    reader.readAsText(file);
+  }
+});
+
+// Download theme JSON
+document.getElementById('download-theme-btn').addEventListener('click', () => {
+  if (!currentTheme) {
+    alert('Aucun thème chargé');
+    return;
+  }
+
+  try {
+    // Get edited JSON from textarea
+    const editor = document.getElementById('theme-json-editor');
+    if (editor) {
+      currentTheme = JSON.parse(editor.value);
+    }
+
+    const dataStr = JSON.stringify(currentTheme, null, 2);
+    const blob = new Blob([dataStr], { type: 'application/json' });
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${currentThemeName}.json`;
+    a.click();
+    URL.revokeObjectURL(url);
+    alert('Thème téléchargé avec succès !');
+  } catch (error) {
+    alert('Erreur dans le JSON. Veuillez vérifier le format.');
+  }
+});
+
+// Open theme in builder
+document.getElementById('open-in-builder-btn').addEventListener('click', () => {
+  if (!currentTheme) {
+    alert('Aucun thème chargé');
+    return;
+  }
+
+  try {
+    // Get edited JSON from textarea
+    const editor = document.getElementById('theme-json-editor');
+    if (editor) {
+      currentTheme = JSON.parse(editor.value);
+      themeSourceFormat = JSON.parse(JSON.stringify(currentTheme)); // Update source
+    }
+
+    // Convert theme to builder format
+    const builderData = convertThemeToBlocks(currentTheme);
+
+    // Load into builder
+    appState.siteData = builderData;
+    document.getElementById('site-title').value = builderData.title;
+    document.getElementById('site-chapo').value = builderData.chapo;
+    document.getElementById('footer-content').value = builderData.footer.content;
+    document.getElementById('footer-bg-color').value = builderData.footer.bgColor;
+
+    // Render blocks
+    renderBlocksList();
+    clearBlockEditor();
+
+    // Switch to builder section
+    document.querySelectorAll('.nav-item').forEach(nav => nav.classList.remove('active'));
+    document.querySelector('[data-section="editor"]').classList.add('active');
+    document.querySelectorAll('.content-section').forEach(sec => sec.classList.remove('active'));
+    document.getElementById('editor-section').classList.add('active');
+
+    // Save to localStorage
+    saveToLocalStorage();
+
+    alert(`Thème "${currentThemeName}" converti et ouvert dans le builder !`);
+  } catch (error) {
+    console.error(error);
+    alert('Erreur lors de la conversion du thème. Vérifiez le format JSON.');
+  }
+});
+
+// Preview theme
+document.getElementById('preview-theme-btn').addEventListener('click', () => {
+  if (!currentTheme) {
+    alert('Aucun thème chargé');
+    return;
+  }
+
+  try {
+    // Get edited JSON from textarea
+    const editor = document.getElementById('theme-json-editor');
+    if (editor) {
+      currentTheme = JSON.parse(editor.value);
+    }
+
+    // Open preview in new tab
+    window.open(`/${currentThemeName}`, '_blank');
+  } catch (error) {
+    alert('Erreur dans le JSON. Veuillez vérifier le format.');
+  }
+});
 
 // Initialize
 document.addEventListener('DOMContentLoaded', () => {

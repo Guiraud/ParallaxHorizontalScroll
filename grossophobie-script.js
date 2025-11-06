@@ -109,6 +109,8 @@ function renderAllSections() {
 function renderHero() {
   $('#main-title').text(data.meta.title);
   $('#main-subtitle').text(data.meta.subtitle);
+  // Update navigation title
+  $('#nav-title').text(data.meta.title || '');
 }
 
 // Rendu des images parallax
