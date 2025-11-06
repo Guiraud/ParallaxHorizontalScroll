@@ -9,6 +9,7 @@ let safeMode = false;
 $(document).ready(function() {
   loadData();
   setupEventListeners();
+  initThemeToggle();
 });
 
 // Chargement du fichier JSON (dynamique depuis Cloudflare ou fichier local)
@@ -485,6 +486,76 @@ $(window).on('resize', function() {
   // Recalculer les positions si nécessaire
   console.log('Window resized');
 });
+
+// ============================================
+// THEME TOGGLE - Basculement Clair/Sombre
+// ============================================
+
+function initThemeToggle() {
+  const themeToggleBtn = document.getElementById('theme-toggle-btn');
+  const themeIcon = document.querySelector('.theme-icon');
+
+  // Charger la préférence de thème depuis localStorage
+  const savedTheme = localStorage.getItem('theme') || 'dark';
+  applyTheme(savedTheme);
+
+  // Écouteur d'événement pour le bouton de toggle
+  if (themeToggleBtn) {
+    themeToggleBtn.addEventListener('click', function() {
+      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      applyTheme(newTheme);
+      localStorage.setItem('theme', newTheme);
+
+      // Animation du bouton
+      themeToggleBtn.style.transform = 'rotate(360deg)';
+      setTimeout(() => {
+        themeToggleBtn.style.transform = 'rotate(0deg)';
+      }, 300);
+    });
+  }
+
+  console.log('Theme toggle initialisé:', savedTheme);
+}
+
+function applyTheme(theme) {
+  const themeIcon = document.querySelector('.theme-icon');
+  const linkElement = document.querySelector('link[href*="grossophobie-style"]');
+
+  // Appliquer le data-attribute au HTML
+  document.documentElement.setAttribute('data-theme', theme);
+
+  // Changer la feuille de style
+  if (linkElement) {
+    if (theme === 'light') {
+      linkElement.href = 'grossophobie-style-light.css';
+      if (themeIcon) themeIcon.textContent = '☀️';
+    } else {
+      linkElement.href = 'grossophobie-style.css';
+      if (themeIcon) themeIcon.textContent = '🌙';
+    }
+  }
+
+  console.log('Thème appliqué:', theme);
+}
+
+// Détection automatique de la préférence système (optionnel)
+function detectSystemTheme() {
+  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+    return 'dark';
+  }
+  return 'light';
+}
+
+// Écouter les changements de préférence système
+if (window.matchMedia) {
+  window.matchMedia('(prefers-color-scheme: dark)').addEventListener('change', e => {
+    const newTheme = e.matches ? 'dark' : 'light';
+    if (!localStorage.getItem('theme')) {
+      applyTheme(newTheme);
+    }
+  });
+}
 
 // Log pour debug
 console.log('Grossophobie Script chargé et prêt');
