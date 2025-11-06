@@ -4,11 +4,6 @@ compatibility_date = "2024-11-05"
 # Configuration pour Cloudflare Pages
 pages_build_output_dir = "./"
 
-# Routes personnalisées
-[[routes]]
-pattern = "/:theme"
-zone_name = "p.newsforge.app"
-
 # Variables d'environnement
 [vars]
 DEFAULT_THEME = "grossophobie"

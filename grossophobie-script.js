@@ -103,6 +103,7 @@ function renderAllSections() {
   renderRessources();
   renderCTA();
   renderFooter();
+  renderPetitionBadge();
 }
 
 // Rendu de la section Hero
@@ -433,6 +434,34 @@ function smoothScrollToSection(sectionId) {
     scrollWrapper.animate({
       scrollTop: scrollPosition
     }, 800, 'swing');
+  }
+}
+
+// Rendu du badge de pétition
+function renderPetitionBadge() {
+  const badge = $('#petition-badge');
+
+  if (data.meta && data.meta.petition && data.meta.petition.url) {
+    // Configurer le lien et l'aria-label
+    badge.attr('href', data.meta.petition.url);
+    badge.attr('aria-label', data.meta.petition.title || 'Signer la pétition');
+
+    // Optionnel : mettre à jour le texte si vous voulez le personnaliser
+    if (data.meta.petition.title) {
+      badge.find('.badge-text').text('Signer la pétition');
+    }
+
+    // Tracking des clics (optionnel)
+    badge.on('click', function() {
+      console.log('Clic sur le badge de pétition:', data.meta.petition.url);
+      // Vous pouvez ajouter du tracking analytics ici
+    });
+
+    console.log('Badge de pétition configuré:', data.meta.petition.url);
+  } else {
+    // Masquer le badge si pas de pétition
+    badge.hide();
+    console.log('Aucune pétition définie, badge masqué');
   }
 }
 
