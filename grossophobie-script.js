@@ -49,6 +49,21 @@ function displayTriggerWarning() {
   html += `</div>`;
 
   warningText.innerHTML = html;
+
+  // Injection du lien de la pétition dans la modal
+  const modalPetitionContainer = document.getElementById('modal-petition-container');
+  if (modalPetitionContainer && data.meta && data.meta.petition && data.meta.petition.url) {
+    modalPetitionContainer.innerHTML = `
+      <a href="${data.meta.petition.url}"
+         target="_blank"
+         rel="noopener"
+         class="btn-petition-modal"
+         aria-label="${data.meta.petition.title || 'Signer la pétition'}">
+        ✍️ ${data.meta.petition.title || 'Signer la Pétition'}
+      </a>
+    `;
+    console.log('Lien de pétition ajouté dans la modal d\'avertissement');
+  }
 }
 
 // Configuration des écouteurs d'événements

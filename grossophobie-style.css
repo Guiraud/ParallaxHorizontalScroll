@@ -146,6 +146,39 @@ body {
   color: var(--secondary-color);
 }
 
+/* Modal Petition Link */
+.modal-petition {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--bg-light);
+}
+
+.btn-petition-modal {
+  display: inline-block;
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--secondary-color), #f59e0b);
+  color: white;
+  text-decoration: none;
+  border-radius: 12px;
+  font-weight: 700;
+  font-size: 1rem;
+  transition: all 0.3s ease;
+  box-shadow: 0 4px 15px rgba(236, 72, 153, 0.3);
+  text-align: center;
+  width: 100%;
+  max-width: 400px;
+}
+
+.btn-petition-modal:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 8px 25px rgba(236, 72, 153, 0.5);
+  background: linear-gradient(135deg, #f472b6, #fbbf24);
+}
+
+.btn-petition-modal:active {
+  transform: translateY(-1px);
+}
+
 /* Navigation */
 #main-nav {
   position: fixed;
