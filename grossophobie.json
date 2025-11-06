@@ -9,7 +9,6 @@
       "description": "Soutenez la lutte contre la discrimination liée au poids en signant la pétition à l'Assemblée Nationale"
     }
   },
-
   "triggerWarning": {
     "global": "⚠️ Avertissement : Ce site contient des exemples réels de phrases grossophobes qui peuvent être déclencheurs. Ces contenus sont présentés dans un but éducatif pour mieux comprendre et combattre la discrimination. Vous pouvez masquer ces sections sensibles à tout moment.",
     "contacts": {
@@ -32,7 +31,6 @@
       ]
     }
   },
-
   "introduction": {
     "title": "Qu'est-ce que la grossophobie ?",
     "content": "La grossophobie est une discrimination systémique basée sur le poids et l'apparence corporelle. En France, elle touche environ 8 millions de personnes (IMC > 25) et se manifeste dans tous les domaines de la vie : emploi, santé, éducation, vie sociale et familiale.",
@@ -41,7 +39,6 @@
       "global": "La discrimination liée au poids a augmenté de 66% ces dix dernières années"
     }
   },
-
   "publicCibles": {
     "title": "À qui s'adresse ce site ?",
     "audiences": [
@@ -87,12 +84,10 @@
       }
     ]
   },
-
   "parallaxImages": {
     "enabled": false,
     "images": []
   },
-
   "arguments": {
     "title": "20 Arguments Solides Contre la Grossophobie",
     "subtitle": "Statistiques et preuves scientifiques",
@@ -104,7 +99,17 @@
         "statUS": "Augmentation de 66% au cours de la dernière décennie",
         "statFrance": "18% des Français subissent ou ont subi des discriminations, particulièrement marqué pour les personnes en obésité",
         "impact": "Devient l'une des rares formes de discrimination encore activement tolérées par la société",
-        "visual": "chart-up"
+        "visual": "chart-up",
+        "sources": [
+          {
+            "title": "UIC Public Health - Weight Stigma (US)",
+            "url": "https://publichealth.uic.edu/news-stories/addressing-weight-stigma-and-fatphobia-in-public-health/"
+          },
+          {
+            "title": "Odoxa - Discriminations en France",
+            "url": "https://www.odoxa.fr/sondage/discriminations-fleau-francais-particulierement-situation-dobesite/"
+          }
+        ]
       },
       {
         "id": 2,
@@ -112,7 +117,17 @@
         "statUS": "Plus de 40% des adultes américains rapportent avoir subi une stigmatisation liée au poids",
         "statFrance": "Concerne potentiellement la moitié de la population adulte en surpoids ou obésité (17% des adultes obèses), avec 47% des jeunes femmes en obésité victimes quotidiennement",
         "impact": "Un problème de masse, pas individuel",
-        "visual": "users"
+        "visual": "users",
+        "sources": [
+          {
+            "title": "APA - The Burden of Weight Stigma",
+            "url": "https://www.apa.org/topics/obesity/weight-stigma"
+          },
+          {
+            "title": "Ligue contre l'obésité - Chiffres France",
+            "url": "https://liguecontrelobesite.org/"
+          }
+        ]
       },
       {
         "id": 3,
@@ -120,7 +135,17 @@
         "statUS": "20 à 30% des enfants rapportent une stigmatisation liée au poids",
         "statFrance": "Un enfant sur dix (10%) déclare avoir subi des discriminations liées à son poids, et les jeunes en obésité en sont quatre fois plus victimes (40%)",
         "impact": "Favorise des troubles précoces et durables",
-        "visual": "child"
+        "visual": "child",
+        "sources": [
+          {
+            "title": "National Eating Disorders - Weight Stigma Impact",
+            "url": "https://www.nationaleatingdisorders.org/blog/impact-weight-stigma-mental-health"
+          },
+          {
+            "title": "Odoxa - Jeunes et grossophobie",
+            "url": "https://www.odoxa.fr/sondage/discriminations-fleau-francais-particulierement-situation-dobesite/"
+          }
+        ]
       },
       {
         "id": 4,
@@ -128,7 +153,17 @@
         "statUS": "63% des adultes obèses rapportent des niveaux élevés de biais pondéral",
         "statFrance": "70% des personnes en obésité subissent ces discriminations de manière répétée (publique, scolaire, professionnelle, médicale et familiale)",
         "impact": "Une violence quotidienne et multiforme",
-        "visual": "alert-circle"
+        "visual": "alert-circle",
+        "sources": [
+          {
+            "title": "NCBI - Weight Stigma in Healthcare",
+            "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC3378788/"
+          },
+          {
+            "title": "Odoxa - 70% discriminations répétées",
+            "url": "https://www.odoxa.fr/sondage/discriminations-fleau-francais-particulierement-situation-dobesite/"
+          }
+        ]
       },
       {
         "id": 5,
@@ -136,7 +171,17 @@
         "statUS": "Risque de décès accru de 60% sur une période de 20 ans pour les personnes stigmatisées",
         "statFrance": "La grossophobie intériorisée accroît les risques de dépression et d'isolement, avec une personne sur cinq préférant souffrir de dépression plutôt que d'être obèse",
         "impact": "La stigmatisation tue plus que le poids lui-même",
-        "visual": "heart-break"
+        "visual": "heart-break",
+        "sources": [
+          {
+            "title": "PMC - Weight Discrimination and Mortality Risk",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4636946/"
+          },
+          {
+            "title": "Harvard Health - Weight Stigma as Harmful as Obesity",
+            "url": "https://www.health.harvard.edu/blog/weight-stigma-as-harmful-as-obesity-itself-202206022755"
+          }
+        ]
       },
       {
         "id": 6,
@@ -144,7 +189,17 @@
         "statUS": "Jusqu'à 70% des prestataires de santé ont des attitudes négatives envers les patients en surpoids",
         "statFrance": "Évitement médical fréquent, aggravant les inégalités de santé pour les 8 millions de personnes concernées",
         "impact": "Mène à des soins inadéquats et des diagnostics tardifs",
-        "visual": "stethoscope"
+        "visual": "stethoscope",
+        "sources": [
+          {
+            "title": "PMC - Weight Bias in Healthcare",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4381543/"
+          },
+          {
+            "title": "NCBI - Medical Fatphobia",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10283253/"
+          }
+        ]
       },
       {
         "id": 7,
@@ -152,7 +207,17 @@
         "statUS": "Les personnes obèses sont 37% moins susceptibles d'être embauchées",
         "statFrance": "Être obèse réduit les chances d'embauche de 30%, et les femmes obèses ont huit fois moins de probabilités d'être recrutées",
         "impact": "Exclusion économique systémique",
-        "visual": "briefcase"
+        "visual": "briefcase",
+        "sources": [
+          {
+            "title": "PMC - Obesity Discrimination in Recruitment",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC4853419/"
+          },
+          {
+            "title": "Le Monde - Discrimination à l'embauche",
+            "url": "https://www.lemonde.fr/emploi/article/2019/03/04/l-obesite-un-facteur-insidieux-de-discrimination-a-l-embauche_5431394_1698637.html"
+          }
+        ]
       },
       {
         "id": 8,
@@ -160,7 +225,17 @@
         "statUS": "6% de salaire en moins en moyenne pour un travail équivalent",
         "statFrance": "Le taux d'emploi des femmes obèses est inférieur de 7 points à la moyenne, privant 273 000 d'entre elles d'un poste",
         "impact": "Appauvrissement et précarité des victimes",
-        "visual": "dollar-sign"
+        "visual": "dollar-sign",
+        "sources": [
+          {
+            "title": "World Economic Forum - Employers Less Likely to Hire Obese",
+            "url": "https://www.weforum.org/stories/2019/02/half-of-employers-say-they-are-less-inclined-to-recruit-obese-candidates-its-not-ok/"
+          },
+          {
+            "title": "Le Journal des Entreprises - Emploi femmes obèses",
+            "url": "https://www.lejournaldesentreprises.com/article/absenteisme-emploi-discrimination-les-consequences-de-lobesite-au-travail-2020506"
+          }
+        ]
       },
       {
         "id": 9,
@@ -168,7 +243,17 @@
         "statUS": "Plus de 50% des personnes stigmatisées présentent au moins un trouble psychiatrique",
         "statFrance": "Facteur majeur de dépression, touchant particulièrement les adolescents avec risques accrus d'anxiété et d'isolement social",
         "impact": "Détresse psychologique massive",
-        "visual": "brain"
+        "visual": "brain",
+        "sources": [
+          {
+            "title": "National Eating Disorders - Mental Health Impact",
+            "url": "https://www.nationaleatingdisorders.org/blog/impact-weight-stigma-mental-health"
+          },
+          {
+            "title": "France 3 - Grossophobie discriminations",
+            "url": "https://france3-regions.francetvinfo.fr/auvergne-rhone-alpes/grossophobie-le-poids-des-discriminations-2883093.html"
+          }
+        ]
       },
       {
         "id": 10,
@@ -176,7 +261,17 @@
         "statUS": "Stigmatisation internalisée = facteur de risque pour faible estime de soi",
         "statFrance": "'Grossophobie intériorisée' qui sape la confiance, trajectoires scolaires et professionnelles inférieures indépendamment des origines sociales",
         "impact": "Sabotage de la confiance en soi dès l'enfance",
-        "visual": "mirror"
+        "visual": "mirror",
+        "sources": [
+          {
+            "title": "PMC - Weight Stigma and Self-Esteem",
+            "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC6092785/"
+          },
+          {
+            "title": "Radio France - Grossophobie intériorisée",
+            "url": "https://www.radiofrance.fr/franceculture/podcasts/les-idees-claires/pourquoi-les-gros-sont-ils-nuls-2413054"
+          }
+        ]
       },
       {
         "id": 11,
@@ -184,7 +279,17 @@
         "statUS": "68% des Américains ont déjà suivi un régime",
         "statFrance": "À 15 ans, la moitié des jeunes filles estiment avoir besoin de faire un régime, alors que seule une sur dix est en surpoids",
         "impact": "Cycle de culpabilisation et d'échec",
-        "visual": "scale"
+        "visual": "scale",
+        "sources": [
+          {
+            "title": "Medical News Today - Fatphobia Health Effects",
+            "url": "https://www.medicalnewstoday.com/articles/fatphobia"
+          },
+          {
+            "title": "The Conversation - Grossophobie adolescence",
+            "url": "https://theconversation.com/a-ladolescence-cette-grossophobie-qui-fait-des-degats-229103"
+          }
+        ]
       },
       {
         "id": 12,
@@ -192,7 +297,17 @@
         "statUS": "65% des femmes américaines de 25-45 ans présentent des troubles alimentaires",
         "statFrance": "37% des filles de 11 ans ont déjà fait ou font un régime, sous l'effet d'une pression culturelle accrue",
         "impact": "Normalisation des comportements pathologiques",
-        "visual": "utensils"
+        "visual": "utensils",
+        "sources": [
+          {
+            "title": "National Eating Disorders - Eating Disorders Stats",
+            "url": "https://www.nationaleatingdisorders.org/statistics-research-eating-disorders"
+          },
+          {
+            "title": "Alliance for Eating Disorders - Fatphobia",
+            "url": "https://www.allianceforeatingdisorders.com/blog/2024/1/12/why-the-word-obsity-is-fatphobic"
+          }
+        ]
       },
       {
         "id": 13,
@@ -200,7 +315,17 @@
         "statUS": "Les enfants américains sont 242 fois plus susceptibles de développer un trouble alimentaire que le diabète de type 2",
         "statFrance": "Discriminations scolaires précoces favorisent des troubles alimentaires chez 54% des jeunes filles en obésité âgées de 14-17 ans",
         "impact": "Génération sacrifiée aux normes esthétiques",
-        "visual": "candy"
+        "visual": "candy",
+        "sources": [
+          {
+            "title": "Lindner Center of HOPE - Fat Phobia Culture",
+            "url": "https://www.lindnercenterofhope.org/blog/body-image-in-a-culture-of-fat-phobia"
+          },
+          {
+            "title": "National Eating Disorders - Children Risk",
+            "url": "https://www.nationaleatingdisorders.org/"
+          }
+        ]
       },
       {
         "id": 14,
@@ -208,7 +333,17 @@
         "statUS": "À 9 ans, 50% des filles ont déjà envisagé de restreindre leur alimentation",
         "statFrance": "Cette préoccupation culmine à l'adolescence, avec impacts psychologiques durables amplifiés par les réseaux sociaux",
         "impact": "Vol de l'insouciance de l'enfance",
-        "visual": "baby"
+        "visual": "baby",
+        "sources": [
+          {
+            "title": "Montenido - Fat Shaming and Eating Disorders",
+            "url": "https://www.montenido.com/fat-shaming-fat-phobia-and-the-rise-in-eating-disorders/"
+          },
+          {
+            "title": "The Conversation - 50% jeunes filles régime",
+            "url": "https://theconversation.com/a-ladolescence-cette-grossophobie-qui-fait-des-degats-229103"
+          }
+        ]
       },
       {
         "id": 15,
@@ -216,7 +351,17 @@
         "statUS": "Personnes de couleur présentent des taux plus élevés de troubles liés à la grossophobie intersectionnelle",
         "statFrance": "Discriminations intersectionnelles (poids + origine) touchent plus durement les populations issues de l'immigration",
         "impact": "Double peine pour les minorités",
-        "visual": "globe"
+        "visual": "globe",
+        "sources": [
+          {
+            "title": "NPR - Racist History of Fatphobia",
+            "url": "https://www.npr.org/2020/07/20/893006538/fat-phobia-and-its-racist-past-and-present"
+          },
+          {
+            "title": "UCLA - Fearing the Black Body",
+            "url": "https://csw.ucla.edu/2022/01/31/fearing-the-black-body-the-racial-origins-of-fat-phobia-by-sabrina-strings/"
+          }
+        ]
       },
       {
         "id": 16,
@@ -224,7 +369,17 @@
         "statUS": "Individus LGBTQ+ ont des taux de troubles alimentaires plus élevés",
         "statFrance": "Jeunes LGBTQ+ en surpoids subissent une double stigmatisation, aggravant les risques de santé mentale",
         "impact": "Marginalisation multiple",
-        "visual": "rainbow"
+        "visual": "rainbow",
+        "sources": [
+          {
+            "title": "National Eating Disorders - LGBTQ+ Risk",
+            "url": "https://www.nationaleatingdisorders.org/lgbtq-eating-disorders"
+          },
+          {
+            "title": "Within Health - Weight Stigma LGBTQ+",
+            "url": "https://www.withinhealth.com/learn/articles/racist-history-of-fatphobia"
+          }
+        ]
       },
       {
         "id": 17,
@@ -232,7 +387,17 @@
         "statUS": "Augmentation du risque de diabète, maladies cardiaques et hypertension via le stress chronique",
         "statFrance": "L'obésité touche 17% des adultes, et la grossophobie médicale contribue à un retard diagnostique",
         "impact": "La stigmatisation rend malade",
-        "visual": "activity"
+        "visual": "activity",
+        "sources": [
+          {
+            "title": "Harvard - Weight Discrimination and Health",
+            "url": "https://www.hsph.harvard.edu/news/hsph-in-the-news/unpacking-fatphobia-weight-discrimination-and-diet-culture/"
+          },
+          {
+            "title": "AXA Prévention - Obésité en France 17%",
+            "url": "https://www.axaprevention.fr/sante-bien-etre/corps-humain/obesite-surpoids-france-monde"
+          }
+        ]
       },
       {
         "id": 18,
@@ -240,7 +405,17 @@
         "statUS": "Jusqu'à 30% de diagnostics tardifs dus à l'évitement des consultations",
         "statFrance": "25% des salariés rapportent des discriminations liées à l'apparence physique au travail, incluant le secteur médical",
         "impact": "Mise en danger de la santé publique",
-        "visual": "shield-off"
+        "visual": "shield-off",
+        "sources": [
+          {
+            "title": "NCBI - Weight Stigma in Healthcare Settings",
+            "url": "https://www.ncbi.nlm.nih.gov/books/NBK554571/"
+          },
+          {
+            "title": "Capital - 25% discrimination apparence travail",
+            "url": "https://www.capital.fr/votre-carriere/emploi-et-discrimination-etre-obese-reduit-vos-chances-detre-embauche-de-30-1291819"
+          }
+        ]
       },
       {
         "id": 19,
@@ -248,7 +423,17 @@
         "statUS": "Le harcèlement basé sur le poids touche jusqu'à 30% des élèves",
         "statFrance": "Les professeurs sont moins exigeants envers les enfants en surpoids, perpétuant un cercle vicieux de sous-performance scolaire",
         "impact": "Échec scolaire programmé",
-        "visual": "book"
+        "visual": "book",
+        "sources": [
+          {
+            "title": "ScienceDirect - Weight Bias in Schools",
+            "url": "https://www.sciencedirect.com/science/article/abs/pii/S1740144520302953"
+          },
+          {
+            "title": "HEYME - Grossophobie et body positive",
+            "url": "https://www.heyme.care/blog/grossophobie-de-la-violence-au-body-positive"
+          }
+        ]
       },
       {
         "id": 20,
@@ -256,11 +441,20 @@
         "statUS": "Taux d'échec de 90% pour les régimes intentionnels",
         "statFrance": "Seuls 7% des personnes grosses occupent des postes de cadre, reflétant un biais culturel associant minceur à réussite",
         "impact": "Culpabilisation des victimes d'un système qui ne fonctionne pas",
-        "visual": "x-circle"
+        "visual": "x-circle",
+        "sources": [
+          {
+            "title": "NCBI - Diet Failure Rates",
+            "url": "https://www.ncbi.nlm.nih.gov/pmc/articles/PMC5764193/"
+          },
+          {
+            "title": "Radio France - Grossophobie et réussite professionnelle",
+            "url": "https://www.radiofrance.fr/franceculture/podcasts/les-idees-claires/pourquoi-les-gros-sont-ils-nuls-2413054"
+          }
+        ]
       }
     ]
   },
-
   "imcCritique": {
     "title": "Pourquoi l'Indice de Masse Corporelle (IMC) est Critiqué",
     "intro": "Oui : vos doutes sont fondés — l'IMC est un outil utile à grande échelle mais souffre de plusieurs sérieux biais.",
@@ -333,7 +527,6 @@
       "En tant que journaliste/analyste, tenez compte des biais ethniques et historiques dans l'utilisation des indices de santé : ce que nous mesurons et comment nous le mesurons influence le discours"
     ]
   },
-
   "phrasesDiscriminantes": {
     "title": "Les Formulations Courantes de la Grossophobie",
     "subtitle": "Exemples et Démentis Empowerants",
@@ -414,7 +607,6 @@
       }
     ]
   },
-
   "argumentsPositifs": {
     "title": "Pourquoi Être Contre la Grossophobie",
     "subtitle": "C'est Être du Bon Côté de l'Histoire",
@@ -478,7 +670,6 @@
       }
     ]
   },
-
   "campagnesEfficaces": {
     "title": "Les Campagnes les Plus Efficaces",
     "subtitle": "S'inspirer pour agir",
@@ -555,7 +746,6 @@
       }
     ]
   },
-
   "ressources": {
     "title": "Pour Aller Plus Loin",
     "associations": [
@@ -615,7 +805,6 @@
       }
     ]
   },
-
   "callToAction": {
     "title": "Agissons Ensemble",
     "actions": [
@@ -646,7 +835,6 @@
       }
     ]
   },
-
   "footer": {
     "message": "Ce site est un outil pédagogique pour comprendre et combattre la grossophobie. Toutes les statistiques sont sourcées et vérifiables.",
     "contact": "Pour toute question ou suggestion, contactez les associations mentionnées dans la section Ressources."

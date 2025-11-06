@@ -770,6 +770,51 @@ body {
   line-height: 1.6;
 }
 
+.argument-sources {
+  margin-top: 1rem;
+  padding: 1rem;
+  background: rgba(99, 102, 241, 0.05);
+  border-radius: 10px;
+  border-left: 3px solid var(--primary-color);
+}
+
+.argument-sources strong {
+  color: var(--primary-color);
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.sources-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.sources-list li {
+  margin-bottom: 0.4rem;
+  font-size: 0.85rem;
+}
+
+.source-link {
+  color: var(--text-medium);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+  display: inline-block;
+}
+
+.source-link:hover {
+  color: var(--primary-color);
+  border-bottom-color: var(--primary-color);
+}
+
+.source-link::before {
+  content: "→ ";
+  color: var(--primary-color);
+  margin-right: 0.3rem;
+}
+
 /* Trigger Warning Banner */
 .trigger-warning-banner {
   background: var(--warning-color);

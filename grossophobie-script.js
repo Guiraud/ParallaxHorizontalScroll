@@ -234,6 +234,17 @@ function renderArguments() {
         <div class="argument-impact">
           <strong>Impact :</strong> ${arg.impact}
         </div>
+
+        ${arg.sources && arg.sources.length > 0 ? `
+          <div class="argument-sources">
+            <strong>📚 Sources :</strong>
+            <ul class="sources-list">
+              ${arg.sources.map(source => `
+                <li><a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title}</a></li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
       </div>
     `;
   });
