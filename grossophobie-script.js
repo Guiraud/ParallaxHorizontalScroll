@@ -10,6 +10,7 @@ $(document).ready(function() {
   loadData();
   setupEventListeners();
   initThemeToggle();
+  initMobileMenu();
 });
 
 // Chargement du fichier JSON (dynamique depuis Cloudflare ou fichier local)
@@ -113,6 +114,7 @@ function renderAllSections() {
   renderIntroduction();
   renderPublics();
   renderArguments();
+  renderIMCCritique();
   renderPhrases();
   renderPositif();
   renderCampagnes();
@@ -229,6 +231,82 @@ function renderArguments() {
 
   // Afficher tous les arguments (pas de pagination pour le parallax)
   $('.argument-card').show();
+}
+
+// Rendu de la section IMC Critique
+function renderIMCCritique() {
+  if (!data.imcCritique) return;
+
+  const container = $('#imc-content');
+  if (!container.length) return;
+
+  let html = '';
+
+  // Intro
+  html += `<p class="imc-intro">${data.imcCritique.intro}</p>`;
+
+  // Limites principales
+  html += `<div class="imc-section">
+    <h3 class="imc-section-title">📌 Principales Limites</h3>
+    <div class="imc-grid">`;
+
+  data.imcCritique.limites.forEach(limite => {
+    html += `
+      <div class="imc-card">
+        <div class="imc-card-icon">${limite.icon}</div>
+        <h4 class="imc-card-title">${limite.titre}</h4>
+        <p class="imc-card-description">${limite.description}</p>
+      </div>
+    `;
+  });
+
+  html += `</div></div>`;
+
+  // Dimension raciale
+  if (data.imcCritique.dimensionRaciale) {
+    html += `<div class="imc-section imc-raciale">
+      <h3 class="imc-section-title">🌍 ${data.imcCritique.dimensionRaciale.titre}</h3>
+      <ul class="imc-list">`;
+
+    data.imcCritique.dimensionRaciale.points.forEach(point => {
+      html += `<li>${point}</li>`;
+    });
+
+    html += `</ul></div>`;
+  }
+
+  // Alternatives
+  html += `<div class="imc-section">
+    <h3 class="imc-section-title">✨ Alternatives et Mesures Plus Proches de la Réalité</h3>
+    <div class="imc-alternatives">`;
+
+  data.imcCritique.alternatives.forEach(alt => {
+    html += `
+      <div class="imc-alternative">
+        <div class="imc-alt-header">
+          <span class="imc-alt-icon">${alt.icon}</span>
+          <strong>${alt.nom}</strong>
+        </div>
+        <p>${alt.description}</p>
+      </div>
+    `;
+  });
+
+  html += `</div></div>`;
+
+  // Recommandations
+  html += `<div class="imc-section imc-recommendations">
+    <h3 class="imc-section-title">💡 Ce que Vous Pouvez Faire</h3>
+    <ul class="imc-list imc-action-list">`;
+
+  data.imcCritique.recommendations.forEach(rec => {
+    html += `<li>${rec}</li>`;
+  });
+
+  html += `</ul></div>`;
+
+  container.html(html);
+  console.log('Section IMC Critique rendue');
 }
 
 // Rendu des phrases discriminantes (avec trigger warning)
@@ -555,6 +633,57 @@ if (window.matchMedia) {
       applyTheme(newTheme);
     }
   });
+}
+
+// ============================================
+// MOBILE MENU - Menu Burger
+// ============================================
+
+function initMobileMenu() {
+  const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
+  const navLinks = document.getElementById('nav-links');
+
+  if (!mobileMenuToggle || !navLinks) {
+    return;
+  }
+
+  // Toggle du menu mobile
+  mobileMenuToggle.addEventListener('click', function() {
+    const isActive = navLinks.classList.contains('active');
+
+    if (isActive) {
+      navLinks.classList.remove('active');
+      mobileMenuToggle.classList.remove('active');
+      document.body.style.overflow = '';
+    } else {
+      navLinks.classList.add('active');
+      mobileMenuToggle.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    }
+  });
+
+  // Fermer le menu quand on clique sur un lien
+  const navItems = navLinks.querySelectorAll('a');
+  navItems.forEach(item => {
+    item.addEventListener('click', function() {
+      navLinks.classList.remove('active');
+      mobileMenuToggle.classList.remove('active');
+      document.body.style.overflow = '';
+    });
+  });
+
+  // Fermer le menu quand on clique en dehors
+  document.addEventListener('click', function(event) {
+    if (!navLinks.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
+      if (navLinks.classList.contains('active')) {
+        navLinks.classList.remove('active');
+        mobileMenuToggle.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+    }
+  });
+
+  console.log('Menu mobile initialisé');
 }
 
 // Log pour debug

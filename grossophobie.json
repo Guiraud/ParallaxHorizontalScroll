@@ -286,6 +286,79 @@
     ]
   },
 
+  "imcCritique": {
+    "title": "Pourquoi l'Indice de Masse Corporelle (IMC) est Critiqué",
+    "intro": "Oui : vos doutes sont fondés — l'IMC est un outil utile à grande échelle mais souffre de plusieurs sérieux biais.",
+    "limites": [
+      {
+        "titre": "Ne distingue pas muscle et graisse",
+        "description": "Il ne distingue pas la masse musculaire de la masse grasse, ni l'emplacement de cette masse grasse (viscérale vs sous-cutanée).",
+        "icon": "💪"
+      },
+      {
+        "titre": "Ignore les différences biologiques",
+        "description": "Il ne tient pas correctement compte du sexe, de l'âge, de l'origine ethnique : par exemple, une même valeur d'IMC peut recouvrir des profils très différents selon l'ethnie ou le sexe.",
+        "icon": "🧬"
+      },
+      {
+        "titre": "Seuils arbitraires et occidentaux",
+        "description": "Ses seuils (par ex. 25 = surpoids, 30 = obésité) sont en grande partie arbitraires et basés sur des populations occidentales à peau majoritairement blanche.",
+        "icon": "📊"
+      },
+      {
+        "titre": "Classification erronée",
+        "description": "Plusieurs experts et organisations (comme l'American Medical Association) reconnaissent que l'usage de l'IMC peut conduire à des erreurs de classification, notamment pour des populations racisées ou des types corporels non « standards ».",
+        "icon": "⚠️"
+      },
+      {
+        "titre": "Ne prédit pas le risque réel",
+        "description": "Il n'informe pas directement sur le risque de maladie mais uniquement sur un ratio poids/hauteur ; ce ratio ne capte pas toujours le vrai risque métabolique.",
+        "icon": "❤️"
+      }
+    ],
+    "dimensionRaciale": {
+      "titre": "Concernant la dimension raciale / occidentale",
+      "points": [
+        "L'utilisation de l'IMC « fétichise l'embodiment blanc et racialise la fat-phobia »",
+        "Les seuils et conventions du BMI ont été historiquement formés dans des populations majoritairement blanches, leur transfert automatique à d'autres groupes sans ajustement est problématique",
+        "Des formes structurelles de racisme s'associent aux différences d'IMC selon race/ethnie, ce qui suggère que l'IMC interagit avec les facteurs sociaux et raciaux"
+      ]
+    },
+    "alternatives": [
+      {
+        "nom": "Tour de taille",
+        "description": "Simple à mesurer, tout en captant mieux la graisse abdominale, souvent plus liée au risque métabolique.",
+        "icon": "📏"
+      },
+      {
+        "nom": "Rapport tour de taille/hauteur (WHtR)",
+        "description": "Le tour de taille divisé par la hauteur. Certaines études montrent qu'il prédit mieux l'hypertension ou le risque métabolique que l'IMC.",
+        "icon": "📐"
+      },
+      {
+        "nom": "Indice de rondeur corporelle (BRI)",
+        "description": "Nouveau ratio intégrant tour de taille + hauteur + circonférence de hanche, visant à mieux capter la forme du corps et la graisse viscérale. Une étude récente a montré qu'un BRI élevé s'associe à une plus grande mortalité globale.",
+        "icon": "🔄"
+      },
+      {
+        "nom": "Composition corporelle",
+        "description": "Pourcentage de graisse corporelle, masse musculaire, graisse viscérale. Une étude a montré que le pourcentage de graisse corporelle était un meilleur prédicteur de mortalité que l'IMC.",
+        "icon": "🔬"
+      },
+      {
+        "nom": "Indices alternatifs (BAI, RFM)",
+        "description": "Indice de masse adipeuse (BAI), Relative Fat Mass (RFM) : D'autres formules anthropométriques émergent, bien qu'elles ne soient pas encore toutes validées à grande échelle.",
+        "icon": "🧮"
+      }
+    ],
+    "recommendations": [
+      "Ne vous fiez pas uniquement à un chiffre d'IMC pour juger de votre santé",
+      "Ajoutez un repère simple : mesurer votre tour de taille (au niveau du nombril) et calculez : tour de taille ÷ hauteur. Si ce rapport dépasse ~0,5, cela peut indiquer un excès de graisse abdominale",
+      "Si possible, utilisez des outils qui évaluent la composition corporelle (masse grasse vs musculaire) ou demandez-le à un professionnel",
+      "En tant que journaliste/analyste, tenez compte des biais ethniques et historiques dans l'utilisation des indices de santé : ce que nous mesurons et comment nous le mesurons influence le discours"
+    ]
+  },
+
   "phrasesDiscriminantes": {
     "title": "Les Formulations Courantes de la Grossophobie",
     "subtitle": "Exemples et Démentis Empowerants",
