@@ -408,9 +408,12 @@ function renderRessources() {
     <h3>Associations et Collectifs</h3>
     <ul class="ressources-list">`;
   data.ressources.associations.forEach(asso => {
+    const nameHtml = asso.url
+      ? `<a href="${asso.url}" target="_blank" rel="noopener" class="ressource-link">${asso.name}</a>`
+      : asso.name;
     html += `
       <li class="ressource-item">
-        <div class="ressource-name">${asso.name}</div>
+        <div class="ressource-name">${nameHtml}</div>
         <div class="ressource-type">${asso.type}</div>
         <div class="ressource-action">${asso.action}</div>
         ${asso.social ? `<div style="color: var(--primary-color); margin-top: 0.5rem;">${asso.social}</div>` : ''}
@@ -424,9 +427,12 @@ function renderRessources() {
     <h3>Guides et Outils</h3>
     <ul class="ressources-list">`;
   data.ressources.guides.forEach(guide => {
+    const titleHtml = guide.url
+      ? `<a href="${guide.url}" target="_blank" rel="noopener" class="ressource-link">${guide.titre}</a>`
+      : guide.titre;
     html += `
       <li class="ressource-item">
-        <div class="ressource-name">${guide.titre}</div>
+        <div class="ressource-name">${titleHtml}</div>
         <div class="ressource-type">${guide.source}</div>
         <div class="ressource-action">${guide.description}</div>
       </li>
@@ -439,9 +445,12 @@ function renderRessources() {
     <h3>Livres et Médias</h3>
     <ul class="ressources-list">`;
   data.ressources.livres.forEach(livre => {
+    const titleHtml = livre.url
+      ? `<a href="${livre.url}" target="_blank" rel="noopener" class="ressource-link">${livre.titre}</a>`
+      : livre.titre;
     html += `
       <li class="ressource-item">
-        <div class="ressource-name">${livre.titre}</div>
+        <div class="ressource-name">${titleHtml}</div>
         <div class="ressource-type">${livre.source}</div>
         <div class="ressource-action">${livre.description}</div>
       </li>
@@ -478,7 +487,6 @@ function renderFooter() {
   const container = $('#footer-content');
   let html = `
     <p>${data.footer.message}</p>
-    <p class="footer-credit">${data.footer.credit}</p>
     <p style="margin-top: 1rem; font-size: 0.9rem;">${data.footer.contact}</p>
   `;
   container.html(html);

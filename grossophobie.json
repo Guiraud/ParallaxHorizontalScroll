@@ -89,33 +89,8 @@
   },
 
   "parallaxImages": {
-    "enabled": true,
-    "images": [
-      {
-        "url": "https://images.unsplash.com/photo-1552083375-1447ce886485",
-        "alt": "Diversité des corps",
-        "speed": "slower",
-        "position": 1
-      },
-      {
-        "url": "https://images.unsplash.com/photo-1513689559427-a303dfc617d2",
-        "alt": "Acceptation",
-        "speed": "faster",
-        "position": 2
-      },
-      {
-        "url": "https://images.unsplash.com/photo-1541961017774-22349e4a1262",
-        "alt": "Inclusivité",
-        "speed": "normal",
-        "position": 3
-      },
-      {
-        "url": "https://images.unsplash.com/photo-1506905925346-21bda4d32df4",
-        "alt": "Body Positivity",
-        "speed": "slower",
-        "position": 4
-      }
-    ]
+    "enabled": false,
+    "images": []
   },
 
   "arguments": {
@@ -587,48 +562,56 @@
       {
         "name": "Ligue contre l'obésité",
         "type": "France",
-        "action": "Sensibilisation et enquêtes"
+        "action": "Sensibilisation et enquêtes",
+        "url": "https://liguecontrelobesite.org/"
       },
       {
         "name": "CNAO - Collectif National des Associations d'Obèses",
         "type": "France",
-        "action": "Représentation et défense des droits"
+        "action": "Représentation et défense des droits",
+        "url": "https://www.cnao.fr/"
       },
       {
         "name": "NAAFA - National Association to Advance Fat Acceptance",
         "type": "International",
         "action": "Advocacy et changement légal",
-        "social": "@naafaonline"
+        "social": "@naafaonline",
+        "url": "https://naafa.org/"
       },
       {
         "name": "ÉquiLibre",
         "type": "Québec",
         "action": "Éducation et ressources gratuites",
-        "social": "@equilibre.ca"
+        "social": "@equilibre.ca",
+        "url": "https://equilibre.ca/"
       },
       {
         "name": "Gras Politique",
         "type": "France",
-        "action": "Collectif militant body positive"
+        "action": "Collectif militant body positive",
+        "url": "https://graspolitique.wordpress.com/"
       }
     ],
     "guides": [
       {
         "titre": "Guide de l'allié·e contre la grossophobie",
         "source": "ÉquiLibre",
-        "description": "Outils pratiques pour devenir un·e allié·e efficace"
+        "description": "Outils pratiques pour devenir un·e allié·e efficace",
+        "url": "https://equilibre.ca/ressources/"
       },
       {
         "titre": "Ressources pour l'estime de soi",
         "source": "Dove",
-        "description": "Fonds éducatif pour les filles"
+        "description": "Fonds éducatif pour les filles",
+        "url": "https://www.dove.com/ca/fr/dove-self-esteem-project.html"
       }
     ],
     "livres": [
       {
         "titre": "Livres et balados sur la grossophobie",
         "source": "ÉquiLibre et partenaires",
-        "description": "Ressources gratuites et accessibles"
+        "description": "Ressources gratuites et accessibles",
+        "url": "https://equilibre.ca/ressources/"
       }
     ]
   },
@@ -666,7 +649,6 @@
 
   "footer": {
     "message": "Ce site est un outil pédagogique pour comprendre et combattre la grossophobie. Toutes les statistiques sont sourcées et vérifiables.",
-    "credit": "Made with ❤ by Shivam Katare. Inspired by Paulina Hetman",
     "contact": "Pour toute question ou suggestion, contactez les associations mentionnées dans la section Ressources."
   }
 }

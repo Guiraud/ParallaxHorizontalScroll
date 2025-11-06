@@ -1076,6 +1076,18 @@ body {
   font-size: 0.95rem;
 }
 
+.ressource-link {
+  color: var(--primary-color);
+  text-decoration: none;
+  transition: all 0.3s ease;
+  border-bottom: 1px solid transparent;
+}
+
+.ressource-link:hover {
+  color: var(--secondary-color);
+  border-bottom-color: var(--secondary-color);
+}
+
 /* Footer */
 .footer-content {
   text-align: center;
