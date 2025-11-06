@@ -202,24 +202,35 @@ function renderArguments() {
   const container = $('#arguments-container');
   let html = '';
 
-  // Affichage par groupes de 5 pour faciliter la lecture
-  const itemsPerPage = 5;
-  let currentPage = 0;
-
   data.arguments.items.forEach((arg, index) => {
     html += `
-      <div class="argument-card" data-page="${Math.floor(index / itemsPerPage)}">
+      <div class="argument-card" data-arg-id="${arg.id}">
         <h3 class="argument-title">${arg.id}. ${arg.title}</h3>
-        <div class="argument-stats">
-          <div class="stat-item">
-            <div class="stat-label">🇺🇸 États-Unis</div>
-            <div class="stat-value">${arg.statUS}</div>
+
+        <div class="argument-flip-container">
+          <!-- Face avant (France) -->
+          <div class="argument-face argument-face-front">
+            <div class="argument-stat-display">
+              <div class="stat-flag">🇫🇷</div>
+              <div class="stat-value-main">${arg.statFrance}</div>
+            </div>
+            <button class="flip-flag-btn" data-country="us" aria-label="Voir statistique États-Unis">
+              <span class="flip-flag">🇺🇸</span>
+            </button>
           </div>
-          <div class="stat-item">
-            <div class="stat-label">🇫🇷 France</div>
-            <div class="stat-value">${arg.statFrance}</div>
+
+          <!-- Face arrière (US) -->
+          <div class="argument-face argument-face-back">
+            <div class="argument-stat-display">
+              <div class="stat-flag">🇺🇸</div>
+              <div class="stat-value-main">${arg.statUS}</div>
+            </div>
+            <button class="flip-flag-btn" data-country="fr" aria-label="Voir statistique France">
+              <span class="flip-flag">🇫🇷</span>
+            </button>
           </div>
         </div>
+
         <div class="argument-impact">
           <strong>Impact :</strong> ${arg.impact}
         </div>
@@ -229,8 +240,12 @@ function renderArguments() {
 
   container.html(html);
 
-  // Afficher tous les arguments (pas de pagination pour le parallax)
-  $('.argument-card').show();
+  // Gestion du flip des cartes
+  $('.flip-flag-btn').on('click', function(e) {
+    e.stopPropagation();
+    const card = $(this).closest('.argument-card');
+    card.toggleClass('flipped');
+  });
 }
 
 // Rendu de la section IMC Critique

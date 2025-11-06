@@ -692,65 +692,131 @@ body {
 /* Arguments Container */
 .arguments-container {
   display: grid;
-  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-  gap: 2rem;
+  gap: 1.5rem;
   margin-top: 2rem;
 }
 
 .argument-card {
   background: var(--bg-white);
   padding: 2rem;
-  border-radius: 16px;
-  border: 2px solid var(--card-border);
+  border-radius: 15px;
+  border-left: 4px solid var(--primary-color);
   transition: all 0.3s ease;
+  position: relative;
 }
 
 .argument-card:hover {
   transform: translateY(-3px);
-  border-color: var(--primary-color);
-  box-shadow: 0 8px 25px var(--card-shadow-hover);
+  box-shadow: 0 10px 30px rgba(99, 102, 241, 0.15);
 }
 
 .argument-title {
   font-size: 1.2rem;
   font-weight: 700;
-  color: var(--text-dark);
-  margin-bottom: 1rem;
+  margin-bottom: 1.5rem;
+  color: var(--primary-color);
 }
 
-.argument-stats {
-  display: flex;
-  gap: 1rem;
+/* Flip Container */
+.argument-flip-container {
+  position: relative;
+  min-height: 120px;
   margin: 1rem 0;
-  flex-wrap: wrap;
+  perspective: 1000px;
 }
 
-.stat-item {
-  flex: 1;
-  min-width: 120px;
+.argument-face {
+  width: 100%;
+  transition: all 0.6s ease;
+  backface-visibility: hidden;
+  position: absolute;
+  top: 0;
+  left: 0;
+}
+
+.argument-face-front {
+  position: relative;
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+.argument-face-back {
+  opacity: 0;
+  transform: rotateY(180deg);
+}
+
+.argument-card.flipped .argument-face-front {
+  opacity: 0;
+  transform: rotateY(-180deg);
+}
+
+.argument-card.flipped .argument-face-back {
+  opacity: 1;
+  transform: rotateY(0deg);
+}
+
+/* Stat Display */
+.argument-stat-display {
   background: var(--bg-gray);
-  padding: 1rem;
+  padding: 1.5rem;
   border-radius: 12px;
   text-align: center;
+  border: 2px solid var(--card-border);
 }
 
-.stat-label {
-  font-size: 0.85rem;
-  color: var(--text-light);
-  margin-bottom: 0.3rem;
+.stat-flag {
+  font-size: 2.5rem;
+  margin-bottom: 0.8rem;
 }
 
-.stat-value {
-  font-size: 1.3rem;
-  font-weight: 700;
-  color: var(--secondary-color);
+.stat-value-main {
+  font-size: 0.95rem;
+  color: var(--text-medium);
+  line-height: 1.6;
+  font-weight: 500;
+}
+
+/* Flip Flag Button */
+.flip-flag-btn {
+  position: absolute;
+  top: 0.5rem;
+  right: 0.5rem;
+  background: var(--bg-white);
+  border: 2px solid var(--card-border);
+  border-radius: 50%;
+  width: 50px;
+  height: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  z-index: 10;
+}
+
+.flip-flag-btn:hover {
+  transform: scale(1.1) rotate(15deg);
+  border-color: var(--primary-color);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.25);
+}
+
+.flip-flag {
+  font-size: 1.8rem;
+  transition: transform 0.3s ease;
+}
+
+.flip-flag-btn:hover .flip-flag {
+  transform: scale(1.1);
 }
 
 .argument-impact {
+  margin-top: 1.5rem;
+  padding: 1rem;
+  background: rgba(239, 68, 68, 0.08);
+  border-radius: 10px;
   color: var(--text-medium);
   font-size: 0.95rem;
   line-height: 1.6;
-  margin-top: 1rem;
 }
 
 /* Phrases Grid */
