@@ -350,6 +350,16 @@ function renderPhrases() {
         </div>
         <div class="phrase-back">
           <p class="dementi-text">${item.dementi}</p>
+          ${item.sources && item.sources.length > 0 ? `
+            <div class="phrase-sources">
+              <strong>📚 Sources :</strong>
+              <ul class="sources-list">
+                ${item.sources.map(source => `
+                  <li><a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title}</a></li>
+                `).join('')}
+              </ul>
+            </div>
+          ` : ''}
           <p class="flip-hint">Cliquez pour revenir ←</p>
         </div>
       </div>
@@ -402,6 +412,17 @@ function renderCampagnes() {
           <strong>Impact :</strong> ${campagne.impact}
         </div>
         <p class="campagne-lecon"><strong>Leçon :</strong> ${campagne.lecon}</p>
+
+        ${campagne.sources && campagne.sources.length > 0 ? `
+          <div class="campagne-sources">
+            <strong>📚 Sources :</strong>
+            <ul class="sources-list">
+              ${campagne.sources.map(source => `
+                <li><a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title}</a></li>
+              `).join('')}
+            </ul>
+          </div>
+        ` : ''}
       </div>
     `;
   });

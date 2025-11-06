@@ -537,73 +537,241 @@
         "id": 1,
         "phrase": "Tu as un si joli visage, si seulement tu perdais du poids...",
         "dementi": "Mon corps entier est beau tel qu'il est. La beauté ne se mesure pas en kilos, et ton 'seulement' révèle plus sur tes préjugés que sur moi.",
-        "categorie": "Faux compliment"
+        "categorie": "Faux compliment",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 2,
         "phrase": "Es-tu sûre de vouloir manger ça ? Ça va te faire grossir.",
         "dementi": "Oui, je suis sûre, et mon alimentation est mon affaire. Associer la nourriture au 'péché' culpabilise et ignore que le poids est multifactoriel (génétique, hormones, stress).",
-        "categorie": "Contrôle alimentaire"
+        "categorie": "Contrôle alimentaire",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 3,
         "phrase": "Tu n'es pas grosse, tu es belle !",
         "dementi": "Si je suis grosse, c'est un fait neutre, pas une insulte. Me forcer à nier mon corps nie aussi mon authenticité – la vraie beauté inclut la diversité des formes.",
-        "categorie": "Négation"
+        "categorie": "Négation",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 4,
         "phrase": "Allez, aujourd'hui on fait un cheat day ! Bon, moi je peux, mais pas toi...",
         "dementi": "Les 'jours de triche' perpétuent l'idée que manger est une faiblesse. Je mange avec joie, sans culpabilité – et toi, pourquoi juges-tu les plaisirs des autres ?",
-        "categorie": "Exclusion"
+        "categorie": "Exclusion",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 5,
         "phrase": "Retourne à l'eau, la baleine !",
         "dementi": "Ton 'humour' est une violence qui blesse. Les animaux ne méritent pas d'être comparés à des humains pour rabaisser – et moi, je mérite le respect, point.",
-        "categorie": "Insulte 'humoristique'"
+        "categorie": "Insulte 'humoristique'",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 6,
         "phrase": "Si tu faisais un peu de sport, tu serais plus en forme.",
         "dementi": "Le sport est pour le bien-être, pas pour 'réparer' un corps. Des millions de personnes actives sont grosses – le vrai problème, c'est ton stéréotype sur la santé.",
-        "categorie": "Conseil non sollicité"
+        "categorie": "Conseil non sollicité",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 7,
         "phrase": "C'est pour ton bien que je te le dis, tu devrais surveiller ton assiette.",
         "dementi": "Mon bien, c'est moi qui le définis, pas tes 'conseils' non sollicités. La grossophobie 'bienveillante' masque du contrôle et aggrave le stress, pas la santé.",
-        "categorie": "Fausse bienveillance"
+        "categorie": "Fausse bienveillance",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 8,
         "phrase": "Les gros n'ont pas de volonté, c'est tout.",
         "dementi": "La volonté ne dicte pas le poids – 95% des régimes échouent à long terme à cause de facteurs biologiques. Blâmer les individus ignore les inégalités systémiques.",
-        "categorie": "Jugement moral"
+        "categorie": "Jugement moral",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 9,
         "phrase": "Avec ton poids, tu ne rentreras jamais dans cette robe.",
         "dementi": "Les normes vestimentaires excluent la moitié des corps – c'est la mode qui doit s'adapter, pas moi. Et si on célébrait tous les styles, au lieu de limiter ?",
-        "categorie": "Exclusion vestimentaire"
+        "categorie": "Exclusion vestimentaire",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 10,
         "phrase": "Les obèses coûtent cher à la société en soins.",
         "dementi": "La grossophobie coûte plus : absentéisme, dépressions, évitement médical. Investir dans l'inclusion réduit les coûts de santé publique de 20-30%.",
-        "categorie": "Argument économique"
+        "categorie": "Argument économique",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 11,
         "phrase": "Être gros, c'est malsain, point final.",
         "dementi": "La santé n'est pas que le poids – des minces fument, des grosses courent des marathons. Juger sur l'apparence discrimine, pas protège.",
-        "categorie": "Santé"
+        "categorie": "Santé",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       },
       {
         "id": 12,
         "phrase": "Tu es courageuse de sortir comme ça.",
         "dementi": "Je ne suis pas courageuse, je suis normale. Ton commentaire sous-entend que mon corps est un fardeau – changeons les normes pour que tous se sentent légitimes.",
-        "categorie": "Pitié déguisée"
+        "categorie": "Pitié déguisée",
+        "sources": [
+          {
+            "title": "Top Santé - 7 phrases grossophobes",
+            "url": "https://www.topsante.com/minceur/regimes-minceur/obesite/7-phrases-grossophobes-quon-nen-peut-plus-dentendre-en-ete-et-nos-reponses-651889"
+          },
+          {
+            "title": "Au Féminin - Fat shaming phrases courantes",
+            "url": "https://www.aufeminin.com/societe/fat-shaming-ces-7-phrases-tres-courantes-anodines-en-apparence-s4046683.html"
+          },
+          {
+            "title": "E-Santé - 5 phrases grossophobes à arrêter",
+            "url": "https://www.e-sante.fr/ces-5-phrases-sont-grossophobes-et-vous-devriez-arreter-de-les-prononcer/actualite/622175"
+          }
+        ]
       }
     ]
   },
@@ -682,7 +850,17 @@
         "description": "Campagne révolutionnaire mettant en scène des femmes 'réelles' pour défier les standards de beauté irréalistes.",
         "impact": "Ventes doublées (2 à 4 milliards $), 80% des Américaines sensibilisées à l'insatisfaction corporelle",
         "efficacite": "Pionnière du mainstream, normalisation de la diversité corporelle",
-        "lecon": "L'authenticité et la visibilité massive fonctionnent"
+        "lecon": "L'authenticité et la visibilité massive fonctionnent",
+        "sources": [
+          {
+            "title": "Wikipedia - Dove Campaign for Real Beauty",
+            "url": "https://en.wikipedia.org/wiki/Dove_Campaign_for_Real_Beauty"
+          },
+          {
+            "title": "Unilever - 20 years of Real Beauty",
+            "url": "https://www.unilever.com/news/news-search/2024/20-years-on-dove-and-the-future-of-real-beauty/"
+          }
+        ]
       },
       {
         "id": 2,
@@ -692,7 +870,13 @@
         "description": "Campagne anti-body shaming pour encourager les femmes à faire du sport sans honte.",
         "impact": "1,6 million de femmes ont commencé/repris une activité, +20% d'inscriptions en clubs",
         "efficacite": "Cible directement la grossophobie dans les loisirs",
-        "lecon": "L'empowerment par l'action fonctionne"
+        "lecon": "L'empowerment par l'action fonctionne",
+        "sources": [
+          {
+            "title": "Sport England - This Girl Can Campaign",
+            "url": "https://www.sportengland.org/campaigns-and-our-work/this-girl-can"
+          }
+        ]
       },
       {
         "id": 3,
@@ -702,7 +886,13 @@
         "description": "Campagne pour criminaliser la discrimination par taille via des lois.",
         "impact": "Lois adoptées à NYC (2023) et Minneapolis (2025), 80% des Américains favorables",
         "efficacite": "Combine action légale et culturelle, protège 34 millions de personnes",
-        "lecon": "Le changement légal est possible"
+        "lecon": "Le changement légal est possible",
+        "sources": [
+          {
+            "title": "NAAFA - Campaign for Size Freedom",
+            "url": "https://naafa.org/programs"
+          }
+        ]
       },
       {
         "id": 4,
@@ -712,7 +902,13 @@
         "description": "Campagne annuelle sensibilisant aux microagressions quotidiennes.",
         "impact": "Sensibilisation accrue, focus sur santé mentale (grossophobie cause plus de torts que le surpoids)",
         "efficacite": "Hyper locale et éducative, déconstruit les biais subtils",
-        "lecon": "L'éducation quotidienne transforme"
+        "lecon": "L'éducation quotidienne transforme",
+        "sources": [
+          {
+            "title": "ÉquiLibre - La grossophobie ça suffit",
+            "url": "https://equilibre.ca/campagnes/la-grossophobie-ca-suffit/"
+          }
+        ]
       },
       {
         "id": 5,
@@ -722,7 +918,13 @@
         "description": "29 panneaux pendant la Fashion Week avec mannequins grandes tailles.",
         "impact": "Couverture médiatique massive, débats sur l'inclusivité mode",
         "efficacite": "Timing stratégique et visuel impactant",
-        "lecon": "L'art et la culture changent les mentalités"
+        "lecon": "L'art et la culture changent les mentalités",
+        "sources": [
+          {
+            "title": "Topito - Top 8 initiatives contre grossophobie",
+            "url": "https://www.topito.com/top-initiatives-anti-grossophobie"
+          }
+        ]
       },
       {
         "id": 6,
@@ -732,7 +934,17 @@
         "description": "Campagne pour informer sans stigmatiser, focus anti-grossophobie.",
         "impact": "Partenariats publics, communication hospitalière contre les biais médicaux (17% des adultes français)",
         "efficacite": "Institutionnelle, cible les soignants et le public",
-        "lecon": "Le changement institutionnel est durable"
+        "lecon": "Le changement institutionnel est durable",
+        "sources": [
+          {
+            "title": "France Assos Santé - Journées Mondiales obésité",
+            "url": "https://www.france-assos-sante.org/2025/02/14/journees-mondiales-de-lobesite-du-4-au-6-mars-le-cnao-mobilise-contre-la-grossophobie/"
+          },
+          {
+            "title": "Arcom - Campagne contre préjugés",
+            "url": "https://www.arcom.fr/nos-ressources/nos-publications-et-nos-etudes/mettons-fin-aux-prejuges-sur-la-maladie-obesite-larcom-partenaire-des"
+          }
+        ]
       },
       {
         "id": 7,
@@ -742,7 +954,13 @@
         "description": "Défilés et lingerie inclusive (XS à 4XL) célébrant la diversité.",
         "impact": "Ventes en hausse de 25%, influence culturelle (Victoria's Secret inspiré)",
         "efficacite": "Économique et visuelle, normalise les corps via la pop culture",
-        "lecon": "La mode peut être révolutionnaire"
+        "lecon": "La mode peut être révolutionnaire",
+        "sources": [
+          {
+            "title": "ABC - Fat liberation vs body positivity",
+            "url": "https://www.abc.net.au/news/2021-03-07/fat-liberation-vs-body-positivity-brands-influencers/13171108"
+          }
+        ]
       }
     ]
   },

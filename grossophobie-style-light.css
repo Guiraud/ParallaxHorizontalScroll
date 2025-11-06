@@ -735,24 +735,32 @@ body {
 }
 
 .argument-face-front {
-  position: relative;
+  position: absolute;
   opacity: 1;
   transform: rotateY(0deg);
+  z-index: 2;
+  pointer-events: auto;
 }
 
 .argument-face-back {
   opacity: 0;
   transform: rotateY(180deg);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .argument-card.flipped .argument-face-front {
   opacity: 0;
   transform: rotateY(-180deg);
+  z-index: 1;
+  pointer-events: none;
 }
 
 .argument-card.flipped .argument-face-back {
   opacity: 1;
   transform: rotateY(0deg);
+  z-index: 2;
+  pointer-events: auto;
 }
 
 /* Stat Display */
@@ -819,7 +827,9 @@ body {
   line-height: 1.6;
 }
 
-.argument-sources {
+.argument-sources,
+.phrase-sources,
+.campagne-sources {
   margin-top: 1rem;
   padding: 1rem;
   background: rgba(99, 102, 241, 0.05);
@@ -827,7 +837,9 @@ body {
   border-left: 3px solid var(--primary-color);
 }
 
-.argument-sources strong {
+.argument-sources strong,
+.phrase-sources strong,
+.campagne-sources strong {
   color: var(--primary-color);
   font-size: 0.9rem;
   display: block;
