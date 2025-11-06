@@ -244,6 +244,24 @@ Vous verrez :
 
 ## 🐛 Dépannage
 
+### Erreur "command not found" lors du déploiement
+
+**Symptôme :** Le déploiement échoue avec une erreur comme `cloudflare-pages-deployment: not found`
+
+**Cause :** La configuration de build dans le dashboard Cloudflare est incorrecte.
+
+**Solution :**
+1. Allez dans **Cloudflare Dashboard** → **Pages** → **parallax-newsforge**
+2. Cliquez sur **Settings** → **Builds & deployments**
+3. Dans **Build configuration**, cliquez sur **Edit configuration**
+4. Modifiez les paramètres :
+   - **Build command** : Laisser vide ou mettre ``
+   - **Build output directory** : `./`
+   - **Root directory** : `./`
+5. Sauvegardez et redéployez
+
+⚠️ **Important** : Ce projet est un site statique avec Functions, il ne nécessite aucune étape de build.
+
 ### Le routing ne fonctionne pas
 
 **Vérifiez :**
