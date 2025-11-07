@@ -301,9 +301,6 @@ function renderIMCCritique() {
 
   let html = '';
 
-  // Intro
-  html += `<p class="imc-intro">${data.imcCritique.intro}</p>`;
-
   // Limites principales
   html += `<div class="imc-section">
     <h3 class="imc-section-title">📌 Principales Limites</h3>

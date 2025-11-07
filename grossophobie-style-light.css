@@ -1325,16 +1325,6 @@ body {
   color: var(--text-medium);
 }
 
-.imc-intro {
-  font-size: 1.1rem;
-  color: var(--text-dark);
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background: #fef3c7;
-  border-left: 4px solid var(--warning-color);
-  border-radius: 8px;
-}
-
 .imc-section {
   margin: 2.5rem 0;
 }

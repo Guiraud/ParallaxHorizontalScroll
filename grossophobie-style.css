@@ -1583,16 +1583,6 @@ input:focus {
   color: var(--text-medium);
 }
 
-.imc-intro {
-  font-size: 1.1rem;
-  color: var(--text-light);
-  margin-bottom: 2rem;
-  padding: 1rem;
-  background: var(--bg-light);
-  border-left: 4px solid var(--warning-color);
-  border-radius: 8px;
-}
-
 .imc-section {
   margin: 2.5rem 0;
 }
