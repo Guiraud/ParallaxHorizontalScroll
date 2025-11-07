@@ -1,0 +1,31 @@
+# Robots.txt pour p.newsforge.app
+# Site de sensibilisation à la grossophobie
+
+# Autoriser tous les bots respectueux
+User-agent: *
+Allow: /
+
+# Désautoriser l'indexation des fichiers admin (si présents)
+Disallow: /admin
+Disallow: /admin.html
+Disallow: /admin-*.html
+Disallow: /admin-*.js
+Disallow: /admin-*.css
+
+# Désautoriser l'indexation des fichiers de configuration
+Disallow: /.git/
+Disallow: /node_modules/
+Disallow: /*.json$
+Disallow: /wrangler.toml
+Disallow: /.gitlab-ci.yml
+Disallow: /package.json
+
+# Désautoriser les fichiers minifiés (versions non-minifiées indexées)
+Disallow: /*.min.js
+Disallow: /*.min.css
+
+# Sitemap
+Sitemap: https://p.newsforge.app/sitemap.xml
+
+# Délai de crawl raisonnable (10 secondes entre les requêtes)
+Crawl-delay: 10

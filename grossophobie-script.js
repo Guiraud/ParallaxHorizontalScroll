@@ -225,6 +225,7 @@ function createParallaxImageHTML(image, index) {
       <a href="${image.url}" data-lightbox="parallax-images" data-title="${image.alt}">
         <img src="${image.url}"
              alt="${image.alt}"
+             loading="lazy"
              style="max-width: 45vh; max-height: 50vh; border-radius: 15px; box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.5);">
       </a>
     </div>
