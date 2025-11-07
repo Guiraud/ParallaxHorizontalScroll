@@ -836,12 +836,63 @@ body {
   margin-bottom: 2rem;
   display: flex;
   align-items: center;
+  justify-content: space-between;
   gap: 1rem;
   font-weight: 600;
 }
 
+.trigger-warning-text {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  flex: 1;
+}
+
 .warning-icon {
   font-size: 1.5rem;
+}
+
+/* Bouton Toggle pour masquer le contenu trigger */
+.btn-toggle-trigger {
+  background: rgba(0, 0, 0, 0.2);
+  color: var(--bg-dark);
+  border: 2px solid rgba(0, 0, 0, 0.3);
+  padding: 0.5rem 1rem;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  font-weight: 600;
+  font-size: 0.9rem;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.btn-toggle-trigger:hover {
+  background: rgba(0, 0, 0, 0.3);
+  transform: translateY(-2px);
+}
+
+.btn-toggle-trigger:active {
+  transform: translateY(0);
+}
+
+.toggle-icon {
+  font-size: 1.2rem;
+}
+
+/* État masqué du contenu trigger */
+.phrases-grid.trigger-hidden {
+  filter: blur(20px);
+  opacity: 0.3;
+  pointer-events: none;
+  user-select: none;
+  transition: all 0.4s ease;
+}
+
+.phrases-grid {
+  transition: all 0.4s ease;
 }
 
 .trigger-content.hidden-safe {
@@ -1379,6 +1430,17 @@ body {
 
   .flip-flag {
     font-size: 1.6rem;
+  }
+
+  /* Bouton toggle trigger sur mobile */
+  .trigger-warning-banner {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .btn-toggle-trigger {
+    width: 100%;
+    justify-content: center;
   }
 
   .btn-petition-modal {

@@ -402,6 +402,38 @@ function renderPhrases() {
   $('.phrase-card').on('click', function() {
     $(this).toggleClass('flipped');
   });
+
+  // Initialiser le bouton toggle pour masquer le contenu trigger
+  initTriggerContentToggle();
+}
+
+// Fonction pour gérer l'affichage/masquage du contenu trigger
+function initTriggerContentToggle() {
+  const toggleBtn = $('#toggle-trigger-content');
+  const phrasesGrid = $('#phrases-grid');
+  const toggleIcon = toggleBtn.find('.toggle-icon');
+  const toggleText = toggleBtn.find('.toggle-text');
+
+  // État initial : visible
+  let isContentHidden = false;
+
+  toggleBtn.on('click', function() {
+    isContentHidden = !isContentHidden;
+
+    if (isContentHidden) {
+      // Masquer le contenu
+      phrasesGrid.addClass('trigger-hidden');
+      toggleIcon.text('👁️‍🗨️');
+      toggleText.text('Afficher');
+      toggleBtn.attr('aria-label', 'Afficher le contenu sensible');
+    } else {
+      // Afficher le contenu
+      phrasesGrid.removeClass('trigger-hidden');
+      toggleIcon.text('👁️');
+      toggleText.text('Masquer');
+      toggleBtn.attr('aria-label', 'Masquer le contenu sensible');
+    }
+  });
 }
 
 // Rendu des arguments positifs
