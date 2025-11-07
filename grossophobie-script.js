@@ -1,343 +1,432 @@
-// Parallax Interactive Script
+// ============================================
+// PARALLAX GROSSOPHOBIE - MAIN SCRIPT
+// ============================================
 // Gestion des données, interactions et mode sensible
 // Support pour chargement dynamique depuis window.THEME_DATA ou fichier JSON
+
+// ============================================
+// CONSTANTS & CONFIGURATION
+// ============================================
+
+const PARALLAX_SCROLL_MULTIPLIER = 0.5;
+const SCROLL_ANIMATION_DURATION = 800;
+const THEME_TOGGLE_ANIMATION_DURATION = 300;
+
+const ICONS = {
+  pen: '✍️',
+  share: '📢',
+  'book-open': '📖',
+  message: '💬',
+  heart: '❤️',
+  default: '📌'
+};
+
+// ============================================
+// STATE MANAGEMENT
+// ============================================
 
 let data = null;
 let safeMode = false;
 
-// Chargement des données au démarrage
+// ============================================
+// INITIALIZATION
+// ============================================
+
 $(document).ready(function() {
-  loadData();
+  initializeApp();
+});
+
+async function initializeApp() {
+  await loadData();
   setupEventListeners();
   initThemeToggle();
   initMobileMenu();
-});
+}
 
-// Chargement du fichier JSON (dynamique depuis Cloudflare ou fichier local)
+// ============================================
+// DATA LOADING
+// ============================================
+
+/**
+ * Charge les données du thème depuis window.THEME_DATA (Cloudflare) ou fichier JSON (local)
+ */
 async function loadData() {
   try {
-    // Si les données sont déjà injectées par Cloudflare Pages Function
     if (window.THEME_DATA) {
       data = window.THEME_DATA;
-      console.log('Données chargées depuis window.THEME_DATA:', data);
-      displayTriggerWarning();
-      return;
+      console.log('✓ Données chargées depuis window.THEME_DATA');
+    } else {
+      const themeName = window.THEME_NAME || 'grossophobie';
+      const response = await fetch(`${themeName}.json`);
+      data = await response.json();
+      console.log('✓ Données chargées depuis fichier JSON');
     }
 
-    // Sinon, charger depuis le fichier JSON (mode local/legacy)
-    const themeName = window.THEME_NAME || 'grossophobie';
-    const response = await fetch(`${themeName}.json`);
-    data = await response.json();
-    console.log('Données chargées depuis fichier JSON:', data);
     displayTriggerWarning();
   } catch (error) {
-    console.error('Erreur de chargement des données:', error);
+    console.error('✗ Erreur de chargement des données:', error);
     alert('Erreur lors du chargement des données. Veuillez rafraîchir la page.');
   }
 }
 
-// Affichage du Trigger Warning Modal
+// ============================================
+// TRIGGER WARNING MODAL
+// ============================================
+
+/**
+ * Affiche le modal d'avertissement avec contacts d'aide et lien pétition
+ */
 function displayTriggerWarning() {
   const warningText = document.getElementById('trigger-warning-text');
 
-  let html = `<p>${data.triggerWarning.global}</p>`;
+  const htmlParts = [
+    `<p>${data.triggerWarning.global}</p>`,
+    buildContactsHTML(),
+  ];
 
-  // Affichage des contacts d'aide
-  html += `<div style="margin-top: 1.5rem; text-align: left;">`;
-  html += `<p><strong>Contacts d'aide en France :</strong></p>`;
-  data.triggerWarning.contacts.france.forEach(contact => {
-    html += `<p>• ${contact.name} : <strong>${contact.number}</strong> - ${contact.description}</p>`;
-  });
-  html += `</div>`;
-
-  warningText.innerHTML = html;
-
-  // Injection du lien de la pétition dans la modal
-  const modalPetitionContainer = document.getElementById('modal-petition-container');
-  if (modalPetitionContainer && data.meta && data.meta.petition && data.meta.petition.url) {
-    modalPetitionContainer.innerHTML = `
-      <a href="${data.meta.petition.url}"
-         target="_blank"
-         rel="noopener"
-         class="btn-petition-modal"
-         aria-label="${data.meta.petition.title || 'Signer la pétition'}">
-        ✍️ ${data.meta.petition.title || 'Signer la Pétition'}
-      </a>
-    `;
-    console.log('Lien de pétition ajouté dans la modal d\'avertissement');
-  }
+  warningText.innerHTML = htmlParts.join('');
+  injectPetitionLink('#modal-petition-container');
 }
 
-// Configuration des écouteurs d'événements
+/**
+ * Construit le HTML des contacts d'aide
+ */
+function buildContactsHTML() {
+  const contacts = data.triggerWarning.contacts.france;
+  const contactsHTML = contacts.map(contact =>
+    `<p>• ${contact.name} : <strong>${contact.number}</strong> - ${contact.description}</p>`
+  ).join('');
+
+  return `
+    <div style="margin-top: 1.5rem; text-align: left;">
+      <p><strong>Contacts d'aide en France :</strong></p>
+      ${contactsHTML}
+    </div>
+  `;
+}
+
+/**
+ * Injecte le lien de la pétition dans un conteneur
+ */
+function injectPetitionLink(containerSelector) {
+  const container = document.querySelector(containerSelector);
+  if (!container || !data.meta?.petition?.url) return;
+
+  const petition = data.meta.petition;
+  container.innerHTML = `
+    <a href="${petition.url}"
+       target="_blank"
+       rel="noopener"
+       class="btn-petition-modal"
+       aria-label="${petition.title || 'Signer la pétition'}">
+      ✍️ ${petition.title || 'Signer la Pétition'}
+    </a>
+  `;
+
+  console.log('✓ Lien de pétition ajouté dans', containerSelector);
+}
+
+// ============================================
+// EVENT LISTENERS
+// ============================================
+
+/**
+ * Configure tous les écouteurs d'événements de l'application
+ */
 function setupEventListeners() {
-  // Boutons du modal
-  $('#accept-warning').on('click', function() {
+  setupModalListeners();
+  setupSafeModeListeners();
+  setupNavigationListeners();
+}
+
+function setupModalListeners() {
+  $('#accept-warning').on('click', () => {
     $('#trigger-warning-modal').removeClass('active');
     renderAllSections();
   });
 
-  $('#safe-mode').on('click', function() {
+  $('#safe-mode').on('click', () => {
     safeMode = true;
     $('#trigger-warning-modal').removeClass('active');
     renderAllSections();
     applySafeMode();
   });
+}
 
-  // Toggle safe mode dans la navigation
+function setupSafeModeListeners() {
   $('#safe-mode-toggle').on('change', function() {
     safeMode = this.checked;
-    if (safeMode) {
-      applySafeMode();
-    } else {
-      removeSafeMode();
-    }
+    safeMode ? applySafeMode() : removeSafeMode();
   });
+}
 
-  // Navigation smooth scroll (adapté au parallax)
+function setupNavigationListeners() {
   $('.nav-links a').on('click', function(e) {
     e.preventDefault();
-    const target = $(this).attr('href');
-    const section = $(target);
-    if (section.length) {
-      // Scroll adapté au parallax horizontal
-      const scrollWrapper = $('.horizontal-scroll-wrapper');
-      const sectionIndex = $('.section').index(section);
-      scrollWrapper.scrollTop(sectionIndex * (window.innerHeight * 0.5));
-    }
+    const targetSelector = $(this).attr('href');
+    smoothScrollToSection(targetSelector);
   });
 }
 
-// Rendu de toutes les sections
+// ============================================
+// RENDERING - MAIN ORCHESTRATOR
+// ============================================
+
+/**
+ * Rend toutes les sections du site dans l'ordre
+ */
 function renderAllSections() {
-  renderHero();
-  renderParallaxImages();
-  renderIntroduction();
-  renderPublics();
-  renderArguments();
-  renderIMCCritique();
-  renderPhrases();
-  renderPositif();
-  renderCampagnes();
-  renderRessources();
-  renderCTA();
-  renderFooter();
-  renderPetitionBadge();
+  const renderFunctions = [
+    renderHero,
+    renderParallaxImages,
+    renderIntroduction,
+    renderPublics,
+    renderArguments,
+    renderIMCCritique,
+    renderPhrases,
+    renderPositif,
+    renderCampagnes,
+    renderRessources,
+    renderCTA,
+    renderFooter,
+    renderPetitionBadge
+  ];
+
+  renderFunctions.forEach(fn => fn());
 }
 
-// Rendu de la section Hero
+// ============================================
+// RENDERING - INDIVIDUAL SECTIONS
+// ============================================
+
 function renderHero() {
   $('#main-title').text(data.meta.title);
   $('#main-subtitle').text(data.meta.subtitle);
-  // Update navigation title
   $('#nav-title').text(data.meta.title || '');
 }
 
-// Rendu des images parallax
 function renderParallaxImages() {
-  if (!data.parallaxImages || !data.parallaxImages.enabled) {
-    return;
-  }
+  if (!data.parallaxImages?.enabled) return;
 
-  // Trouver une section existante pour insérer les images ou créer une nouvelle section
   const heroSection = $('#hero');
 
   data.parallaxImages.images.forEach((image, index) => {
-    const speedClass = image.speed || 'normal';
-    const imageHtml = `
-      <div class="img-wrapper ${speedClass}" style="order: ${image.position || index}">
-        <a href="${image.url}" data-lightbox="parallax-images" data-title="${image.alt}">
-          <img src="${image.url}" alt="${image.alt}" style="max-width: 45vh; max-height: 50vh; border-radius: 15px; box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.5);">
-        </a>
-      </div>
-    `;
-
-    // Insérer après le hero
-    heroSection.after(imageHtml);
+    const imageHTML = createParallaxImageHTML(image, index);
+    heroSection.after(imageHTML);
   });
 }
 
-// Rendu de l'introduction
+function createParallaxImageHTML(image, index) {
+  const speedClass = image.speed || 'normal';
+  const order = image.position || index;
+
+  return `
+    <div class="img-wrapper ${speedClass}" style="order: ${order}">
+      <a href="${image.url}" data-lightbox="parallax-images" data-title="${image.alt}">
+        <img src="${image.url}"
+             alt="${image.alt}"
+             style="max-width: 45vh; max-height: 50vh; border-radius: 15px; box-shadow: 0px 12px 50px rgba(0, 0, 0, 0.5);">
+      </a>
+    </div>
+  `;
+}
+
 function renderIntroduction() {
-  const container = $('#intro-content');
-  container.html(`<p>${data.introduction.content}</p>`);
+  $('#intro-content').html(`<p>${data.introduction.content}</p>`);
 
-  const statsContainer = $('#intro-stats');
-  let html = '';
-  html += `<div class="stat-highlight-item">
-    <div class="stat-highlight-label">🇫🇷 France</div>
-    <div class="stat-highlight-value">${data.introduction.statistics.france}</div>
-  </div>`;
-  html += `<div class="stat-highlight-item">
-    <div class="stat-highlight-label">🌍 Global</div>
-    <div class="stat-highlight-value">${data.introduction.statistics.global}</div>
-  </div>`;
-  statsContainer.html(html);
+  const stats = data.introduction.statistics;
+  const statsHTML = `
+    <div class="stat-highlight-item">
+      <div class="stat-highlight-label">🇫🇷 France</div>
+      <div class="stat-highlight-value">${stats.france}</div>
+    </div>
+    <div class="stat-highlight-item">
+      <div class="stat-highlight-label">🌍 Global</div>
+      <div class="stat-highlight-value">${stats.global}</div>
+    </div>
+  `;
+
+  $('#intro-stats').html(statsHTML);
 }
 
-// Rendu des publics cibles
 function renderPublics() {
-  const container = $('#publics-grid');
-  let html = '';
-
-  data.publicCibles.audiences.forEach(audience => {
-    html += `
-      <div class="public-card">
-        <div class="public-icon">${audience.icon}</div>
-        <h3 class="public-name">${audience.name}</h3>
-        <p class="public-message">${audience.message}</p>
-        <div class="public-resources">
-          <ul>
-            ${audience.resources.map(resource => `<li>${resource}</li>`).join('')}
-          </ul>
-        </div>
-      </div>
-    `;
-  });
-
-  container.html(html);
+  const audiences = data.publicCibles.audiences;
+  const cardsHTML = audiences.map(createPublicCardHTML).join('');
+  $('#publics-grid').html(cardsHTML);
 }
 
-// Rendu des arguments
-function renderArguments() {
-  const container = $('#arguments-container');
-  let html = '';
+function createPublicCardHTML(audience) {
+  const resourcesList = audience.resources
+    .map(resource => `<li>${resource}</li>`)
+    .join('');
 
-  data.arguments.items.forEach((arg, index) => {
-    html += `
-      <div class="argument-card" data-arg-id="${arg.id}">
-        <h3 class="argument-title">${arg.id}. ${arg.title}</h3>
-
-        <div class="argument-flip-container">
-          <!-- Face avant (France) -->
-          <div class="argument-face argument-face-front">
-            <div class="argument-stat-display">
-              <div class="stat-flag">🇫🇷</div>
-              <div class="stat-value-main">${arg.statFrance}</div>
-            </div>
-            <button class="flip-flag-btn" data-country="us" aria-label="Voir statistique États-Unis">
-              <span class="flip-flag">🇺🇸</span>
-            </button>
-          </div>
-
-          <!-- Face arrière (US) -->
-          <div class="argument-face argument-face-back">
-            <div class="argument-stat-display">
-              <div class="stat-flag">🇺🇸</div>
-              <div class="stat-value-main">${arg.statUS}</div>
-            </div>
-            <button class="flip-flag-btn" data-country="fr" aria-label="Voir statistique France">
-              <span class="flip-flag">🇫🇷</span>
-            </button>
-          </div>
-        </div>
-
-        <div class="argument-impact">
-          <strong>Impact :</strong> ${arg.impact}
-        </div>
-
-        ${arg.sources && arg.sources.length > 0 ? `
-          <div class="argument-sources">
-            <strong>📚 Sources :</strong>
-            <ul class="sources-list">
-              ${arg.sources.map(source => `
-                <li><a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title}</a></li>
-              `).join('')}
-            </ul>
-          </div>
-        ` : ''}
+  return `
+    <div class="public-card">
+      <div class="public-icon">${audience.icon}</div>
+      <h3 class="public-name">${audience.name}</h3>
+      <p class="public-message">${audience.message}</p>
+      <div class="public-resources">
+        <ul>${resourcesList}</ul>
       </div>
-    `;
-  });
+    </div>
+  `;
+}
 
-  container.html(html);
+function renderArguments() {
+  const args = data.arguments.items;
+  const cardsHTML = args.map(createArgumentCardHTML).join('');
 
-  // Gestion du flip des cartes
-  $('.flip-flag-btn').on('click', function(e) {
-    e.stopPropagation();
-    const card = $(this).closest('.argument-card');
-    card.toggleClass('flipped');
-  });
+  $('#arguments-container').html(cardsHTML);
 
-  // Ajuster la hauteur des containers sur mobile
+  setupFlipCardListeners();
   adjustFlipContainerHeights();
 }
 
-// Fonction pour ajuster dynamiquement la hauteur des flip containers
-function adjustFlipContainerHeights() {
-  $('.argument-flip-container').each(function() {
-    const container = $(this);
-    const frontFace = container.find('.argument-face-front');
-    const backFace = container.find('.argument-face-back');
+function createArgumentCardHTML(arg) {
+  const sourcesHTML = arg.sources?.length > 0
+    ? createSourcesListHTML(arg.sources)
+    : '';
 
-    // Calculer la hauteur nécessaire pour chaque face
-    const frontHeight = frontFace.outerHeight();
-    const backHeight = backFace.outerHeight();
+  return `
+    <div class="argument-card" data-arg-id="${arg.id}">
+      <h3 class="argument-title">${arg.id}. ${arg.title}</h3>
+
+      <div class="argument-flip-container">
+        ${createFlipCardFaceHTML('front', arg.statFrance, '🇫🇷', 'us', 'Voir statistique États-Unis', '🇺🇸')}
+        ${createFlipCardFaceHTML('back', arg.statUS, '🇺🇸', 'fr', 'Voir statistique France', '🇫🇷')}
+      </div>
+
+      <div class="argument-impact">
+        <strong>Impact :</strong> ${arg.impact}
+      </div>
+
+      ${sourcesHTML}
+    </div>
+  `;
+}
+
+function createFlipCardFaceHTML(faceType, statText, flagEmoji, targetCountry, ariaLabel, buttonFlagEmoji) {
+  return `
+    <div class="argument-face argument-face-${faceType}">
+      <div class="argument-stat-display">
+        <div class="stat-flag">${flagEmoji}</div>
+        <div class="stat-value-main">${statText}</div>
+      </div>
+      <button class="flip-flag-btn"
+              data-country="${targetCountry}"
+              aria-label="${ariaLabel}">
+        <span class="flip-flag">${buttonFlagEmoji}</span>
+      </button>
+    </div>
+  `;
+}
+
+function createSourcesListHTML(sources) {
+  const sourceItems = sources
+    .map(source => `
+      <li>
+        <a href="${source.url}" target="_blank" rel="noopener" class="source-link">
+          ${source.title}
+        </a>
+      </li>
+    `)
+    .join('');
+
+  return `
+    <div class="argument-sources">
+      <strong>📚 Sources :</strong>
+      <ul class="sources-list">${sourceItems}</ul>
+    </div>
+  `;
+}
+
+function setupFlipCardListeners() {
+  $('.flip-flag-btn').on('click', function(e) {
+    e.stopPropagation();
+    $(this).closest('.argument-card').toggleClass('flipped');
+  });
+}
+
+/**
+ * Ajuste dynamiquement la hauteur des flip containers pour éviter la superposition
+ */
+function adjustFlipContainerHeights() {
+  const adjustSingleContainer = (container) => {
+    const $container = $(container);
+    const frontHeight = $container.find('.argument-face-front').outerHeight();
+    const backHeight = $container.find('.argument-face-back').outerHeight();
     const maxHeight = Math.max(frontHeight, backHeight);
 
-    // Appliquer la hauteur maximale au container
-    container.css('min-height', maxHeight + 'px');
+    $container.css('min-height', `${maxHeight}px`);
+  };
+
+  // Ajustement initial
+  $('.argument-flip-container').each(function() {
+    adjustSingleContainer(this);
   });
 
-  // Réajuster au resize de la fenêtre
-  $(window).on('resize', function() {
+  // Réajustement au resize
+  $(window).on('resize', () => {
     $('.argument-flip-container').each(function() {
-      const container = $(this);
-      const frontFace = container.find('.argument-face-front');
-      const backFace = container.find('.argument-face-back');
-      const frontHeight = frontFace.outerHeight();
-      const backHeight = backFace.outerHeight();
-      const maxHeight = Math.max(frontHeight, backHeight);
-      container.css('min-height', maxHeight + 'px');
+      adjustSingleContainer(this);
     });
   });
 }
 
-// Rendu de la section IMC Critique
 function renderIMCCritique() {
   if (!data.imcCritique) return;
 
   const container = $('#imc-content');
   if (!container.length) return;
 
-  let html = '';
+  const htmlParts = [
+    renderIMCLimites(),
+    renderIMCDimensionRaciale(),
+    renderIMCAlternatives(),
+    renderIMCRecommendations()
+  ];
 
-  // Limites principales
-  html += `<div class="imc-section">
-    <h3 class="imc-section-title">📌 Principales Limites</h3>
-    <div class="imc-grid">`;
+  container.html(htmlParts.join(''));
+  console.log('✓ Section IMC Critique rendue');
+}
 
-  data.imcCritique.limites.forEach(limite => {
-    html += `
+function renderIMCLimites() {
+  const cardsHTML = data.imcCritique.limites
+    .map(limite => `
       <div class="imc-card">
         <div class="imc-card-icon">${limite.icon}</div>
         <h4 class="imc-card-title">${limite.titre}</h4>
         <p class="imc-card-description">${limite.description}</p>
       </div>
-    `;
-  });
+    `)
+    .join('');
 
-  html += `</div></div>`;
+  return `
+    <div class="imc-section">
+      <h3 class="imc-section-title">📌 Principales Limites</h3>
+      <div class="imc-grid">${cardsHTML}</div>
+    </div>
+  `;
+}
 
-  // Dimension raciale
-  if (data.imcCritique.dimensionRaciale) {
-    html += `<div class="imc-section imc-raciale">
+function renderIMCDimensionRaciale() {
+  if (!data.imcCritique.dimensionRaciale) return '';
+
+  const points = data.imcCritique.dimensionRaciale.points
+    .map(point => `<li>${point}</li>`)
+    .join('');
+
+  return `
+    <div class="imc-section imc-raciale">
       <h3 class="imc-section-title">🌍 ${data.imcCritique.dimensionRaciale.titre}</h3>
-      <ul class="imc-list">`;
+      <ul class="imc-list">${points}</ul>
+    </div>
+  `;
+}
 
-    data.imcCritique.dimensionRaciale.points.forEach(point => {
-      html += `<li>${point}</li>`;
-    });
-
-    html += `</ul></div>`;
-  }
-
-  // Alternatives
-  html += `<div class="imc-section">
-    <h3 class="imc-section-title">✨ Alternatives et Mesures Plus Proches de la Réalité</h3>
-    <div class="imc-alternatives">`;
-
-  data.imcCritique.alternatives.forEach(alt => {
-    html += `
+function renderIMCAlternatives() {
+  const altsHTML = data.imcCritique.alternatives
+    .map(alt => `
       <div class="imc-alternative">
         <div class="imc-alt-header">
           <span class="imc-alt-icon">${alt.icon}</span>
@@ -345,89 +434,88 @@ function renderIMCCritique() {
         </div>
         <p>${alt.description}</p>
       </div>
-    `;
-  });
+    `)
+    .join('');
 
-  html += `</div></div>`;
-
-  // Recommandations
-  html += `<div class="imc-section imc-recommendations">
-    <h3 class="imc-section-title">💡 Ce que Vous Pouvez Faire</h3>
-    <ul class="imc-list imc-action-list">`;
-
-  data.imcCritique.recommendations.forEach(rec => {
-    html += `<li>${rec}</li>`;
-  });
-
-  html += `</ul></div>`;
-
-  container.html(html);
-  console.log('Section IMC Critique rendue');
+  return `
+    <div class="imc-section">
+      <h3 class="imc-section-title">✨ Alternatives et Mesures Plus Proches de la Réalité</h3>
+      <div class="imc-alternatives">${altsHTML}</div>
+    </div>
+  `;
 }
 
-// Rendu des phrases discriminantes (avec trigger warning)
+function renderIMCRecommendations() {
+  const recsHTML = data.imcCritique.recommendations
+    .map(rec => `<li>${rec}</li>`)
+    .join('');
+
+  return `
+    <div class="imc-section imc-recommendations">
+      <h3 class="imc-section-title">💡 Ce que Vous Pouvez Faire</h3>
+      <ul class="imc-list imc-action-list">${recsHTML}</ul>
+    </div>
+  `;
+}
+
 function renderPhrases() {
-  const container = $('#phrases-grid');
-  let html = '';
+  const cardsHTML = data.phrasesDiscriminantes.items
+    .map(createPhraseCardHTML)
+    .join('');
 
-  data.phrasesDiscriminantes.items.forEach(item => {
-    html += `
-      <div class="phrase-card" data-id="${item.id}">
-        <div class="phrase-front">
-          <div class="phrase-categorie">${item.categorie}</div>
-          <p class="phrase-text">"${item.phrase}"</p>
-          <p class="flip-hint">Cliquez pour voir le démenti →</p>
-        </div>
-        <div class="phrase-back">
-          <p class="dementi-text">${item.dementi}</p>
-          ${item.sources && item.sources.length > 0 ? `
-            <div class="phrase-sources">
-              <strong>📚 Sources :</strong>
-              <ul class="sources-list">
-                ${item.sources.map(source => `
-                  <li><a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title}</a></li>
-                `).join('')}
-              </ul>
-            </div>
-          ` : ''}
-          <p class="flip-hint">Cliquez pour revenir ←</p>
-        </div>
-      </div>
-    `;
-  });
+  $('#phrases-grid').html(cardsHTML);
 
-  container.html(html);
-
-  // Gestion du flip des cartes
-  $('.phrase-card').on('click', function() {
-    $(this).toggleClass('flipped');
-  });
-
-  // Initialiser le bouton toggle pour masquer le contenu trigger
+  setupPhraseCardListeners();
   initTriggerContentToggle();
 }
 
-// Fonction pour gérer l'affichage/masquage du contenu trigger
+function createPhraseCardHTML(item) {
+  const sourcesHTML = item.sources?.length > 0
+    ? createSourcesListHTML(item.sources)
+    : '';
+
+  return `
+    <div class="phrase-card" data-id="${item.id}">
+      <div class="phrase-front">
+        <div class="phrase-categorie">${item.categorie}</div>
+        <p class="phrase-text">"${item.phrase}"</p>
+        <p class="flip-hint">Cliquez pour voir le démenti →</p>
+      </div>
+      <div class="phrase-back">
+        <p class="dementi-text">${item.dementi}</p>
+        ${sourcesHTML}
+        <p class="flip-hint">Cliquez pour revenir ←</p>
+      </div>
+    </div>
+  `;
+}
+
+function setupPhraseCardListeners() {
+  $('.phrase-card').on('click', function() {
+    $(this).toggleClass('flipped');
+  });
+}
+
+/**
+ * Initialise le bouton toggle pour masquer/afficher le contenu sensible
+ */
 function initTriggerContentToggle() {
   const toggleBtn = $('#toggle-trigger-content');
   const phrasesGrid = $('#phrases-grid');
   const toggleIcon = toggleBtn.find('.toggle-icon');
   const toggleText = toggleBtn.find('.toggle-text');
 
-  // État initial : visible
   let isContentHidden = false;
 
-  toggleBtn.on('click', function() {
+  toggleBtn.on('click', () => {
     isContentHidden = !isContentHidden;
 
     if (isContentHidden) {
-      // Masquer le contenu
       phrasesGrid.addClass('trigger-hidden');
       toggleIcon.text('👁️‍🗨️');
       toggleText.text('Afficher');
       toggleBtn.attr('aria-label', 'Afficher le contenu sensible');
     } else {
-      // Afficher le contenu
       phrasesGrid.removeClass('trigger-hidden');
       toggleIcon.text('👁️');
       toggleText.text('Masquer');
@@ -436,307 +524,286 @@ function initTriggerContentToggle() {
   });
 }
 
-// Rendu des arguments positifs
 function renderPositif() {
-  const container = $('#positif-grid');
-  let html = '';
-
-  data.argumentsPositifs.items.forEach(item => {
-    html += `
+  const cardsHTML = data.argumentsPositifs.items
+    .map(item => `
       <div class="positif-card">
         <h3 class="positif-title">${item.title}</h3>
         <p class="positif-description">${item.description}</p>
         <div class="positif-impact">✨ ${item.impact}</div>
       </div>
-    `;
-  });
+    `)
+    .join('');
 
-  container.html(html);
+  $('#positif-grid').html(cardsHTML);
 }
 
-// Rendu des campagnes
 function renderCampagnes() {
-  const container = $('#campagnes-container');
-  let html = '';
+  const cardsHTML = data.campagnesEfficaces.items
+    .map(createCampagneCardHTML)
+    .join('');
 
-  data.campagnesEfficaces.items.forEach(campagne => {
-    html += `
-      <div class="campagne-card">
-        <div class="campagne-header">
-          <h3 class="campagne-name">${campagne.name}</h3>
-          <div class="campagne-meta">
-            <span>📅 ${campagne.period}</span>
-            <span>🌍 ${campagne.zone}</span>
-          </div>
-        </div>
-        <p class="campagne-description">${campagne.description}</p>
-        <div class="campagne-impact">
-          <strong>Impact :</strong> ${campagne.impact}
-        </div>
-        <p class="campagne-lecon"><strong>Leçon :</strong> ${campagne.lecon}</p>
-
-        ${campagne.sources && campagne.sources.length > 0 ? `
-          <div class="campagne-sources">
-            <strong>📚 Sources :</strong>
-            <ul class="sources-list">
-              ${campagne.sources.map(source => `
-                <li><a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title}</a></li>
-              `).join('')}
-            </ul>
-          </div>
-        ` : ''}
-      </div>
-    `;
-  });
-
-  container.html(html);
+  $('#campagnes-container').html(cardsHTML);
 }
 
-// Rendu des ressources
+function createCampagneCardHTML(campagne) {
+  const sourcesHTML = campagne.sources?.length > 0
+    ? createSourcesListHTML(campagne.sources)
+    : '';
+
+  return `
+    <div class="campagne-card">
+      <div class="campagne-header">
+        <h3 class="campagne-name">${campagne.name}</h3>
+        <div class="campagne-meta">
+          <span>📅 ${campagne.period}</span>
+          <span>🌍 ${campagne.zone}</span>
+        </div>
+      </div>
+      <p class="campagne-description">${campagne.description}</p>
+      <div class="campagne-impact">
+        <strong>Impact :</strong> ${campagne.impact}
+      </div>
+      <p class="campagne-lecon"><strong>Leçon :</strong> ${campagne.lecon}</p>
+      ${sourcesHTML}
+    </div>
+  `;
+}
+
 function renderRessources() {
-  const container = $('#ressources-content');
-  let html = '';
+  const sectionsHTML = [
+    renderRessourcesSection('Associations et Collectifs', data.ressources.associations, createAssociationItemHTML),
+    renderRessourcesSection('Guides et Outils', data.ressources.guides, createGuideItemHTML),
+    renderRessourcesSection('Livres et Médias', data.ressources.livres, createLivreItemHTML)
+  ].join('');
 
-  // Associations
-  html += `<div class="ressources-section">
-    <h3>Associations et Collectifs</h3>
-    <ul class="ressources-list">`;
-  data.ressources.associations.forEach(asso => {
-    const nameHtml = asso.url
-      ? `<a href="${asso.url}" target="_blank" rel="noopener" class="ressource-link">${asso.name}</a>`
-      : asso.name;
-    html += `
-      <li class="ressource-item">
-        <div class="ressource-name">${nameHtml}</div>
-        <div class="ressource-type">${asso.type}</div>
-        <div class="ressource-action">${asso.action}</div>
-        ${asso.social ? `<div style="color: var(--primary-color); margin-top: 0.5rem;">${asso.social}</div>` : ''}
-      </li>
-    `;
-  });
-  html += `</ul></div>`;
-
-  // Guides
-  html += `<div class="ressources-section">
-    <h3>Guides et Outils</h3>
-    <ul class="ressources-list">`;
-  data.ressources.guides.forEach(guide => {
-    const titleHtml = guide.url
-      ? `<a href="${guide.url}" target="_blank" rel="noopener" class="ressource-link">${guide.titre}</a>`
-      : guide.titre;
-    html += `
-      <li class="ressource-item">
-        <div class="ressource-name">${titleHtml}</div>
-        <div class="ressource-type">${guide.source}</div>
-        <div class="ressource-action">${guide.description}</div>
-      </li>
-    `;
-  });
-  html += `</ul></div>`;
-
-  // Livres
-  html += `<div class="ressources-section">
-    <h3>Livres et Médias</h3>
-    <ul class="ressources-list">`;
-  data.ressources.livres.forEach(livre => {
-    const titleHtml = livre.url
-      ? `<a href="${livre.url}" target="_blank" rel="noopener" class="ressource-link">${livre.titre}</a>`
-      : livre.titre;
-    html += `
-      <li class="ressource-item">
-        <div class="ressource-name">${titleHtml}</div>
-        <div class="ressource-type">${livre.source}</div>
-        <div class="ressource-action">${livre.description}</div>
-      </li>
-    `;
-  });
-  html += `</ul></div>`;
-
-  container.html(html);
+  $('#ressources-content').html(sectionsHTML);
 }
 
-// Rendu du Call to Action
+function renderRessourcesSection(title, items, itemCreator) {
+  const itemsHTML = items.map(itemCreator).join('');
+
+  return `
+    <div class="ressources-section">
+      <h3>${title}</h3>
+      <ul class="ressources-list">${itemsHTML}</ul>
+    </div>
+  `;
+}
+
+function createAssociationItemHTML(asso) {
+  const nameHTML = asso.url
+    ? `<a href="${asso.url}" target="_blank" rel="noopener" class="ressource-link">${asso.name}</a>`
+    : asso.name;
+
+  const socialHTML = asso.social
+    ? `<div style="color: var(--primary-color); margin-top: 0.5rem;">${asso.social}</div>`
+    : '';
+
+  return `
+    <li class="ressource-item">
+      <div class="ressource-name">${nameHTML}</div>
+      <div class="ressource-type">${asso.type}</div>
+      <div class="ressource-action">${asso.action}</div>
+      ${socialHTML}
+    </li>
+  `;
+}
+
+function createGuideItemHTML(guide) {
+  const titleHTML = guide.url
+    ? `<a href="${guide.url}" target="_blank" rel="noopener" class="ressource-link">${guide.titre}</a>`
+    : guide.titre;
+
+  return `
+    <li class="ressource-item">
+      <div class="ressource-name">${titleHTML}</div>
+      <div class="ressource-type">${guide.source}</div>
+      <div class="ressource-action">${guide.description}</div>
+    </li>
+  `;
+}
+
+function createLivreItemHTML(livre) {
+  const titleHTML = livre.url
+    ? `<a href="${livre.url}" target="_blank" rel="noopener" class="ressource-link">${livre.titre}</a>`
+    : livre.titre;
+
+  return `
+    <li class="ressource-item">
+      <div class="ressource-name">${titleHTML}</div>
+      <div class="ressource-type">${livre.source}</div>
+      <div class="ressource-action">${livre.description}</div>
+    </li>
+  `;
+}
+
 function renderCTA() {
-  const container = $('#cta-grid');
-  let html = '';
+  const cardsHTML = data.callToAction.actions
+    .map(createCTACardHTML)
+    .join('');
 
-  data.callToAction.actions.forEach(action => {
-    const isPrimary = action.type === 'primary';
-    const cardClass = isPrimary ? 'cta-card primary' : 'cta-card';
-
-    html += `
-      <div class="${cardClass}" data-url="${action.url || ''}" onclick="${action.url ? `window.open('${action.url}', '_blank')` : 'void(0)'}">
-        <div class="cta-icon">${getIconForAction(action.icon)}</div>
-        <h3 class="cta-title">${action.titre}</h3>
-        <p class="cta-description">${action.description}</p>
-      </div>
-    `;
-  });
-
-  container.html(html);
+  $('#cta-grid').html(cardsHTML);
 }
 
-// Rendu du footer
+function createCTACardHTML(action) {
+  const isPrimary = action.type === 'primary';
+  const cardClass = isPrimary ? 'cta-card primary' : 'cta-card';
+  const onClick = action.url ? `window.open('${action.url}', '_blank')` : 'void(0)';
+
+  return `
+    <div class="${cardClass}"
+         data-url="${action.url || ''}"
+         onclick="${onClick}">
+      <div class="cta-icon">${getIconForAction(action.icon)}</div>
+      <h3 class="cta-title">${action.titre}</h3>
+      <p class="cta-description">${action.description}</p>
+    </div>
+  `;
+}
+
 function renderFooter() {
-  const container = $('#footer-content');
-  let html = `
+  const html = `
     <p>${data.footer.message}</p>
     <p style="margin-top: 1rem; font-size: 0.9rem;">${data.footer.contact}</p>
   `;
-  container.html(html);
+
+  $('#footer-content').html(html);
 }
 
-// Application du mode sensible
+function renderPetitionBadge() {
+  const badge = $('#petition-badge');
+  const petition = data.meta?.petition;
+
+  if (!petition?.url) {
+    badge.hide();
+    console.log('✗ Aucune pétition définie, badge masqué');
+    return;
+  }
+
+  badge.attr('href', petition.url);
+  badge.attr('aria-label', petition.title || 'Signer la pétition');
+
+  if (petition.title) {
+    badge.find('.badge-text').text('Signer la pétition');
+  }
+
+  badge.on('click', () => {
+    console.log('✓ Clic sur le badge de pétition:', petition.url);
+  });
+
+  console.log('✓ Badge de pétition configuré');
+}
+
+// ============================================
+// SAFE MODE
+// ============================================
+
+/**
+ * Active le mode sensible qui masque les contenus difficiles
+ */
 function applySafeMode() {
-  console.log('Mode sensible activé');
-  // Masquer les sections avec trigger warning
+  console.log('🛡️ Mode sensible activé');
+
   $('.trigger-content').addClass('hidden-safe');
   $('.trigger-section').css('opacity', '0.5');
 
-  // Ajouter un message informatif
   if ($('#safe-mode-message').length === 0) {
-    $('body').append(`
-      <div id="safe-mode-message" style="
-        position: fixed;
-        bottom: 20px;
-        right: 20px;
-        background: var(--warning-color);
-        color: var(--bg-dark);
-        padding: 1rem 2rem;
-        border-radius: 10px;
-        font-weight: 600;
-        z-index: 9999;
-        box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
-      ">
-        🛡️ Mode sensible activé - Contenus difficiles masqués
-      </div>
-    `);
+    $('body').append(createSafeModeMessageHTML());
   }
 }
 
-// Retrait du mode sensible
+function createSafeModeMessageHTML() {
+  return `
+    <div id="safe-mode-message" style="
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--warning-color);
+      color: var(--bg-dark);
+      padding: 1rem 2rem;
+      border-radius: 10px;
+      font-weight: 600;
+      z-index: 9999;
+      box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+    ">
+      🛡️ Mode sensible activé - Contenus difficiles masqués
+    </div>
+  `;
+}
+
+/**
+ * Désactive le mode sensible
+ */
 function removeSafeMode() {
-  console.log('Mode sensible désactivé');
+  console.log('✓ Mode sensible désactivé');
+
   $('.trigger-content').removeClass('hidden-safe');
   $('.trigger-section').css('opacity', '1');
   $('#safe-mode-message').remove();
 }
 
-// Helper: Obtenir l'icône pour une action
-function getIconForAction(iconName) {
-  const icons = {
-    'pen': '✍️',
-    'share': '📢',
-    'book-open': '📖',
-    'message': '💬',
-    'heart': '❤️'
-  };
-  return icons[iconName] || '📌';
-}
-
-// Helper: Scroll smooth adapté au parallax
-function smoothScrollToSection(sectionId) {
-  const section = $(sectionId);
-  if (section.length) {
-    const scrollWrapper = $('.horizontal-scroll-wrapper');
-    const sectionIndex = $('.section').index(section);
-    const scrollPosition = sectionIndex * (window.innerHeight * 0.5);
-
-    scrollWrapper.animate({
-      scrollTop: scrollPosition
-    }, 800, 'swing');
-  }
-}
-
-// Rendu du badge de pétition
-function renderPetitionBadge() {
-  const badge = $('#petition-badge');
-
-  if (data.meta && data.meta.petition && data.meta.petition.url) {
-    // Configurer le lien et l'aria-label
-    badge.attr('href', data.meta.petition.url);
-    badge.attr('aria-label', data.meta.petition.title || 'Signer la pétition');
-
-    // Optionnel : mettre à jour le texte si vous voulez le personnaliser
-    if (data.meta.petition.title) {
-      badge.find('.badge-text').text('Signer la pétition');
-    }
-
-    // Tracking des clics (optionnel)
-    badge.on('click', function() {
-      console.log('Clic sur le badge de pétition:', data.meta.petition.url);
-      // Vous pouvez ajouter du tracking analytics ici
-    });
-
-    console.log('Badge de pétition configuré:', data.meta.petition.url);
-  } else {
-    // Masquer le badge si pas de pétition
-    badge.hide();
-    console.log('Aucune pétition définie, badge masqué');
-  }
-}
-
-// Gestion du resize pour adapter le parallax
-$(window).on('resize', function() {
-  // Recalculer les positions si nécessaire
-  console.log('Window resized');
-});
-
 // ============================================
-// THEME TOGGLE - Basculement Clair/Sombre
+// THEME TOGGLE - DARK/LIGHT MODE
 // ============================================
 
+/**
+ * Initialise le basculement de thème clair/sombre
+ */
 function initThemeToggle() {
   const themeToggleBtn = document.getElementById('theme-toggle-btn');
-  const themeIcon = document.querySelector('.theme-icon');
+  if (!themeToggleBtn) return;
 
-  // Charger la préférence de thème depuis localStorage
   const savedTheme = localStorage.getItem('theme') || 'dark';
   applyTheme(savedTheme);
 
-  // Écouteur d'événement pour le bouton de toggle
-  if (themeToggleBtn) {
-    themeToggleBtn.addEventListener('click', function() {
-      const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
-      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
-      applyTheme(newTheme);
-      localStorage.setItem('theme', newTheme);
+  themeToggleBtn.addEventListener('click', handleThemeToggle);
 
-      // Animation du bouton
-      themeToggleBtn.style.transform = 'rotate(360deg)';
-      setTimeout(() => {
-        themeToggleBtn.style.transform = 'rotate(0deg)';
-      }, 300);
-    });
-  }
-
-  console.log('Theme toggle initialisé:', savedTheme);
+  console.log('✓ Theme toggle initialisé:', savedTheme);
 }
 
+function handleThemeToggle() {
+  const currentTheme = document.documentElement.getAttribute('data-theme') || 'dark';
+  const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+
+  applyTheme(newTheme);
+  localStorage.setItem('theme', newTheme);
+  animateThemeButton(this);
+}
+
+function animateThemeButton(button) {
+  button.style.transform = 'rotate(360deg)';
+  setTimeout(() => {
+    button.style.transform = 'rotate(0deg)';
+  }, THEME_TOGGLE_ANIMATION_DURATION);
+}
+
+/**
+ * Applique un thème (dark ou light)
+ */
 function applyTheme(theme) {
   const themeIcon = document.querySelector('.theme-icon');
   const linkElement = document.querySelector('link[href*="grossophobie-style"]');
 
-  // Appliquer le data-attribute au HTML
   document.documentElement.setAttribute('data-theme', theme);
 
-  // Changer la feuille de style
   if (linkElement) {
-    if (theme === 'light') {
-      linkElement.href = 'grossophobie-style-light.css';
-      if (themeIcon) themeIcon.textContent = '☀️';
-    } else {
-      linkElement.href = 'grossophobie-style.css';
-      if (themeIcon) themeIcon.textContent = '🌙';
+    const isLight = theme === 'light';
+    linkElement.href = isLight ? 'grossophobie-style-light.css' : 'grossophobie-style.css';
+
+    if (themeIcon) {
+      themeIcon.textContent = isLight ? '☀️' : '🌙';
     }
   }
 
-  console.log('Thème appliqué:', theme);
+  console.log('✓ Thème appliqué:', theme);
 }
 
-// Détection automatique de la préférence système (optionnel)
+/**
+ * Détecte la préférence système de thème
+ */
 function detectSystemTheme() {
-  if (window.matchMedia && window.matchMedia('(prefers-color-scheme: dark)').matches) {
+  if (window.matchMedia?.('(prefers-color-scheme: dark)').matches) {
     return 'dark';
   }
   return 'light';
@@ -753,55 +820,103 @@ if (window.matchMedia) {
 }
 
 // ============================================
-// MOBILE MENU - Menu Burger
+// MOBILE MENU
 // ============================================
 
+/**
+ * Initialise le menu burger mobile
+ */
 function initMobileMenu() {
   const mobileMenuToggle = document.getElementById('mobile-menu-toggle');
   const navLinks = document.getElementById('nav-links');
 
-  if (!mobileMenuToggle || !navLinks) {
-    return;
-  }
+  if (!mobileMenuToggle || !navLinks) return;
 
-  // Toggle du menu mobile
-  mobileMenuToggle.addEventListener('click', function() {
-    const isActive = navLinks.classList.contains('active');
+  mobileMenuToggle.addEventListener('click', () => toggleMobileMenu(navLinks, mobileMenuToggle));
 
-    if (isActive) {
-      navLinks.classList.remove('active');
-      mobileMenuToggle.classList.remove('active');
-      document.body.style.overflow = '';
-    } else {
-      navLinks.classList.add('active');
-      mobileMenuToggle.classList.add('active');
-      document.body.style.overflow = 'hidden';
-    }
-  });
+  setupMobileMenuNavigation(navLinks, mobileMenuToggle);
+  setupMobileMenuOutsideClick(navLinks, mobileMenuToggle);
 
-  // Fermer le menu quand on clique sur un lien
-  const navItems = navLinks.querySelectorAll('a');
-  navItems.forEach(item => {
-    item.addEventListener('click', function() {
-      navLinks.classList.remove('active');
-      mobileMenuToggle.classList.remove('active');
-      document.body.style.overflow = '';
-    });
-  });
-
-  // Fermer le menu quand on clique en dehors
-  document.addEventListener('click', function(event) {
-    if (!navLinks.contains(event.target) && !mobileMenuToggle.contains(event.target)) {
-      if (navLinks.classList.contains('active')) {
-        navLinks.classList.remove('active');
-        mobileMenuToggle.classList.remove('active');
-        document.body.style.overflow = '';
-      }
-    }
-  });
-
-  console.log('Menu mobile initialisé');
+  console.log('✓ Menu mobile initialisé');
 }
 
-// Log pour debug
-console.log('Grossophobie Script chargé et prêt');
+function toggleMobileMenu(navLinks, mobileMenuToggle) {
+  const isActive = navLinks.classList.contains('active');
+
+  if (isActive) {
+    closeMobileMenu(navLinks, mobileMenuToggle);
+  } else {
+    openMobileMenu(navLinks, mobileMenuToggle);
+  }
+}
+
+function openMobileMenu(navLinks, mobileMenuToggle) {
+  navLinks.classList.add('active');
+  mobileMenuToggle.classList.add('active');
+  document.body.style.overflow = 'hidden';
+}
+
+function closeMobileMenu(navLinks, mobileMenuToggle) {
+  navLinks.classList.remove('active');
+  mobileMenuToggle.classList.remove('active');
+  document.body.style.overflow = '';
+}
+
+function setupMobileMenuNavigation(navLinks, mobileMenuToggle) {
+  const navItems = navLinks.querySelectorAll('a');
+  navItems.forEach(item => {
+    item.addEventListener('click', () => closeMobileMenu(navLinks, mobileMenuToggle));
+  });
+}
+
+function setupMobileMenuOutsideClick(navLinks, mobileMenuToggle) {
+  document.addEventListener('click', (event) => {
+    const isOutsideClick = !navLinks.contains(event.target) &&
+                          !mobileMenuToggle.contains(event.target);
+
+    if (isOutsideClick && navLinks.classList.contains('active')) {
+      closeMobileMenu(navLinks, mobileMenuToggle);
+    }
+  });
+}
+
+// ============================================
+// UTILITY FUNCTIONS
+// ============================================
+
+/**
+ * Retourne l'emoji correspondant à une icône
+ */
+function getIconForAction(iconName) {
+  return ICONS[iconName] || ICONS.default;
+}
+
+/**
+ * Scroll animé vers une section avec adaptation au parallax horizontal
+ */
+function smoothScrollToSection(sectionSelector) {
+  const section = $(sectionSelector);
+  if (!section.length) return;
+
+  const scrollWrapper = $('.horizontal-scroll-wrapper');
+  const sectionIndex = $('.section').index(section);
+  const scrollPosition = sectionIndex * (window.innerHeight * PARALLAX_SCROLL_MULTIPLIER);
+
+  scrollWrapper.animate({
+    scrollTop: scrollPosition
+  }, SCROLL_ANIMATION_DURATION, 'swing');
+}
+
+// ============================================
+// WINDOW RESIZE HANDLER
+// ============================================
+
+$(window).on('resize', () => {
+  console.log('↔ Window resized');
+});
+
+// ============================================
+// INITIALIZATION COMPLETE
+// ============================================
+
+console.log('✓ Grossophobie Script chargé et prêt');
