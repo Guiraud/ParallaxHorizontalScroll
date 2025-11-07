@@ -44,9 +44,9 @@ function displayTriggerWarning() {
 
   // Affichage des contacts d'aide
   html += `<div style="margin-top: 1.5rem; text-align: left;">`;
-  html += `<p><strong>Contacts d'aide en France :</strong></p>`;
+  html += `<p><strong>Contacts d'aide en France :</strong></p>`;
   data.triggerWarning.contacts.france.forEach(contact => {
-    html += `<p>• ${contact.name} : <strong>${contact.number}</strong> - ${contact.description}</p>`;
+    html += `<p>• ${contact.name} : <strong>${contact.number}</strong> - ${contact.description}</p>`;
   });
   html += `</div>`;
 
@@ -232,12 +232,12 @@ function renderArguments() {
         </div>
 
         <div class="argument-impact">
-          <strong>Impact :</strong> ${arg.impact}
+          <strong>Impact :</strong> ${arg.impact}
         </div>
 
         ${arg.sources && arg.sources.length > 0 ? `
           <div class="argument-sources">
-            <strong>📚 Sources :</strong>
+            <strong>📚 Sources :</strong>
             <ul class="sources-list">
               ${arg.sources.map(source => `
                 <li><a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title}</a></li>
@@ -352,7 +352,7 @@ function renderPhrases() {
           <p class="dementi-text">${item.dementi}</p>
           ${item.sources && item.sources.length > 0 ? `
             <div class="phrase-sources">
-              <strong>📚 Sources :</strong>
+              <strong>📚 Sources :</strong>
               <ul class="sources-list">
                 ${item.sources.map(source => `
                   <li><a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title}</a></li>
@@ -409,13 +409,13 @@ function renderCampagnes() {
         </div>
         <p class="campagne-description">${campagne.description}</p>
         <div class="campagne-impact">
-          <strong>Impact :</strong> ${campagne.impact}
+          <strong>Impact :</strong> ${campagne.impact}
         </div>
-        <p class="campagne-lecon"><strong>Leçon :</strong> ${campagne.lecon}</p>
+        <p class="campagne-lecon"><strong>Leçon :</strong> ${campagne.lecon}</p>
 
         ${campagne.sources && campagne.sources.length > 0 ? `
           <div class="campagne-sources">
-            <strong>📚 Sources :</strong>
+            <strong>📚 Sources :</strong>
             <ul class="sources-list">
               ${campagne.sources.map(source => `
                 <li><a href="${source.url}" target="_blank" rel="noopener" class="source-link">${source.title}</a></li>

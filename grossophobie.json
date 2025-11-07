@@ -10,7 +10,7 @@
     }
   },
   "triggerWarning": {
-    "global": "⚠️ Avertissement : Ce site contient des exemples réels de phrases grossophobes qui peuvent être déclencheurs. Ces contenus sont présentés dans un but éducatif pour mieux comprendre et combattre la discrimination. Vous pouvez masquer ces sections sensibles à tout moment.",
+    "global": "⚠️ Avertissement : Ce site contient des exemples réels de phrases grossophobes qui peuvent être déclencheurs. Ces contenus sont présentés dans un but éducatif pour mieux comprendre et combattre la discrimination. Vous pouvez masquer ces sections sensibles à tout moment.",
     "contacts": {
       "france": [
         {
@@ -32,15 +32,15 @@
     }
   },
   "introduction": {
-    "title": "Qu'est-ce que la grossophobie ?",
-    "content": "La grossophobie est une discrimination systémique basée sur le poids et l'apparence corporelle. En France, elle touche environ 8 millions de personnes (IMC > 25) et se manifeste dans tous les domaines de la vie : emploi, santé, éducation, vie sociale et familiale.",
+    "title": "Qu'est-ce que la grossophobie ?",
+    "content": "La grossophobie est une discrimination systémique basée sur le poids et l'apparence corporelle. En France, elle touche environ 8 millions de personnes (IMC > 25) et se manifeste dans tous les domaines de la vie : emploi, santé, éducation, vie sociale et familiale.",
     "statistics": {
       "france": "47% des jeunes femmes en obésité victimes de discriminations quotidiennes",
       "global": "La discrimination liée au poids a augmenté de 66% ces dix dernières années"
     }
   },
   "publicCibles": {
-    "title": "À qui s'adresse ce site ?",
+    "title": "À qui s'adresse ce site ?",
     "audiences": [
       {
         "name": "Jeunes femmes complexées",
@@ -65,7 +65,7 @@
       {
         "name": "Élu·e·s",
         "icon": "🏛️",
-        "message": "La grossophobie coûte cher à la société : absentéisme, dépressions, inégalités d'emploi. Investir dans l'inclusion réduit ces coûts de 20-30%.",
+        "message": "La grossophobie coûte cher à la société : absentéisme, dépressions, inégalités d'emploi. Investir dans l'inclusion réduit ces coûts de 20-30%.",
         "resources": [
           "Données économiques (273 000 emplois potentiels pour les femmes)",
           "Arguments de santé publique",
@@ -457,7 +457,7 @@
   },
   "imcCritique": {
     "title": "Pourquoi l'Indice de Masse Corporelle (IMC) est Critiqué",
-    "intro": "Oui : vos doutes sont fondés — l'IMC est un outil utile à grande échelle mais souffre de plusieurs sérieux biais.",
+    "intro": "Oui : vos doutes sont fondés — l'IMC est un outil utile à grande échelle mais souffre de plusieurs sérieux biais.",
     "limites": [
       {
         "titre": "Ne distingue pas muscle et graisse",
@@ -466,7 +466,7 @@
       },
       {
         "titre": "Ignore les différences biologiques",
-        "description": "Il ne tient pas correctement compte du sexe, de l'âge, de l'origine ethnique : par exemple, une même valeur d'IMC peut recouvrir des profils très différents selon l'ethnie ou le sexe.",
+        "description": "Il ne tient pas correctement compte du sexe, de l'âge, de l'origine ethnique : par exemple, une même valeur d'IMC peut recouvrir des profils très différents selon l'ethnie ou le sexe.",
         "icon": "🧬"
       },
       {
@@ -481,7 +481,7 @@
       },
       {
         "titre": "Ne prédit pas le risque réel",
-        "description": "Il n'informe pas directement sur le risque de maladie mais uniquement sur un ratio poids/hauteur ; ce ratio ne capte pas toujours le vrai risque métabolique.",
+        "description": "Il n'informe pas directement sur le risque de maladie mais uniquement sur un ratio poids/hauteur ; ce ratio ne capte pas toujours le vrai risque métabolique.",
         "icon": "❤️"
       }
     ],
@@ -516,15 +516,15 @@
       },
       {
         "nom": "Indices alternatifs (BAI, RFM)",
-        "description": "Indice de masse adipeuse (BAI), Relative Fat Mass (RFM) : D'autres formules anthropométriques émergent, bien qu'elles ne soient pas encore toutes validées à grande échelle.",
+        "description": "Indice de masse adipeuse (BAI), Relative Fat Mass (RFM) : D'autres formules anthropométriques émergent, bien qu'elles ne soient pas encore toutes validées à grande échelle.",
         "icon": "🧮"
       }
     ],
     "recommendations": [
       "Ne vous fiez pas uniquement à un chiffre d'IMC pour juger de votre santé",
-      "Ajoutez un repère simple : mesurer votre tour de taille (au niveau du nombril) et calculez : tour de taille ÷ hauteur. Si ce rapport dépasse ~0,5, cela peut indiquer un excès de graisse abdominale",
+      "Ajoutez un repère simple : mesurer votre tour de taille (au niveau du nombril) et calculez : tour de taille ÷ hauteur. Si ce rapport dépasse ~0,5, cela peut indiquer un excès de graisse abdominale",
       "Si possible, utilisez des outils qui évaluent la composition corporelle (masse grasse vs musculaire) ou demandez-le à un professionnel",
-      "En tant que journaliste/analyste, tenez compte des biais ethniques et historiques dans l'utilisation des indices de santé : ce que nous mesurons et comment nous le mesurons influence le discours"
+      "En tant que journaliste/analyste, tenez compte des biais ethniques et historiques dans l'utilisation des indices de santé : ce que nous mesurons et comment nous le mesurons influence le discours"
     ]
   },
   "phrasesDiscriminantes": {
@@ -555,7 +555,7 @@
       },
       {
         "id": 2,
-        "phrase": "Es-tu sûre de vouloir manger ça ? Ça va te faire grossir.",
+        "phrase": "Es-tu sûre de vouloir manger ça ? Ça va te faire grossir.",
         "dementi": "Oui, je suis sûre, et mon alimentation est mon affaire. Associer la nourriture au 'péché' culpabilise et ignore que le poids est multifactoriel (génétique, hormones, stress).",
         "categorie": "Contrôle alimentaire",
         "sources": [
@@ -575,7 +575,7 @@
       },
       {
         "id": 3,
-        "phrase": "Tu n'es pas grosse, tu es belle !",
+        "phrase": "Tu n'es pas grosse, tu es belle !",
         "dementi": "Si je suis grosse, c'est un fait neutre, pas une insulte. Me forcer à nier mon corps nie aussi mon authenticité – la vraie beauté inclut la diversité des formes.",
         "categorie": "Négation",
         "sources": [
@@ -595,8 +595,8 @@
       },
       {
         "id": 4,
-        "phrase": "Allez, aujourd'hui on fait un cheat day ! Bon, moi je peux, mais pas toi...",
-        "dementi": "Les 'jours de triche' perpétuent l'idée que manger est une faiblesse. Je mange avec joie, sans culpabilité – et toi, pourquoi juges-tu les plaisirs des autres ?",
+        "phrase": "Allez, aujourd'hui on fait un cheat day ! Bon, moi je peux, mais pas toi...",
+        "dementi": "Les 'jours de triche' perpétuent l'idée que manger est une faiblesse. Je mange avec joie, sans culpabilité – et toi, pourquoi juges-tu les plaisirs des autres ?",
         "categorie": "Exclusion",
         "sources": [
           {
@@ -615,7 +615,7 @@
       },
       {
         "id": 5,
-        "phrase": "Retourne à l'eau, la baleine !",
+        "phrase": "Retourne à l'eau, la baleine !",
         "dementi": "Ton 'humour' est une violence qui blesse. Les animaux ne méritent pas d'être comparés à des humains pour rabaisser – et moi, je mérite le respect, point.",
         "categorie": "Insulte 'humoristique'",
         "sources": [
@@ -696,7 +696,7 @@
       {
         "id": 9,
         "phrase": "Avec ton poids, tu ne rentreras jamais dans cette robe.",
-        "dementi": "Les normes vestimentaires excluent la moitié des corps – c'est la mode qui doit s'adapter, pas moi. Et si on célébrait tous les styles, au lieu de limiter ?",
+        "dementi": "Les normes vestimentaires excluent la moitié des corps – c'est la mode qui doit s'adapter, pas moi. Et si on célébrait tous les styles, au lieu de limiter ?",
         "categorie": "Exclusion vestimentaire",
         "sources": [
           {
@@ -716,7 +716,7 @@
       {
         "id": 10,
         "phrase": "Les obèses coûtent cher à la société en soins.",
-        "dementi": "La grossophobie coûte plus : absentéisme, dépressions, évitement médical. Investir dans l'inclusion réduit les coûts de santé publique de 20-30%.",
+        "dementi": "La grossophobie coûte plus : absentéisme, dépressions, évitement médical. Investir dans l'inclusion réduit les coûts de santé publique de 20-30%.",
         "categorie": "Argument économique",
         "sources": [
           {
@@ -797,7 +797,7 @@
       {
         "id": 3,
         "title": "Économise des ressources sociétales",
-        "description": "Lutter contre les biais au travail diminue l'absentéisme de 20% et augmente l'emploi, générant des milliards en PIB (ex. : 273 000 emplois potentiels pour les femmes en France).",
+        "description": "Lutter contre les biais au travail diminue l'absentéisme de 20% et augmente l'emploi, générant des milliards en PIB (ex. : 273 000 emplois potentiels pour les femmes en France).",
         "icon": "economy",
         "impact": "Croissance économique"
       },
@@ -912,7 +912,7 @@
       },
       {
         "id": 5,
-        "name": "Exposition 'Grossophobie, Stop !'",
+        "name": "Exposition 'Grossophobie, Stop !'",
         "period": "2019",
         "zone": "Mairie de Paris",
         "description": "29 panneaux pendant la Fashion Week avec mannequins grandes tailles.",
