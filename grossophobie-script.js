@@ -257,6 +257,39 @@ function renderArguments() {
     const card = $(this).closest('.argument-card');
     card.toggleClass('flipped');
   });
+
+  // Ajuster la hauteur des containers sur mobile
+  adjustFlipContainerHeights();
+}
+
+// Fonction pour ajuster dynamiquement la hauteur des flip containers
+function adjustFlipContainerHeights() {
+  $('.argument-flip-container').each(function() {
+    const container = $(this);
+    const frontFace = container.find('.argument-face-front');
+    const backFace = container.find('.argument-face-back');
+
+    // Calculer la hauteur nécessaire pour chaque face
+    const frontHeight = frontFace.outerHeight();
+    const backHeight = backFace.outerHeight();
+    const maxHeight = Math.max(frontHeight, backHeight);
+
+    // Appliquer la hauteur maximale au container
+    container.css('min-height', maxHeight + 'px');
+  });
+
+  // Réajuster au resize de la fenêtre
+  $(window).on('resize', function() {
+    $('.argument-flip-container').each(function() {
+      const container = $(this);
+      const frontFace = container.find('.argument-face-front');
+      const backFace = container.find('.argument-face-back');
+      const frontHeight = frontFace.outerHeight();
+      const backHeight = backFace.outerHeight();
+      const maxHeight = Math.max(frontHeight, backHeight);
+      container.css('min-height', maxHeight + 'px');
+    });
+  });
 }
 
 // Rendu de la section IMC Critique

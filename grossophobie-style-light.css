@@ -1636,6 +1636,24 @@ body {
     display: none;
   }
 
+  /* Flipcards - Augmenter min-height sur mobile */
+  .argument-flip-container {
+    min-height: 200px;
+  }
+
+  .stat-value-main {
+    font-size: 0.9rem;
+  }
+
+  .flip-flag-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .flip-flag {
+    font-size: 1.6rem;
+  }
+
   /* Autres ajustements mobile */
   .hero-title {
     font-size: 2.5rem;

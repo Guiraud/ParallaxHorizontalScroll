@@ -1363,6 +1363,24 @@ body {
     padding-top: 0.8rem;
   }
 
+  /* Flipcards - Augmenter min-height sur mobile */
+  .argument-flip-container {
+    min-height: 200px;
+  }
+
+  .stat-value-main {
+    font-size: 0.9rem;
+  }
+
+  .flip-flag-btn {
+    width: 45px;
+    height: 45px;
+  }
+
+  .flip-flag {
+    font-size: 1.6rem;
+  }
+
   .btn-petition-modal {
     padding: 0.7rem 1rem;
     font-size: 0.85rem;
