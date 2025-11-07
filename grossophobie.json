@@ -1035,14 +1035,90 @@
       {
         "titre": "Partagez ce site",
         "description": "Sensibilisez votre entourage en partageant ces informations",
+        "url": "https://p.newsforge.app/grossophobie",
+        "shareText": "La grossophobie tue plus que le poids lui-même. Découvrez les faits scientifiques et agissez : https://p.newsforge.app/grossophobie",
         "type": "secondary",
-        "icon": "share"
+        "icon": "share",
+        "interactive": true
       },
       {
         "titre": "Éduquez-vous",
         "description": "Consultez les ressources et devenez un·e allié·e efficace",
         "type": "secondary",
-        "icon": "book-open"
+        "icon": "book-open",
+        "interactive": true,
+        "ressources": [
+          {
+            "titre": "Guide de l'allié·e anti-grossophobie",
+            "url": "https://equilibre.ca/ressources/",
+            "source": "ÉquiLibre"
+          },
+          {
+            "titre": "Déconstruire les préjugés sur l'obésité",
+            "url": "https://www.arcom.fr/nos-ressources/nos-publications-et-nos-etudes/mettons-fin-aux-prejuges-sur-la-maladie-obesite-larcom-partenaire-des",
+            "source": "Arcom"
+          },
+          {
+            "titre": "Comprendre la grossophobie médicale",
+            "url": "https://pmc.ncbi.nlm.nih.gov/articles/PMC10283253/",
+            "source": "NCBI"
+          },
+          {
+            "titre": "Ressources pour l'estime de soi",
+            "url": "https://www.dove.com/ca/fr/dove-self-esteem-project.html",
+            "source": "Dove Self-Esteem Project"
+          },
+          {
+            "titre": "Histoire raciale de la grossophobie",
+            "url": "https://www.npr.org/2020/07/20/893006538/fat-phobia-and-its-racist-past-and-present",
+            "source": "NPR"
+          }
+        ]
+      },
+      {
+        "titre": "Suivez des voix inspirantes",
+        "description": "Découvrez des militant·e·s et créateur·ices engagé·e·s contre la grossophobie",
+        "type": "secondary",
+        "icon": "heart",
+        "interactive": true,
+        "personalities": [
+          {
+            "nom": "Daria Marx",
+            "instagram": "@daria_marx",
+            "url": "https://www.instagram.com/daria_marx/",
+            "description": "Autrice et militante body positive, déconstruit les normes de beauté"
+          },
+          {
+            "nom": "Eva Pereira",
+            "instagram": "@eva_pereira",
+            "url": "https://www.instagram.com/eva_pereira/",
+            "description": "Créatrice de contenu body positive et anti-grossophobie"
+          },
+          {
+            "nom": "Gras Politique",
+            "instagram": "@graspolitique",
+            "url": "https://www.instagram.com/graspolitique/",
+            "description": "Collectif militant français pour la libération des gros·ses"
+          },
+          {
+            "nom": "Nelly Rapp-Hernandez",
+            "instagram": "@nellyrapp",
+            "url": "https://www.instagram.com/nellyrapp/",
+            "description": "Influenceuse et autrice, prône l'acceptation corporelle"
+          },
+          {
+            "nom": "Nadia Medjad",
+            "instagram": "@nadiatoutcourt",
+            "url": "https://www.instagram.com/nadiatoutcourt/",
+            "description": "Psychologue spécialisée troubles alimentaires et image corporelle"
+          },
+          {
+            "nom": "Sophie Riche",
+            "instagram": "@sophieriche",
+            "url": "https://www.instagram.com/sophieriche/",
+            "description": "Journaliste et militante, co-fondatrice de Gras Politique"
+          }
+        ]
       },
       {
         "titre": "Témoignez",

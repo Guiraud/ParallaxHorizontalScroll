@@ -1138,6 +1138,266 @@ body {
   font-size: 0.95rem;
 }
 
+/* CTA Share Card */
+.cta-share-card {
+  cursor: default;
+}
+
+.share-buttons {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+  margin-top: 1.5rem;
+  justify-content: center;
+}
+
+.share-btn {
+  padding: 0.6rem 1.2rem;
+  border: 2px solid var(--primary-color);
+  background: var(--bg-light);
+  color: var(--primary-color);
+  border-radius: 8px;
+  cursor: pointer;
+  font-size: 0.9rem;
+  font-weight: 600;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.share-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  transform: scale(1.05);
+}
+
+.share-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.copy-url-btn {
+  border-color: var(--secondary-color);
+  color: var(--secondary-color);
+}
+
+.copy-url-btn:hover {
+  background: var(--secondary-color);
+}
+
+.twitter-btn {
+  border-color: #1DA1F2;
+  color: #1DA1F2;
+}
+
+.twitter-btn:hover {
+  background: #1DA1F2;
+}
+
+.facebook-btn {
+  border-color: #1877F2;
+  color: #1877F2;
+}
+
+.facebook-btn:hover {
+  background: #1877F2;
+}
+
+.linkedin-btn {
+  border-color: #0A66C2;
+  color: #0A66C2;
+}
+
+.linkedin-btn:hover {
+  background: #0A66C2;
+}
+
+/* CTA Flip Cards */
+.cta-flip-card {
+  perspective: 1000px;
+  cursor: default;
+  min-height: 350px;
+}
+
+.flip-card-inner {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  transition: transform 0.6s;
+  transform-style: preserve-3d;
+}
+
+.cta-flip-card.flipped .flip-card-inner {
+  transform: rotateY(180deg);
+}
+
+.flip-card-front,
+.flip-card-back {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  backface-visibility: hidden;
+  border-radius: 15px;
+}
+
+.flip-card-front {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.flip-card-back {
+  transform: rotateY(180deg);
+  background: var(--bg-light);
+  padding: 1.5rem;
+  overflow-y: auto;
+  max-height: 500px;
+}
+
+.flip-card-btn {
+  margin-top: auto;
+  padding: 0.75rem 1.5rem;
+  background: var(--primary-color);
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.95rem;
+  transition: all 0.3s ease;
+  margin-top: 1.5rem;
+}
+
+.flip-card-btn:hover {
+  background: var(--secondary-color);
+  transform: scale(1.05);
+}
+
+.flip-back-btn {
+  background: var(--bg-dark);
+  color: var(--text-light);
+  margin-top: 1rem;
+}
+
+.flip-back-btn:hover {
+  background: var(--card-border);
+}
+
+.flip-back-title {
+  font-size: 1.2rem;
+  font-weight: 700;
+  color: var(--primary-color);
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+/* Ressources Flip List */
+.ressources-flip-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.ressource-flip-item {
+  margin-bottom: 1.2rem;
+  padding: 1rem;
+  background: rgba(99, 102, 241, 0.05);
+  border-radius: 8px;
+  border-left: 3px solid var(--primary-color);
+  transition: all 0.3s ease;
+}
+
+.ressource-flip-item:hover {
+  background: rgba(99, 102, 241, 0.1);
+  transform: translateX(5px);
+}
+
+.ressource-flip-item a {
+  color: var(--primary-color);
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.ressource-flip-item a:hover {
+  text-decoration: underline;
+}
+
+.ressource-source {
+  font-size: 0.85rem;
+  color: var(--text-medium);
+  font-style: italic;
+}
+
+/* Personalities List */
+.personalities-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+.personality-item {
+  margin-bottom: 1.5rem;
+  padding: 1.2rem;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.05), rgba(16, 185, 129, 0.05));
+  border-radius: 10px;
+  border: 2px solid rgba(99, 102, 241, 0.2);
+  transition: all 0.3s ease;
+}
+
+.personality-item:hover {
+  border-color: var(--primary-color);
+  box-shadow: 0 5px 15px rgba(99, 102, 241, 0.2);
+  transform: translateY(-3px);
+}
+
+.personality-link {
+  text-decoration: none;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.personality-link strong {
+  color: var(--text-light);
+  font-size: 1.05rem;
+  display: block;
+  margin-bottom: 0.3rem;
+}
+
+.instagram-handle {
+  color: var(--primary-color);
+  font-weight: 600;
+  font-size: 0.9rem;
+}
+
+.personality-description {
+  color: var(--text-medium);
+  font-size: 0.9rem;
+  margin: 0.5rem 0 0 0;
+  line-height: 1.5;
+}
+
+/* Responsive adjustments for flip cards */
+@media (max-width: 768px) {
+  .cta-flip-card {
+    min-height: 320px;
+  }
+
+  .flip-card-back {
+    max-height: 400px;
+  }
+
+  .share-buttons {
+    flex-direction: column;
+  }
+
+  .share-btn {
+    width: 100%;
+  }
+}
+
 /* Ressources Content */
 .ressources-content {
   margin-top: 2rem;

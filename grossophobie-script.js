@@ -645,11 +645,31 @@ function renderCTA() {
     .join('');
 
   $('#cta-grid').html(cardsHTML);
+
+  // Initialiser les événements interactifs
+  initCTAInteractions();
 }
 
 function createCTACardHTML(action) {
   const isPrimary = action.type === 'primary';
   const cardClass = isPrimary ? 'cta-card primary' : 'cta-card';
+
+  // Carte interactive avec partage
+  if (action.interactive && action.shareText) {
+    return createShareCardHTML(action, cardClass);
+  }
+
+  // Carte interactive avec ressources
+  if (action.interactive && action.ressources) {
+    return createFlipCardWithRessources(action, cardClass);
+  }
+
+  // Carte interactive avec personnalités
+  if (action.interactive && action.personalities) {
+    return createFlipCardWithPersonalities(action, cardClass);
+  }
+
+  // Carte simple avec lien
   const onClick = action.url ? `window.open('${action.url}', '_blank')` : 'void(0)';
 
   return `
@@ -661,6 +681,161 @@ function createCTACardHTML(action) {
       <p class="cta-description">${action.description}</p>
     </div>
   `;
+}
+
+function createShareCardHTML(action, cardClass) {
+  return `
+    <div class="${cardClass} cta-share-card">
+      <div class="cta-icon">${getIconForAction(action.icon)}</div>
+      <h3 class="cta-title">${action.titre}</h3>
+      <p class="cta-description">${action.description}</p>
+      <div class="share-buttons">
+        <button class="share-btn copy-url-btn" data-url="${action.url}" title="Copier le lien">
+          🔗 Copier le lien
+        </button>
+        <button class="share-btn twitter-btn" data-text="${action.shareText}" title="Partager sur X/Twitter">
+          𝕏 Twitter
+        </button>
+        <button class="share-btn facebook-btn" data-url="${action.url}" title="Partager sur Facebook">
+          📘 Facebook
+        </button>
+        <button class="share-btn linkedin-btn" data-url="${action.url}" data-text="${action.shareText}" title="Partager sur LinkedIn">
+          💼 LinkedIn
+        </button>
+      </div>
+    </div>
+  `;
+}
+
+function createFlipCardWithRessources(action, cardClass) {
+  const ressourcesHTML = action.ressources
+    .map(res => `
+      <li class="ressource-flip-item">
+        <a href="${res.url}" target="_blank" rel="noopener">
+          📚 ${res.titre}
+        </a>
+        <span class="ressource-source">${res.source}</span>
+      </li>
+    `)
+    .join('');
+
+  return `
+    <div class="${cardClass} cta-flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <div class="cta-icon">${getIconForAction(action.icon)}</div>
+          <h3 class="cta-title">${action.titre}</h3>
+          <p class="cta-description">${action.description}</p>
+          <button class="flip-card-btn">Voir les ressources →</button>
+        </div>
+        <div class="flip-card-back">
+          <h3 class="flip-back-title">Ressources pédagogiques</h3>
+          <ul class="ressources-flip-list">
+            ${ressourcesHTML}
+          </ul>
+          <button class="flip-card-btn flip-back-btn">← Retour</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function createFlipCardWithPersonalities(action, cardClass) {
+  const personalitiesHTML = action.personalities
+    .map(person => `
+      <li class="personality-item">
+        <a href="${person.url}" target="_blank" rel="noopener" class="personality-link">
+          <strong>${person.nom}</strong>
+          <span class="instagram-handle">${person.instagram}</span>
+        </a>
+        <p class="personality-description">${person.description}</p>
+      </li>
+    `)
+    .join('');
+
+  return `
+    <div class="${cardClass} cta-flip-card">
+      <div class="flip-card-inner">
+        <div class="flip-card-front">
+          <div class="cta-icon">${getIconForAction(action.icon)}</div>
+          <h3 class="cta-title">${action.titre}</h3>
+          <p class="cta-description">${action.description}</p>
+          <button class="flip-card-btn">Découvrir les comptes →</button>
+        </div>
+        <div class="flip-card-back">
+          <h3 class="flip-back-title">Comptes Instagram inspirants</h3>
+          <ul class="personalities-list">
+            ${personalitiesHTML}
+          </ul>
+          <button class="flip-card-btn flip-back-btn">← Retour</button>
+        </div>
+      </div>
+    </div>
+  `;
+}
+
+function initCTAInteractions() {
+  // Gestion du partage : copier l'URL
+  $('.copy-url-btn').on('click', function(e) {
+    e.stopPropagation();
+    const url = $(this).data('url');
+    copyToClipboard(url);
+    $(this).text('✓ Copié !').prop('disabled', true);
+    setTimeout(() => {
+      $(this).text('🔗 Copier le lien').prop('disabled', false);
+    }, 2000);
+  });
+
+  // Gestion du partage : Twitter
+  $('.twitter-btn').on('click', function(e) {
+    e.stopPropagation();
+    const text = $(this).data('text');
+    const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}`;
+    window.open(twitterUrl, '_blank');
+  });
+
+  // Gestion du partage : Facebook
+  $('.facebook-btn').on('click', function(e) {
+    e.stopPropagation();
+    const url = $(this).data('url');
+    const facebookUrl = `https://www.facebook.com/sharer/sharer.php?u=${encodeURIComponent(url)}`;
+    window.open(facebookUrl, '_blank');
+  });
+
+  // Gestion du partage : LinkedIn
+  $('.linkedin-btn').on('click', function(e) {
+    e.stopPropagation();
+    const url = $(this).data('url');
+    const linkedinUrl = `https://www.linkedin.com/sharing/share-offsite/?url=${encodeURIComponent(url)}`;
+    window.open(linkedinUrl, '_blank');
+  });
+
+  // Gestion des cartes retournables
+  $('.flip-card-btn').on('click', function(e) {
+    e.stopPropagation();
+    const card = $(this).closest('.cta-flip-card');
+    card.toggleClass('flipped');
+  });
+}
+
+function copyToClipboard(text) {
+  if (navigator.clipboard && navigator.clipboard.writeText) {
+    navigator.clipboard.writeText(text);
+  } else {
+    // Fallback pour navigateurs plus anciens
+    const textArea = document.createElement('textarea');
+    textArea.value = text;
+    textArea.style.position = 'fixed';
+    textArea.style.left = '-999999px';
+    document.body.appendChild(textArea);
+    textArea.select();
+    try {
+      document.execCommand('copy');
+    } catch (err) {
+      console.error('Erreur lors de la copie:', err);
+    }
+    document.body.removeChild(textArea);
+  }
 }
 
 function renderFooter() {
