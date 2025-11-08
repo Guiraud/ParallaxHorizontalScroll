@@ -41,6 +41,7 @@ async function initializeApp() {
   setupEventListeners();
   initThemeToggle();
   initMobileMenu();
+  initTOCToggle();
 }
 
 // ============================================
@@ -1054,6 +1055,40 @@ function setupMobileMenuOutsideClick(navLinks, mobileMenuToggle) {
       closeMobileMenu(navLinks, mobileMenuToggle);
     }
   });
+}
+
+/**
+ * Initialise le bouton de réduction/affichage du sommaire
+ */
+function initTOCToggle() {
+  const tocToggleBtn = document.getElementById('toc-toggle-btn');
+  const toc = document.getElementById('toc');
+
+  if (!tocToggleBtn || !toc) return;
+
+  // Charger l'état sauvegardé
+  const savedState = localStorage.getItem('toc-collapsed');
+  if (savedState === 'true') {
+    toc.classList.add('collapsed');
+    updateTOCToggleIcon(tocToggleBtn, true);
+  }
+
+  tocToggleBtn.addEventListener('click', () => {
+    const isCollapsed = toc.classList.toggle('collapsed');
+    updateTOCToggleIcon(tocToggleBtn, isCollapsed);
+
+    // Sauvegarder l'état
+    localStorage.setItem('toc-collapsed', isCollapsed.toString());
+  });
+
+  console.log('✓ Toggle TOC initialisé');
+}
+
+function updateTOCToggleIcon(button, isCollapsed) {
+  const icon = button.querySelector('.toc-toggle-icon');
+  if (icon) {
+    icon.textContent = isCollapsed ? '+' : '−';
+  }
 }
 
 // ============================================

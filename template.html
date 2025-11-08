@@ -110,8 +110,13 @@
 
   <!-- Table of Contents (visible on desktop) -->
   <aside class="table-of-contents" id="toc">
-    <h2>📚 Sommaire</h2>
-    <nav>
+    <div class="toc-header">
+      <h2>📚 Sommaire</h2>
+      <button class="toc-toggle-btn" id="toc-toggle-btn" aria-label="Réduire/Afficher le sommaire">
+        <span class="toc-toggle-icon">−</span>
+      </button>
+    </div>
+    <nav id="toc-nav">
       <ul>
         <li><a href="#introduction">Qu'est-ce que la grossophobie ?</a></li>
         <li><a href="#publics">À qui s'adresse ce site ?</a></li>

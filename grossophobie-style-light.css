@@ -304,12 +304,54 @@ body {
   overflow-y: auto;
 }
 
-.table-of-contents h2 {
-  font-size: 1.1rem;
-  color: var(--text-dark);
+.toc-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
   margin-bottom: 1rem;
   padding-bottom: 0.8rem;
   border-bottom: 2px solid var(--primary-color);
+}
+
+.table-of-contents h2 {
+  font-size: 1.1rem;
+  color: var(--text-dark);
+  margin: 0;
+}
+
+.toc-toggle-btn {
+  background: transparent;
+  border: none;
+  color: var(--primary-color);
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 0.2rem 0.5rem;
+  line-height: 1;
+  transition: all 0.3s ease;
+  border-radius: 4px;
+}
+
+.toc-toggle-btn:hover {
+  background: rgba(99, 102, 241, 0.1);
+  transform: scale(1.1);
+}
+
+.toc-toggle-icon {
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.table-of-contents.collapsed .toc-toggle-icon {
+  transform: rotate(90deg);
+}
+
+.table-of-contents.collapsed nav {
+  display: none;
+}
+
+.table-of-contents.collapsed {
+  padding: 1rem;
+  max-height: auto;
 }
 
 .table-of-contents nav ul {
