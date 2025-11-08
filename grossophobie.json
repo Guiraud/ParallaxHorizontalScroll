@@ -1101,37 +1101,16 @@
           {
             "nom": "Daria Marx",
             "instagram": "@daria_marx",
-            "url": "https://www.instagram.com/daria_marx/",
+            "url": "https://www.instagram.com/p/C4axxfHioJu/",
             "description": "Autrice et militante body positive, déconstruit les normes de beauté",
-            "badge": "🎯 Militante"
-          },
-          {
-            "nom": "Eva Pereira",
-            "instagram": "@eva_pereira",
-            "url": "https://www.instagram.com/eva_pereira/",
-            "description": "Créatrice de contenu body positive et anti-grossophobie",
             "badge": "🎯 Militante"
           },
           {
             "nom": "Gras Politique",
             "instagram": "@graspolitique",
-            "url": "https://www.instagram.com/graspolitique/",
+            "url": "https://www.instagram.com/p/DJowYtEijmG/",
             "description": "Collectif militant français pour la libération des gros·ses",
             "badge": "🏛️ Collectif"
-          },
-          {
-            "nom": "Nelly Rapp-Hernandez",
-            "instagram": "@nellyrapp",
-            "url": "https://www.instagram.com/nellyrapp/",
-            "description": "Influenceuse et autrice, prône l'acceptation corporelle",
-            "badge": "📚 Autrice"
-          },
-          {
-            "nom": "Nadia Medjad",
-            "instagram": "@nadiatoutcourt",
-            "url": "https://www.instagram.com/nadiatoutcourt/",
-            "description": "Psychologue spécialisée troubles alimentaires et image corporelle",
-            "badge": "🩺 Professionnelle"
           },
           {
             "nom": "Sophie Riche",
@@ -1139,6 +1118,90 @@
             "url": "https://www.instagram.com/sophieriche/",
             "description": "Journaliste et militante, co-fondatrice de Gras Politique",
             "badge": "📰 Journaliste"
+          },
+          {
+            "nom": "La Tranche Montagne",
+            "instagram": "@latranchemontagne",
+            "url": "https://www.instagram.com/p/DE5xzJKxJx1/",
+            "description": "Podcast et compte engagé pour la visibilité des personnes grosses",
+            "badge": "🎙️ Podcast"
+          },
+          {
+            "nom": "Corps Cools",
+            "instagram": "@corpscools",
+            "url": "https://www.instagram.com/p/DQnzzwkDCu0",
+            "description": "Média body positive célébrant la diversité corporelle",
+            "badge": "📱 Média"
+          },
+          {
+            "nom": "La Grazette",
+            "instagram": "@lagrazette",
+            "url": "https://www.instagram.com/p/DPoeogKDD1E/",
+            "description": "Magazine militant anti-grossophobie et body liberation",
+            "badge": "📰 Magazine"
+          },
+          {
+            "nom": "La Grosse Asso",
+            "instagram": "@lagrosseasso",
+            "url": "https://www.instagram.com/p/DPzQTw6DPKV/",
+            "description": "Association de lutte contre la grossophobie",
+            "badge": "🏛️ Association"
+          },
+          {
+            "nom": "Grassbuge",
+            "instagram": "@grassbuge",
+            "url": "https://www.instagram.com/p/DQn2-fUDNrF/",
+            "description": "Compte militant anti-grossophobie et fat liberation",
+            "badge": "🎯 Militante"
+          },
+          {
+            "nom": "Pepina Van De Kamp",
+            "instagram": "@pepinavandekamp",
+            "url": "https://www.instagram.com/p/DQq62RhDKYw/",
+            "description": "Créatrice de contenu body positive et anti-grossophobie",
+            "badge": "🎯 Militante"
+          },
+          {
+            "nom": "Fat Friendly",
+            "instagram": "@fatfriendly",
+            "url": "https://www.instagram.com/p/DKRu8JOMX5q/",
+            "description": "Projet inclusif pour l'acceptation de tous les corps",
+            "badge": "🏛️ Collectif"
+          },
+          {
+            "nom": "Fat Répertoire",
+            "instagram": "@fatrepertoire",
+            "url": "https://www.instagram.com/fatrepertoire/",
+            "description": "Répertoire de ressources et comptes fat-friendly",
+            "badge": "📚 Ressource"
+          },
+          {
+            "nom": "Lutte des Grasses",
+            "instagram": "@luttedesgrasses",
+            "url": "https://www.instagram.com/p/DA1bNWNRfDf/?img_index=2",
+            "description": "Mouvement de lutte collective contre la grossophobie",
+            "badge": "🏛️ Collectif"
+          },
+          {
+            "nom": "Gros.Amours",
+            "instagram": "@gros.amours",
+            "url": "https://www.instagram.com/p/DPq1HsDjJoL/",
+            "description": "Célébration de l'amour et des corps gros",
+            "badge": "💜 Communauté"
+          },
+          {
+            "nom": "Grossophobia Podcast",
+            "instagram": "@grossophobia_podcast",
+            "url": "https://www.instagram.com/reel/DOymNm3ju0W/",
+            "description": "Podcast dédié à la déconstruction de la grossophobie",
+            "badge": "🎙️ Podcast"
+          },
+          {
+            "nom": "Fat Ethnographies",
+            "instagram": "@fat_ethnographies",
+            "url": "https://www.instagram.com/p/DNFr0i6sAvR/",
+            "description": "Recherche et analyse sociologique sur la grossophobie",
+            "badge": "🔬 Recherche"
           }
         ]
       },
