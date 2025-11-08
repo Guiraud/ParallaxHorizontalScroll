@@ -1076,59 +1076,69 @@
         ]
       },
       {
-        "titre": "Suivez des voix inspirantes",
-        "description": "Découvrez des militant·e·s et créateur·ices engagé·e·s contre la grossophobie",
+        "titre": "Ils et elles nous soutiennent",
+        "description": "Personnalités engagées qui portent la voix contre la grossophobie",
         "type": "secondary",
         "icon": "heart",
         "interactive": true,
         "personalities": [
           {
-            "nom": "Daria Marx",
-            "instagram": "@daria_marx",
-            "url": "https://www.instagram.com/daria_marx/",
-            "description": "Autrice et militante body positive, déconstruit les normes de beauté"
-          },
-          {
-            "nom": "Eva Pereira",
-            "instagram": "@eva_pereira",
-            "url": "https://www.instagram.com/eva_pereira/",
-            "description": "Créatrice de contenu body positive et anti-grossophobie"
-          },
-          {
-            "nom": "Gras Politique",
-            "instagram": "@graspolitique",
-            "url": "https://www.instagram.com/graspolitique/",
-            "description": "Collectif militant français pour la libération des gros·ses"
-          },
-          {
-            "nom": "Nelly Rapp-Hernandez",
-            "instagram": "@nellyrapp",
-            "url": "https://www.instagram.com/nellyrapp/",
-            "description": "Influenceuse et autrice, prône l'acceptation corporelle"
-          },
-          {
-            "nom": "Nadia Medjad",
-            "instagram": "@nadiatoutcourt",
-            "url": "https://www.instagram.com/nadiatoutcourt/",
-            "description": "Psychologue spécialisée troubles alimentaires et image corporelle"
-          },
-          {
-            "nom": "Sophie Riche",
-            "instagram": "@sophieriche",
-            "url": "https://www.instagram.com/sophieriche/",
-            "description": "Journaliste et militante, co-fondatrice de Gras Politique"
-          },
-          {
             "nom": "Harmony Albertini",
             "instagram": "@harmonyalbertini",
             "url": "https://www.instagram.com/p/DOXy-3LDFSg/?hl=fr",
-            "description": "Créatrice de contenu engagée contre la grossophobie"
+            "description": "Créatrice de contenu engagée contre la grossophobie",
+            "featured": true,
+            "badge": "⭐ Soutien actif"
           },
           {
             "nom": "Mathilde",
             "instagram": "@mathildemusic",
             "url": "https://www.instagram.com/mathildemusic/",
-            "description": "Chanteuse et artiste, voix inspirante du body positive"
+            "description": "Chanteuse et artiste, voix inspirante du body positive",
+            "featured": true,
+            "badge": "⭐ Soutien actif"
+          },
+          {
+            "nom": "Daria Marx",
+            "instagram": "@daria_marx",
+            "url": "https://www.instagram.com/daria_marx/",
+            "description": "Autrice et militante body positive, déconstruit les normes de beauté",
+            "badge": "🎯 Militante"
+          },
+          {
+            "nom": "Eva Pereira",
+            "instagram": "@eva_pereira",
+            "url": "https://www.instagram.com/eva_pereira/",
+            "description": "Créatrice de contenu body positive et anti-grossophobie",
+            "badge": "🎯 Militante"
+          },
+          {
+            "nom": "Gras Politique",
+            "instagram": "@graspolitique",
+            "url": "https://www.instagram.com/graspolitique/",
+            "description": "Collectif militant français pour la libération des gros·ses",
+            "badge": "🏛️ Collectif"
+          },
+          {
+            "nom": "Nelly Rapp-Hernandez",
+            "instagram": "@nellyrapp",
+            "url": "https://www.instagram.com/nellyrapp/",
+            "description": "Influenceuse et autrice, prône l'acceptation corporelle",
+            "badge": "📚 Autrice"
+          },
+          {
+            "nom": "Nadia Medjad",
+            "instagram": "@nadiatoutcourt",
+            "url": "https://www.instagram.com/nadiatoutcourt/",
+            "description": "Psychologue spécialisée troubles alimentaires et image corporelle",
+            "badge": "🩺 Professionnelle"
+          },
+          {
+            "nom": "Sophie Riche",
+            "instagram": "@sophieriche",
+            "url": "https://www.instagram.com/sophieriche/",
+            "description": "Journaliste et militante, co-fondatrice de Gras Politique",
+            "badge": "📰 Journaliste"
           }
         ]
       },

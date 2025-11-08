@@ -743,15 +743,23 @@ function createFlipCardWithRessources(action, cardClass) {
 
 function createFlipCardWithPersonalities(action, cardClass) {
   const personalitiesHTML = action.personalities
-    .map(person => `
-      <li class="personality-item">
-        <a href="${person.url}" target="_blank" rel="noopener" class="personality-link">
-          <strong>${person.nom}</strong>
-          <span class="instagram-handle">${person.instagram}</span>
-        </a>
-        <p class="personality-description">${person.description}</p>
-      </li>
-    `)
+    .map(person => {
+      const featuredClass = person.featured ? 'personality-item-featured' : '';
+      const badgeHTML = person.badge
+        ? `<span class="personality-badge">${person.badge}</span>`
+        : '';
+
+      return `
+        <li class="personality-item ${featuredClass}">
+          <a href="${person.url}" target="_blank" rel="noopener" class="personality-link">
+            <strong>${person.nom}</strong>
+            ${badgeHTML}
+            <span class="instagram-handle">${person.instagram}</span>
+          </a>
+          <p class="personality-description">${person.description}</p>
+        </li>
+      `;
+    })
     .join('');
 
   return `
@@ -761,10 +769,10 @@ function createFlipCardWithPersonalities(action, cardClass) {
           <div class="cta-icon">${getIconForAction(action.icon)}</div>
           <h3 class="cta-title">${action.titre}</h3>
           <p class="cta-description">${action.description}</p>
-          <button class="flip-card-btn">Découvrir les comptes →</button>
+          <button class="flip-card-btn">Découvrir nos soutiens →</button>
         </div>
         <div class="flip-card-back">
-          <h3 class="flip-back-title">Comptes Instagram inspirants</h3>
+          <h3 class="flip-back-title">💫 Nos soutiens sur Instagram</h3>
           <ul class="personalities-list">
             ${personalitiesHTML}
           </ul>
